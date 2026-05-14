@@ -100,6 +100,30 @@
             letter-spacing: 0.1em;
             transition: all 0.2s;
         }
+
+        /* Gumbi za odgovore - VODORAVNO */
+        .opt-btn {
+            flex: 1;
+            background: #1e293b;
+            border: 2px solid #334155;
+            padding: 0.75rem 0.25rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 3.5rem;
+            word-break: break-word;
+            line-height: 1.2;
+        }
+
+        .opt-btn:active {
+            transform: scale(0.95);
+            background: #3b82f6;
+            border-color: #60a5fa;
+        }
     </style>
 </head>
 
@@ -123,13 +147,15 @@
         <canvas id="snakeCanvas"></canvas>
         <div id="countdown">3</div>
 
+        <!-- POČETNI IZBORNIK -->
         <div id="start-overlay"
             class="absolute inset-0 flex flex-col items-center bg-slate-950 z-20 p-6 overflow-y-auto">
             <div id="view-categories" class="w-full flex flex-col items-center">
                 <h2
                     class="text-2xl font-black text-white mt-4 mb-2 tracking-tighter uppercase italic text-center leading-tight">
                     Kategorije</h2>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Odaberi područje</p>
+                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Odaberi područje znanja
+                </p>
                 <div class="flex flex-col gap-3 w-full max-w-[280px]">
                     <div onclick="selectMainCategory('math')"
                         class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-blue-500">
@@ -187,8 +213,9 @@
             <div id="view-difficulty" class="w-full hidden flex flex-col items-center">
                 <button onclick="goBackToCategoryOrSub()"
                     class="self-start text-blue-400 text-xs font-bold mb-4 uppercase">← Natrag</button>
-                <h2 class="text-2xl font-black text-white mb-2 tracking-tighter uppercase italic">Brzina Zmije</h2>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Koliko si brz?</p>
+                <h2 class="text-2xl font-black text-white mb-2 tracking-tighter uppercase italic text-center">Brzina
+                    Zmije</h2>
+                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Izaberi tempo igre</p>
                 <div class="flex flex-col gap-3 w-full max-w-[280px]">
                     <button onclick="startGame(180, 0.98)"
                         class="diff-btn bg-green-600 text-white shadow-lg shadow-green-900/30">Lagano</button>
@@ -201,11 +228,12 @@
 
             <div
                 class="mt-8 bg-green-500/10 border border-green-500/20 p-3 rounded-xl text-center w-full max-w-[280px]">
-                <p class="text-green-400 text-[9px] uppercase tracking-[0.2em] font-black italic">Prag 5 se aktivira na
-                    5. bodu!</p>
+                <p class="text-green-400 text-[9px] uppercase tracking-[0.2em] font-black italic text-center">Prag 5 se
+                    aktivira na 5. bodu!</p>
             </div>
         </div>
 
+        <!-- PAUZA -->
         <div id="pause-modal" class="modal">
             <h2 class="text-4xl font-black mb-10 text-blue-400 italic uppercase">Pauza</h2>
             <div class="flex flex-col gap-4 w-full max-w-[200px]">
@@ -216,22 +244,23 @@
             </div>
         </div>
 
+        <!-- IZAZOV (SADA SA OPCIJAMA VODORAVNO) -->
         <div id="challenge-modal" class="modal">
-            <div class="w-full max-w-xs">
+            <div class="w-full max-w-xs text-center">
                 <h2 id="cat-label" class="text-blue-400 font-bold text-[10px] mb-1 uppercase tracking-[0.3em]">Izazov
                 </h2>
-                <div id="q-text" class="text-3xl font-black my-8 tracking-tight text-white italic leading-tight">?</div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-10">
+                <div id="q-text" class="text-xl font-black my-6 tracking-tight text-white italic leading-tight px-2">?
+                </div>
+                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-8">
                     <div id="timer-bar" class="h-full bg-red-500 w-full transition-all duration-100 linear"></div>
                 </div>
-                <input type="text" id="ans-input"
-                    class="w-full bg-black border-2 border-slate-700 rounded-2xl p-5 text-2xl text-center mb-6 text-white outline-none focus:border-green-500"
-                    placeholder="..." autocomplete="off">
-                <button id="ans-submit"
-                    class="w-full bg-blue-600 py-5 rounded-2xl font-black text-xl shadow-xl active:scale-95">POTVRDI</button>
+
+                <!-- Gumbi u redu -->
+                <div id="options-container" class="flex flex-row gap-2 w-full justify-between"></div>
             </div>
         </div>
 
+        <!-- KRAJ IGRE -->
         <div id="game-over-modal" class="modal">
             <h2 class="text-5xl font-black text-red-500 mb-4 italic uppercase">Kraj Igre</h2>
             <p class="text-gray-400 mb-2 uppercase text-[10px] font-bold tracking-widest">Pao si ispod praga (5)</p>
@@ -251,9 +280,22 @@
         let snake, food, dir, nextDir, score, minLimit, lastChallengeScore, interval, speedFactor, isPaused, correctResult, mathTimer, TILES;
         let selectedCat = '', selectedSub = '';
 
-        const geoDB = [{ q: "Glavni grad Hrvatske?", a: "Zagreb" }, { q: "Glavni grad Italije?", a: "Rim" }, { q: "Glavni grad Njemačke?", a: "Berlin" }, { q: "Glavni grad Japana?", a: "Tokio" }];
-        const historyDB = [{ q: "Kada je počeo 2. svj. rat?", a: "1939" }, { q: "Berlinski zid je pao...?", a: "1989" }, { q: "Kolumbo otkriva Ameriku?", a: "1492" }];
-        const artDB = [{ q: "Autor Mona Lise?", a: "Leonardo da Vinci" }, { q: "Autor Zvjezdane noći?", a: "Vincent van Gogh" }, { q: "U kojem je gradu Louvre?", a: "Pariz" }];
+        // BAZE PITANJA
+        const geoDB = [
+            { q: "Glavni grad Hrvatske?", a: "Zagreb" }, { q: "Glavni grad Italije?", a: "Rim" }, { q: "Glavni grad Njemačke?", a: "Berlin" }, { q: "Glavni grad Japana?", a: "Tokio" },
+            { q: "Glavni grad Francuske?", a: "Pariz" }, { q: "Glavni grad Španjolske?", a: "Madrid" }, { q: "Glavni grad Rusije?", a: "Moskva" }, { q: "Glavni grad Austrije?", a: "Beč" },
+            { q: "Glavni grad Grčke?", a: "Atena" }, { q: "Glavni grad Turske?", a: "Ankara" }, { q: "Glavni grad Portugala?", a: "Lisabon" }, { q: "Glavni grad Brazila?", a: "Brazilija" }
+        ];
+        const historyDB = [
+            { q: "Kada je počeo 2. svj. rat?", a: "1939" }, { q: "Berlinski zid je pao...?", a: "1989" }, { q: "Kolumbo otkriva Ameriku?", a: "1492" },
+            { q: "Kada je počeo 1. svj. rat?", a: "1914" }, { q: "Francuska revolucija počela je...?", a: "1789" }, { q: "Pad Rimskog Carstva (Zapadnog)?", a: "476" },
+            { q: "Kada je završio 2. svj. rat?", a: "1945" }, { q: "Titanic je potonuo...?", a: "1912" }, { q: "Slijetanje na Mjesec?", a: "1969" }
+        ];
+        const artDB = [
+            { q: "Autor Mona Lise?", a: "Leonardo da Vinci" }, { q: "Autor Zvjezdane noći?", a: "Vincent van Gogh" }, { q: "U kojem je gradu Louvre?", a: "Pariz" },
+            { q: "Autor skulpture David?", a: "Michelangelo" }, { q: "Tko je naslikao Guernicu?", a: "Pablo Picasso" }, { q: "Tko je naslikao Stvaranje Adama?", a: "Michelangelo" },
+            { q: "Tko je naslikao Posljednju večeru?", a: "Leonardo da Vinci" }, { q: "Koji je grad dom muzeja Prado?", a: "Madrid" }
+        ];
 
         function setupCanvas() {
             const headerHeight = document.getElementById('ui').offsetHeight + 40;
@@ -367,20 +409,30 @@
 
         function triggerChallenge() {
             isPaused = true;
-            document.getElementById('ans-input').value = "";
+            const container = document.getElementById('options-container');
+            container.innerHTML = ''; // Čisti stare gumbe
             document.getElementById('challenge-modal').classList.add('active');
-            setTimeout(() => document.getElementById('ans-input').focus(), 300);
+
+            let options = [];
 
             if (selectedCat === 'math') {
                 document.getElementById('cat-label').innerText = "MATEMATIKA";
+                let a, b;
                 if (selectedSub === 'advanced') {
-                    let a = Math.floor(Math.random() * 11) + 2, b = Math.floor(Math.random() * 11) + 2;
+                    a = Math.floor(Math.random() * 11) + 2; b = Math.floor(Math.random() * 11) + 2;
                     correctResult = a * b;
                     document.getElementById('q-text').innerText = `${a} × ${b} = ?`;
                 } else {
-                    let a = Math.floor(Math.random() * 30) + 5, b = Math.floor(Math.random() * 30) + 5;
+                    a = Math.floor(Math.random() * 30) + 5; b = Math.floor(Math.random() * 30) + 5;
                     correctResult = a + b;
                     document.getElementById('q-text').innerText = `${a} + ${b} = ?`;
+                }
+                // Generiraj krive odgovore za matematiku
+                options.push(correctResult);
+                while (options.length < 3) {
+                    let off = Math.floor(Math.random() * 5) + 1;
+                    let wrong = Math.random() > 0.5 ? correctResult + off : correctResult - off;
+                    if (wrong > 0 && !options.includes(wrong)) options.push(wrong);
                 }
             } else {
                 let db = selectedCat === 'geo' ? geoDB : (selectedCat === 'history' ? historyDB : artDB);
@@ -388,7 +440,26 @@
                 let item = db[Math.floor(Math.random() * db.length)];
                 correctResult = item.a;
                 document.getElementById('q-text').innerText = item.q;
+
+                options.push(correctResult);
+                // Uzmi krive odgovore iz baze
+                while (options.length < 3) {
+                    let randomItem = db[Math.floor(Math.random() * db.length)];
+                    if (!options.includes(randomItem.a)) options.push(randomItem.a);
+                }
             }
+
+            // Shuffle opcija
+            options.sort(() => Math.random() - 0.5);
+
+            // Kreiraj gumbe vodoravno
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = opt;
+                btn.onclick = () => finalize(String(opt).toLowerCase() === String(correctResult).toLowerCase());
+                container.appendChild(btn);
+            });
 
             let sec = 10; clearInterval(mathTimer);
             mathTimer = setInterval(() => {
@@ -416,12 +487,6 @@
             document.getElementById('game-over-modal').classList.add('active');
         }
 
-        document.getElementById('ans-submit').onclick = () => {
-            const userAns = document.getElementById('ans-input').value.trim().toLowerCase();
-            const correctAns = String(correctResult).toLowerCase();
-            finalize(userAns === correctAns);
-        };
-        document.getElementById('ans-input').onkeyup = (e) => { if (e.key === 'Enter') document.getElementById('ans-submit').click(); };
         document.getElementById('pause-btn').onclick = () => { if (!isPaused) { isPaused = true; document.getElementById('pause-modal').classList.add('active'); } };
 
         window.addEventListener('keydown', e => {
@@ -446,7 +511,6 @@
             }
         }, { passive: false });
 
-        // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(() => { });
