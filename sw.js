@@ -1,4 +1,4 @@
-const cacheName = 'snake-edu-v1.0.3'; // Svaki put kad mijenjaš igru, povećaj ovaj broj
+const cacheName = 'snake-edu-v1.0.5'; // Svaki put kad mijenjaš igru, povećaj ovaj broj
 const assets = [
     './',
     'index.html',

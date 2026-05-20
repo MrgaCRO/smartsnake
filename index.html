@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html class="dark" lang="hr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="theme-color" content="#020617">
     <title>Snake Edu Pro</title>
 
@@ -11,47 +11,137 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://via.placeholder.com/192x192.png?text=Snake">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=JetBrains+Mono:wght@600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <!-- Shared Component Logic & Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#003640",
+                        "outline": "#869585",
+                        "on-background": "#dce1fb",
+                        "neon-orange": "#F97316",
+                        "surface-base": "#0F172A",
+                        "surface-container-low": "#151b2d",
+                        "secondary-container": "#03b5d3",
+                        "surface-bright": "#33394c",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#6d2d00",
+                        "neon-cyan": "#06B6D4",
+                        "primary-fixed": "#6bff8f",
+                        "on-error": "#690005",
+                        "primary-container": "#22c55e",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#070d1f",
+                        "secondary-fixed": "#acedff",
+                        "on-primary-fixed-variant": "#005321",
+                        "surface-container": "#191f31",
+                        "surface-variant": "#2e3447",
+                        "on-tertiary": "#552100",
+                        "on-secondary-container": "#00424e",
+                        "outline-variant": "#3d4a3d",
+                        "neon-lime": "#22C55E",
+                        "surface-tint": "#4ae176",
+                        "success-green": "#22C55E",
+                        "background": "#0c1324",
+                        "surface-container-highest": "#2e3447",
+                        "surface-container-high": "#23293c",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface-variant": "#bccbb9",
+                        "tertiary": "#ffb792",
+                        "inverse-primary": "#006e2f",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-primary": "#003915",
+                        "neon-purple": "#A855F7",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "surface-elevated": "#1E293B",
+                        "on-tertiary-fixed": "#341100",
+                        "secondary": "#4cd7f6",
+                        "on-primary-fixed": "#002109",
+                        "surface": "#0c1324",
+                        "primary": "#4be277",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "on-primary-container": "#004b1e",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "inverse-on-surface": "#2a3043",
+                        "error-red": "#EF4444",
+                        "on-surface": "#dce1fb",
+                        "surface-dim": "#0c1324",
+                        "inverse-surface": "#dce1fb",
+                        "tertiary-container": "#ff8e4d",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-deep": "#020617"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "base": "8px",
+                        "container-margin": "24px",
+                        "section-gap": "48px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "stats-number": ["JetBrains Mono"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-xl-mobile": ["Plus Jakarta Sans"],
+                        "display-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "stats-number": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
     <style>
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #020617 !important;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            font-family: system-ui, sans-serif;
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        #game-wrapper {
-            position: relative;
-            background: #000;
-            border: 3px solid #1e293b;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            box-shadow: 0 0 60px rgba(34, 197, 94, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        canvas {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
+        .neon-glow-lime {
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
         }
 
+        .category-card:hover {
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+
+        /* Modals & Overlays */
         .modal {
             display: none;
             position: absolute;
             inset: 0;
-            background: rgba(2, 6, 23, 0.98);
+            background: rgba(12, 19, 36, 0.96);
+            backdrop-filter: blur(10px);
             z-index: 100;
             align-items: center;
             justify-content: center;
@@ -64,214 +154,306 @@
             display: flex;
         }
 
-        #countdown {
-            display: none;
-            position: absolute;
-            inset: 0;
-            z-index: 50;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            font-weight: 900;
-            color: #4ade80;
-            pointer-events: none;
-            text-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
-        }
-
-        .menu-card {
-            background: #0f172a;
-            border: 2px solid #1e293b;
-            transition: all 0.2s;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .menu-card:active {
-            transform: scale(0.95);
-            border-color: #22c55e;
-        }
-
-        .diff-btn {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 1rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.2s;
-        }
-
-        /* Gumbi za odgovore - VODORAVNO */
+        /* Challenge option buttons */
         .opt-btn {
             flex: 1;
-            background: #1e293b;
-            border: 2px solid #334155;
-            padding: 0.75rem 0.25rem;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0.5rem;
             border-radius: 0.75rem;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            color: #dce1fb;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 3.5rem;
+            min-height: 4rem;
             word-break: break-word;
             line-height: 1.2;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .opt-btn:hover {
+            background: rgba(30, 41, 59, 0.9);
+            border-color: rgba(6, 182, 212, 0.5);
+            transform: translateY(-2px);
         }
 
         .opt-btn:active {
             transform: scale(0.95);
-            background: #3b82f6;
-            border-color: #60a5fa;
+            background: #03b5d3;
+            color: #003640;
+            border-color: #06B6D4;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
         }
     </style>
 </head>
 
-<body>
-
-    <div id="ui" class="mb-4 text-center w-full max-w-[420px] flex justify-between items-end px-4">
-        <div class="text-left">
-            <h1 class="text-xl font-black text-green-500 leading-none tracking-tighter italic uppercase">Snake Edu</h1>
-            <div class="text-[10px] text-red-400 uppercase tracking-widest mt-1 font-bold italic">Prag: <span
-                    id="min-limit">0</span></div>
+<body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-neon-lime/30 overflow-x-hidden">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface-container/70 backdrop-blur-xl shadow-[0_0_15px_rgba(34,197,94,0.15)]">
+        <div class="flex items-center gap-4">
+            <h1 onclick="goBackToMenu()" class="font-display-xl-mobile text-display-xl-mobile font-extrabold text-neon-lime md:text-display-xl md:font-display-xl cursor-pointer">Snake Edu</h1>
         </div>
-        <div class="flex gap-2 font-mono text-sm">
-            <span class="bg-slate-900 border border-slate-800 px-2 py-1 rounded">Bodovi: <span id="score-val"
-                    class="text-yellow-400 font-bold">0</span></span>
-            <button id="pause-btn"
-                class="bg-slate-800 border border-slate-700 px-3 py-1 rounded hover:bg-slate-700 active:scale-90 transition-transform">||</button>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex gap-8">
+                <span onclick="goBackToMenu()" class="text-on-surface-variant hover:text-neon-lime transition-colors cursor-pointer font-label-caps text-label-caps">Izbornik</span>
+                <span onclick="goBackToSubMenu()" class="text-on-surface-variant hover:text-neon-cyan transition-colors cursor-pointer font-label-caps text-label-caps">Gradivo</span>
+                <span onclick="goBackTo('difficulty')" class="text-on-surface-variant hover:text-neon-orange transition-colors cursor-pointer font-label-caps text-label-caps">Brzina</span>
+                <span onclick="goBackTo('settings')" class="text-on-surface-variant hover:text-neon-purple transition-colors cursor-pointer font-label-caps text-label-caps">Postavke</span>
+            </div>
+            <!-- Toggle Pause Button (dimmed by default until game starts) -->
+            <button id="header-pause-btn" disabled onclick="togglePause()" class="active:scale-95 duration-200 p-2 rounded-full hover:bg-surface-bright/20 opacity-30 cursor-not-allowed">
+                <span class="material-symbols-outlined text-on-surface flex items-center justify-center">pause</span>
+            </button>
         </div>
-    </div>
+    </header>
 
-    <div id="game-wrapper">
-        <canvas id="snakeCanvas"></canvas>
-        <div id="countdown">3</div>
+    <!-- SideNavBar (Desktop Only) -->
+    <aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-64 backdrop-blur-xl bg-surface-container-low/90 border-r border-white/10 shadow-2xl pt-24 px-4">
+        <div class="mb-8 px-4">
+            <h2 class="font-headline-lg text-headline-lg text-neon-cyan">Snake Edu</h2>
+            <p class="text-on-surface-variant font-body-md text-body-md">Vježbaj i Uči</p>
+        </div>
+        <nav class="flex flex-col gap-2">
+            <button id="nav-categories" onclick="goBackToMenu()" class="flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left">
+                <span class="material-symbols-outlined">category</span>
+                <span class="font-body-md text-body-md">Kategorije</span>
+            </button>
+            <button id="nav-lessons" onclick="goBackToSubMenu()" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
+                <span class="material-symbols-outlined">menu_book</span>
+                <span class="font-body-md text-body-md">Gradivo</span>
+            </button>
+            <button id="nav-speed" onclick="goBackTo('difficulty')" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
+                <span class="material-symbols-outlined">speed</span>
+                <span class="font-body-md text-body-md">Brzina Zmije</span>
+            </button>
+            <button id="nav-settings" onclick="goBackTo('settings')" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
+                <span class="material-symbols-outlined">settings</span>
+                <span class="font-body-md text-body-md">Postavke</span>
+            </button>
+        </nav>
+        <div class="mt-auto pb-8 px-4">
+            <button onclick="location.reload()" class="w-full py-3 bg-neon-orange text-surface-deep font-bold rounded-lg hover:scale-105 active:scale-95 transition-transform duration-200">Restart</button>
+        </div>
+    </aside>
 
-        <!-- POČETNI IZBORNIK -->
-        <div id="start-overlay"
-            class="absolute inset-0 flex flex-col items-center bg-slate-950 z-20 p-6 overflow-y-auto">
-            <div id="view-categories" class="w-full flex flex-col items-center">
-                <h2
-                    class="text-2xl font-black text-white mt-4 mb-2 tracking-tighter uppercase italic text-center leading-tight">
-                    Kategorije</h2>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Odaberi područje znanja
-                </p>
-                <div class="flex flex-col gap-3 w-full max-w-[280px]">
-                    <div onclick="selectMainCategory('math')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-blue-500">
-                        <span class="text-2xl">🔢</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Matematika</p>
-                        </div>
-                    </div>
-                    <div onclick="selectMainCategory('history')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-red-500">
-                        <span class="text-2xl">📜</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Povijest</p>
-                        </div>
-                    </div>
-                    <div onclick="selectMainCategory('geo')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-yellow-500">
-                        <span class="text-2xl">🌍</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Geografija</p>
-                        </div>
-                    </div>
-                    <div onclick="selectMainCategory('art')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-purple-500">
-                        <span class="text-2xl">🎨</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Umjetnost</p>
-                        </div>
+    <!-- Main Content -->
+    <main class="pt-24 pb-24 md:pb-8 px-container-margin md:ml-64 flex flex-col items-center min-h-screen">
+        <!-- Stats HUD -->
+        <div class="w-full max-w-4xl flex justify-between items-center mb-8 glass-card rounded-xl p-4 border border-white/5 shadow-lg">
+            <div class="flex flex-col">
+                <span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">PRAG</span>
+                <span id="min-limit" class="font-stats-number text-stats-number text-neon-lime">0</span>
+            </div>
+            <div class="h-10 w-[1px] bg-white/10"></div>
+            <div class="flex flex-col text-right">
+                <span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">BODOVI</span>
+                <span id="score-val" class="font-stats-number text-stats-number text-neon-cyan">0</span>
+            </div>
+        </div>
+
+        <!-- CATEGORIES VIEW -->
+        <section id="view-categories" class="w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Kategorije</h2>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Odaberi područje znanja</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Matematika -->
+                <button onclick="selectMainCategory('math')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🔢</span>
+                    <span class="font-headline-md text-headline-md text-neon-cyan">Matematika</span>
+                </button>
+                <!-- Povijest -->
+                <button onclick="selectMainCategory('history')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">📜</span>
+                    <span class="font-headline-md text-headline-md text-error-red">Povijest</span>
+                </button>
+                <!-- Geografija -->
+                <button onclick="selectMainCategory('geo')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🌍</span>
+                    <span class="font-headline-md text-headline-md text-neon-orange">Geografija</span>
+                </button>
+                <!-- Umjetnost -->
+                <button onclick="selectMainCategory('art')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-purple/30 bg-neon-purple/5 hover:bg-neon-purple/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎨</span>
+                    <span class="font-headline-md text-headline-md text-neon-purple">Umjetnost</span>
+                </button>
+            </div>
+            <div class="mt-8 bg-green-500/10 border border-green-500/20 p-4 rounded-xl text-center w-full">
+                <p class="text-green-400 text-xs uppercase tracking-[0.2em] font-black italic text-center">Prag se aktivira na 5. bodu!</p>
+            </div>
+        </section>
+
+        <!-- MATH SUB-CATEGORIES VIEW -->
+        <section id="view-math-sub" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Gradivo</h2>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Odaberi lekciju</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <button onclick="selectMathSub('basic')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-lime/30 bg-neon-lime/5 hover:bg-neon-lime/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">➕</span>
+                    <span class="font-headline-md text-headline-md text-neon-lime">Zbrajanje</span>
+                </button>
+                <button onclick="selectMathSub('advanced')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">✖️</span>
+                    <span class="font-headline-md text-headline-md text-neon-orange">Množenje</span>
+                </button>
+            </div>
+            <div class="mt-12 flex justify-center">
+                <button onclick="goBackTo('categories')" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Natrag
+                </button>
+            </div>
+        </section>
+
+        <!-- DIFFICULTY VIEW -->
+        <section id="view-difficulty" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Brzina Zmije</h2>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Izaberi tempo igre</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Lagano -->
+                <button onclick="startGame(180, 0.98)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-success-green/30 bg-success-green/5 hover:bg-success-green/10 transition-all group">
+                    <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐢</span>
+                    <span class="font-headline-md text-headline-md text-success-green">Lagano</span>
+                </button>
+                <!-- Srednje -->
+                <button onclick="startGame(130, 0.96)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                    <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐍</span>
+                    <span class="font-headline-md text-headline-md text-neon-orange">Srednje</span>
+                </button>
+                <!-- Teško -->
+                <button onclick="startGame(90, 0.94)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
+                    <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">⚡</span>
+                    <span class="font-headline-md text-headline-md text-error-red">Teško</span>
+                </button>
+            </div>
+            <div class="mt-12 flex justify-center">
+                <button onclick="goBackToCategoryOrSub()" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Natrag
+                </button>
+            </div>
+        </section>
+
+        <!-- GAME VIEW -->
+        <section id="view-game" class="hidden w-full max-w-4xl flex flex-col items-center">
+            <div id="game-wrapper" class="relative bg-black border-2 border-surface-elevated rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+                <canvas id="snakeCanvas"></canvas>
+                <div id="countdown" style="display: none;" class="absolute inset-0 flex items-center justify-center text-8xl font-black text-neon-lime select-none pointer-events-none drop-shadow-[0_0_30px_rgba(34,197,94,0.5)]">3</div>
+
+                <!-- PAUZA MODAL -->
+                <div id="pause-modal" class="modal">
+                    <h2 class="text-4xl font-extrabold mb-10 text-neon-cyan tracking-wider italic uppercase">Pauza</h2>
+                    <div class="flex flex-col gap-4 w-full max-w-[220px]">
+                        <button onclick="resumeGame()" class="py-4 bg-neon-lime text-surface-deep font-extrabold text-xl rounded-xl shadow-lg hover:shadow-neon-lime/20 hover:scale-105 active:scale-95 duration-200 uppercase">Nastavi</button>
+                        <button onclick="goBackToMenu()" class="py-4 bg-surface-elevated text-on-surface border border-white/10 font-bold text-xl rounded-xl hover:bg-surface-bright/20 hover:scale-105 active:scale-95 duration-200 uppercase">Izbornik</button>
                     </div>
                 </div>
-            </div>
 
-            <div id="view-math-sub" class="w-full hidden flex flex-col items-center">
-                <button onclick="goBackTo('categories')"
-                    class="self-start text-blue-400 text-xs font-bold mb-4 uppercase">← Natrag</button>
-                <h2 class="text-2xl font-black text-white mb-2 tracking-tighter uppercase italic">Gradivo</h2>
-                <div class="flex flex-col gap-3 w-full max-w-[280px]">
-                    <div onclick="selectMathSub('basic')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-green-500">
-                        <span class="text-2xl">➕</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Zbrajanje</p>
+                <!-- IZAZOV MODAL (HORIZONTALAN ODABIR) -->
+                <div id="challenge-modal" class="modal">
+                    <div class="w-full max-w-md px-4 text-center">
+                        <h2 id="cat-label" class="text-neon-cyan font-bold text-xs mb-1 uppercase tracking-[0.3em]">IZAZOV</h2>
+                        <div id="q-text" class="text-2xl font-black my-6 tracking-tight text-white italic leading-tight px-2">?</div>
+                        <div class="w-full bg-surface-elevated h-2 rounded-full overflow-hidden mb-8 border border-white/5">
+                            <div id="timer-bar" class="h-full bg-neon-orange w-full transition-all duration-100 linear"></div>
                         </div>
-                    </div>
-                    <div onclick="selectMathSub('advanced')"
-                        class="menu-card p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-orange-500">
-                        <span class="text-2xl">✖️</span>
-                        <div class="text-left">
-                            <p class="font-bold leading-none text-white text-sm">Množenje</p>
-                        </div>
+                        <!-- Odgovori poslagani vodoravno -->
+                        <div id="options-container" class="flex flex-row gap-3 w-full justify-between"></div>
                     </div>
                 </div>
-            </div>
 
-            <div id="view-difficulty" class="w-full hidden flex flex-col items-center">
-                <button onclick="goBackToCategoryOrSub()"
-                    class="self-start text-blue-400 text-xs font-bold mb-4 uppercase">← Natrag</button>
-                <h2 class="text-2xl font-black text-white mb-2 tracking-tighter uppercase italic text-center">Brzina
-                    Zmije</h2>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest text-center">Izaberi tempo igre</p>
-                <div class="flex flex-col gap-3 w-full max-w-[280px]">
-                    <button onclick="startGame(180, 0.98)"
-                        class="diff-btn bg-green-600 text-white shadow-lg shadow-green-900/30">Lagano</button>
-                    <button onclick="startGame(130, 0.96)"
-                        class="diff-btn bg-yellow-600 text-white shadow-lg shadow-yellow-900/30">Srednje</button>
-                    <button onclick="startGame(90, 0.94)"
-                        class="diff-btn bg-red-600 text-white shadow-lg shadow-red-900/30">Teško</button>
+                <!-- KRAJ IGRE MODAL -->
+                <div id="game-over-modal" class="modal">
+                    <h2 class="text-5xl font-black text-error-red mb-4 italic uppercase tracking-wider">Kraj Igre</h2>
+                    <p class="text-on-surface-variant mb-2 uppercase text-[10px] font-bold tracking-widest">Pali ste ispod praga (5)</p>
+                    <p class="text-3xl font-black mb-10 text-on-surface">Bodovi: <span id="final-score" class="text-neon-orange font-mono">0</span></p>
+                    <button onclick="goBackToMenu()" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
                 </div>
             </div>
+        </section>
 
-            <div
-                class="mt-8 bg-green-500/10 border border-green-500/20 p-3 rounded-xl text-center w-full max-w-[280px]">
-                <p class="text-green-400 text-[9px] uppercase tracking-[0.2em] font-black italic text-center">Prag 5 se
-                    aktivira na 5. bodu!</p>
+        <!-- SETTINGS VIEW -->
+        <section id="view-settings" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
+            <div class="text-center mb-10">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Postavke</h2>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Prilagodi svoje iskustvo igranja</p>
             </div>
-        </div>
-
-        <!-- PAUZA -->
-        <div id="pause-modal" class="modal">
-            <h2 class="text-4xl font-black mb-10 text-blue-400 italic uppercase">Pauza</h2>
-            <div class="flex flex-col gap-4 w-full max-w-[200px]">
-                <button onclick="resumeGame()"
-                    class="bg-green-600 py-4 rounded-2xl font-black text-xl shadow-lg active:scale-95">NASTAVI</button>
-                <button onclick="location.reload()"
-                    class="bg-slate-800 py-4 rounded-2xl font-black text-xl text-gray-400 active:scale-95">IZBORNIK</button>
-            </div>
-        </div>
-
-        <!-- IZAZOV (SADA SA OPCIJAMA VODORAVNO) -->
-        <div id="challenge-modal" class="modal">
-            <div class="w-full max-w-xs text-center">
-                <h2 id="cat-label" class="text-blue-400 font-bold text-[10px] mb-1 uppercase tracking-[0.3em]">Izazov
-                </h2>
-                <div id="q-text" class="text-xl font-black my-6 tracking-tight text-white italic leading-tight px-2">?
+            <div class="flex flex-col gap-6 max-w-md mx-auto">
+                <!-- Toggle Grid Lines -->
+                <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                    <span class="font-body-md text-on-surface font-semibold">Pomoćne linije mreže</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="setting-grid" class="sr-only peer" onchange="toggleSetting('grid')">
+                        <div class="w-11 h-6 bg-surface-elevated rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-lime"></div>
+                    </label>
                 </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-8">
-                    <div id="timer-bar" class="h-full bg-red-500 w-full transition-all duration-100 linear"></div>
+                <!-- Toggle Glow -->
+                <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
+                    <span class="font-body-md text-on-surface font-semibold">Efekat sjaja (Glow)</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="setting-glow" class="sr-only peer" checked onchange="toggleSetting('glow')">
+                        <div class="w-11 h-6 bg-surface-elevated rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-lime"></div>
+                    </label>
                 </div>
-
-                <!-- Gumbi u redu -->
-                <div id="options-container" class="flex flex-row gap-2 w-full justify-between"></div>
             </div>
-        </div>
+            <div class="mt-12 flex justify-center">
+                <button onclick="goBackTo('categories')" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
+                    <span class="material-symbols-outlined">arrow_back</span> Natrag
+                </button>
+            </div>
+        </section>
 
-        <!-- KRAJ IGRE -->
-        <div id="game-over-modal" class="modal">
-            <h2 class="text-5xl font-black text-red-500 mb-4 italic uppercase">Kraj Igre</h2>
-            <p class="text-gray-400 mb-2 uppercase text-[10px] font-bold tracking-widest">Pao si ispod praga (5)</p>
-            <p class="text-3xl font-black mb-10">Bodovi: <span id="final-score" class="text-yellow-400">0</span></p>
-            <button onclick="location.reload()"
-                class="bg-white text-black px-12 py-5 rounded-full font-black text-xl active:scale-90">RESTART</button>
+        <!-- Dynamic Background Canvas (Atmospheric) -->
+        <div class="fixed inset-0 -z-10 pointer-events-none">
+            <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-lime/5 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-cyan/5 blur-[120px] rounded-full"></div>
         </div>
-    </div>
+    </main>
 
-    <!-- Verzija indikator -->
-    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest">v1.0.3</div>
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container/85 backdrop-blur-xl rounded-t-xl border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
+        <button onclick="goBackToMenu()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-lime transition-all active:scale-90 duration-150 py-1">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-caps text-[9px] uppercase tracking-wider">Meni</span>
+        </button>
+        <button onclick="handleMobileBack()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-cyan transition-all active:scale-90 duration-150 py-1">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span class="font-label-caps text-[9px] uppercase tracking-wider">Natrag</span>
+        </button>
+        <button onclick="location.reload()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-orange transition-all active:scale-90 duration-150 py-1">
+            <span class="material-symbols-outlined">replay</span>
+            <span class="font-label-caps text-[9px] uppercase tracking-wider">Reset</span>
+        </button>
+    </nav>
+
+    <!-- Version Indicator -->
+    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.0.4</div>
 
     <script>
         const canvas = document.getElementById('snakeCanvas');
@@ -282,8 +464,17 @@
 
         let snake, food, dir, nextDir, score, minLimit, lastChallengeScore, interval, speedFactor, isPaused, correctResult, mathTimer, TILES;
         let selectedCat = '', selectedSub = '';
+        let showGridLines = false;
+        let showGlow = true;
 
-        // BAZE PITANJA
+        const catColors = {
+            math: '#06B6D4',    // Neon Cyan
+            history: '#EF4444', // Red
+            geo: '#F97316',     // Neon Orange
+            art: '#A855F7'      // Neon Purple
+        };
+
+        // QUESTIONS DATABASES
         const geoDB = [
             { q: "Glavni grad Hrvatske?", a: "Zagreb" }, { q: "Glavni grad Italije?", a: "Rim" }, { q: "Glavni grad Njemačke?", a: "Berlin" }, { q: "Glavni grad Japana?", a: "Tokio" },
             { q: "Glavni grad Francuske?", a: "Pariz" }, { q: "Glavni grad Španjolske?", a: "Madrid" }, { q: "Glavni grad Rusije?", a: "Moskva" }, { q: "Glavni grad Austrije?", a: "Beč" },
@@ -301,50 +492,155 @@
         ];
 
         function setupCanvas() {
-            const headerHeight = document.getElementById('ui').offsetHeight + 40;
-            const size = Math.min(window.innerWidth - 32, window.innerHeight - headerHeight - 40, 420);
-            const finalSize = Math.floor(size / GRID) * GRID;
-            canvas.width = finalSize; canvas.height = finalSize;
-            wrapper.style.width = finalSize + 'px'; wrapper.style.height = finalSize + 'px';
+            const headerHeight = 64;
+            const padding = window.innerWidth >= 768 ? 160 : 180;
+            const isDesktop = window.innerWidth >= 768;
+            const availWidth = isDesktop ? window.innerWidth - 256 - 48 : window.innerWidth - 32;
+            const availHeight = window.innerHeight - headerHeight - padding;
+            const size = Math.min(availWidth, availHeight, 420);
+            const finalSize = Math.max(280, Math.floor(size / GRID) * GRID);
+            
+            canvas.width = finalSize;
+            canvas.height = finalSize;
+            wrapper.style.width = finalSize + 'px';
+            wrapper.style.height = finalSize + 'px';
             TILES = finalSize / GRID;
-            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
         function selectMainCategory(cat) {
             selectedCat = cat;
-            document.getElementById('view-categories').classList.add('hidden');
-            if (cat === 'math') document.getElementById('view-math-sub').classList.remove('hidden');
-            else document.getElementById('view-difficulty').classList.remove('hidden');
+            updateNavigationHighlights();
+            if (cat === 'math') {
+                goBackTo('math-sub');
+            } else {
+                goBackTo('difficulty');
+            }
         }
 
         function selectMathSub(sub) {
             selectedSub = sub;
-            document.getElementById('view-math-sub').classList.add('hidden');
-            document.getElementById('view-difficulty').classList.remove('hidden');
+            goBackTo('difficulty');
         }
 
         function goBackTo(view) {
-            document.querySelectorAll('#start-overlay > div').forEach(d => d.classList.add('hidden'));
-            document.getElementById('view-' + view).classList.remove('hidden');
+            document.querySelectorAll('main > section').forEach(d => d.classList.add('hidden'));
+            const target = document.getElementById('view-' + view);
+            if (target) target.classList.remove('hidden');
+            updateNavigationHighlights();
+            setupCanvas();
         }
 
         function goBackToCategoryOrSub() {
-            if (selectedCat === 'math') goBackTo('math-sub');
-            else goBackTo('categories');
+            if (selectedCat === 'math') {
+                goBackTo('math-sub');
+            } else {
+                goBackTo('categories');
+            }
+        }
+
+        function goBackToSubMenu() {
+            goBackToMenu();
+            if (selectedCat === 'math') {
+                goBackTo('math-sub');
+            } else {
+                goBackTo('categories');
+            }
+        }
+
+        function goBackToMenu() {
+            isPaused = true;
+            clearInterval(mathTimer);
+            
+            // Remove active modal states
+            document.getElementById('pause-modal').classList.remove('active');
+            document.getElementById('challenge-modal').classList.remove('active');
+            document.getElementById('game-over-modal').classList.remove('active');
+            
+            // Dim and disable pause button in header
+            const pauseBtn = document.getElementById('header-pause-btn');
+            pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
+            pauseBtn.disabled = true;
+            
+            goBackTo('categories');
+        }
+
+        function updateNavigationHighlights() {
+            // Reset all nav background styles
+            const navCat = document.getElementById('nav-categories');
+            const navLessons = document.getElementById('nav-lessons');
+            const navSpeed = document.getElementById('nav-speed');
+            const navSettings = document.getElementById('nav-settings');
+            
+            [navCat, navLessons, navSpeed, navSettings].forEach(btn => {
+                btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left";
+            });
+
+            // Highlight the active menu button
+            if (!document.getElementById('view-categories').classList.contains('hidden')) {
+                navCat.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            } else if (!document.getElementById('view-math-sub').classList.contains('hidden')) {
+                navLessons.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            } else if (!document.getElementById('view-difficulty').classList.contains('hidden')) {
+                navSpeed.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
+                navSettings.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            }
+        }
+
+        function handleMobileBack() {
+            if (!document.getElementById('view-game').classList.contains('hidden')) {
+                goBackToMenu();
+            } else if (!document.getElementById('view-difficulty').classList.contains('hidden')) {
+                goBackToCategoryOrSub();
+            } else if (!document.getElementById('view-math-sub').classList.contains('hidden')) {
+                goBackTo('categories');
+            } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
+                goBackTo('categories');
+            }
+        }
+
+        function toggleSetting(name) {
+            if (name === 'grid') {
+                showGridLines = document.getElementById('setting-grid').checked;
+            } else if (name === 'glow') {
+                showGlow = document.getElementById('setting-glow').checked;
+                if (showGlow) {
+                    wrapper.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.15)';
+                } else {
+                    wrapper.style.boxShadow = 'none';
+                }
+            }
         }
 
         function startGame(startSpeed, growth) {
-            document.getElementById('start-overlay').style.display = 'none';
-            interval = startSpeed; speedFactor = growth;
-            init(); gameLoop();
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+            document.getElementById('view-game').classList.remove('hidden');
+            
+            // Enable header pause button
+            const pauseBtn = document.getElementById('header-pause-btn');
+            pauseBtn.classList.remove('opacity-30', 'cursor-not-allowed');
+            pauseBtn.disabled = false;
+            
+            interval = startSpeed;
+            speedFactor = growth;
+            init();
+            gameLoop();
         }
 
         function init() {
             const mid = Math.floor(TILES / 2);
             snake = [{ x: mid, y: mid }, { x: mid, y: mid + 1 }, { x: mid, y: mid + 2 }];
-            dir = { x: 0, y: -1 }; nextDir = { x: 0, y: -1 };
-            score = 0; minLimit = 0; lastChallengeScore = -1; isPaused = false;
-            updateUI(); spawnFood();
+            dir = { x: 0, y: -1 };
+            nextDir = { x: 0, y: -1 };
+            score = 0;
+            minLimit = 0;
+            lastChallengeScore = -1;
+            isPaused = false;
+            updateUI();
+            spawnFood();
         }
 
         function updateUI() {
@@ -362,9 +658,14 @@
             if (isPaused) return;
             dir = nextDir;
             let head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
-            if (head.x < 0) head.x = TILES - 1; if (head.x >= TILES) head.x = 0;
-            if (head.y < 0) head.y = TILES - 1; if (head.y >= TILES) head.y = 0;
+            
+            // Wrap snake coordinates
+            if (head.x < 0) head.x = TILES - 1;
+            if (head.x >= TILES) head.x = 0;
+            if (head.y < 0) head.y = TILES - 1;
+            if (head.y >= TILES) head.y = 0;
 
+            // Check self-collision
             for (let i = 1; i < snake.length; i++) {
                 if (head.x === snake[i].x && head.y === snake[i].y) {
                     let lost = snake.length - i;
@@ -373,47 +674,115 @@
                     if (score < minLimit) return showGameOver();
                     lastChallengeScore = Math.floor(score / 5) * 5;
                     if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
-                    updateUI(); break;
+                    updateUI();
+                    break;
                 }
             }
 
             snake.unshift(head);
+            
+            // Check food collision
             if (head.x === food.x && head.y === food.y) {
-                score++; updateUI(); spawnFood();
+                score++;
+                updateUI();
+                spawnFood();
+                // Trigger educational challenge every 5 points
                 if (score > 0 && score % 5 === 0 && score !== lastChallengeScore) {
-                    lastChallengeScore = score; triggerChallenge(); return;
+                    lastChallengeScore = score;
+                    triggerChallenge();
+                    return;
                 }
-            } else { snake.pop(); }
+            } else {
+                snake.pop();
+            }
 
             draw();
             setTimeout(gameLoop, interval);
         }
 
         function draw() {
-            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.shadowBlur = 10; ctx.shadowColor = "#f43f5e"; ctx.fillStyle = "#f43f5e";
-            ctx.beginPath(); ctx.arc(food.x * GRID + GRID / 2, food.y * GRID + GRID / 2, GRID / 2.5, 0, Math.PI * 2); ctx.fill();
-            ctx.shadowBlur = 0;
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid helper lines
+            if (showGridLines) {
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+                ctx.lineWidth = 1;
+                for (let i = 0; i <= TILES; i++) {
+                    ctx.beginPath();
+                    ctx.moveTo(i * GRID, 0);
+                    ctx.lineTo(i * GRID, canvas.height);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, i * GRID);
+                    ctx.lineTo(canvas.width, i * GRID);
+                    ctx.stroke();
+                }
+            }
+
+            // Food rendering with neon glow matching current category
+            const foodColor = catColors[selectedCat] || '#f43f5e';
+            ctx.shadowBlur = showGlow ? 15 : 0;
+            ctx.shadowColor = foodColor;
+            ctx.fillStyle = foodColor;
+            ctx.beginPath();
+            ctx.arc(food.x * GRID + GRID / 2, food.y * GRID + GRID / 2, GRID / 2.5, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.shadowBlur = 0; // Reset glow for snake
+
+            // Snake segments rendering (rounded corners for organic digital tech style)
             snake.forEach((p, i) => {
                 ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
-                ctx.fillRect(p.x * GRID + 1, p.y * GRID + 1, GRID - 2, GRID - 2);
+                const x = p.x * GRID + 1;
+                const y = p.y * GRID + 1;
+                const w = GRID - 2;
+                const h = GRID - 2;
+                const r = 5; // rounded radius
+                
+                ctx.beginPath();
+                ctx.moveTo(x + r, y);
+                ctx.arcTo(x + w, y, x + w, y + h, r);
+                ctx.arcTo(x + w, y + h, x, y + h, r);
+                ctx.arcTo(x, y + h, x, y, r);
+                ctx.arcTo(x, y, x + w, y, r);
+                ctx.closePath();
+                ctx.fill();
             });
+        }
+
+        function togglePause() {
+            if (document.getElementById('view-game').classList.contains('hidden')) return;
+            if (!isPaused) {
+                isPaused = true;
+                document.getElementById('pause-modal').classList.add('active');
+            } else {
+                resumeGame();
+            }
         }
 
         function resumeGame() {
             document.getElementById('pause-modal').classList.remove('active');
             countdownEl.style.display = 'flex';
-            let c = 3; countdownEl.innerText = c;
+            let c = 3;
+            countdownEl.innerText = c;
             let t = setInterval(() => {
-                c--; if (c > 0) countdownEl.innerText = c;
-                else { clearInterval(t); countdownEl.style.display = 'none'; isPaused = false; gameLoop(); }
+                c--;
+                if (c > 0) {
+                    countdownEl.innerText = c;
+                } else {
+                    clearInterval(t);
+                    countdownEl.style.display = 'none';
+                    isPaused = false;
+                    gameLoop();
+                }
             }, 600);
         }
 
         function triggerChallenge() {
             isPaused = true;
             const container = document.getElementById('options-container');
-            container.innerHTML = ''; // Čisti stare gumbe
+            container.innerHTML = ''; // Clear old buttons
             document.getElementById('challenge-modal').classList.add('active');
 
             let options = [];
@@ -422,15 +791,17 @@
                 document.getElementById('cat-label').innerText = "MATEMATIKA";
                 let a, b;
                 if (selectedSub === 'advanced') {
-                    a = Math.floor(Math.random() * 11) + 2; b = Math.floor(Math.random() * 11) + 2;
+                    a = Math.floor(Math.random() * 11) + 2;
+                    b = Math.floor(Math.random() * 11) + 2;
                     correctResult = a * b;
                     document.getElementById('q-text').innerText = `${a} × ${b} = ?`;
                 } else {
-                    a = Math.floor(Math.random() * 30) + 5; b = Math.floor(Math.random() * 30) + 5;
+                    a = Math.floor(Math.random() * 30) + 5;
+                    b = Math.floor(Math.random() * 30) + 5;
                     correctResult = a + b;
                     document.getElementById('q-text').innerText = `${a} + ${b} = ?`;
                 }
-                // Generiraj krive odgovore za matematiku
+                
                 options.push(correctResult);
                 while (options.length < 3) {
                     let off = Math.floor(Math.random() * 5) + 1;
@@ -445,17 +816,16 @@
                 document.getElementById('q-text').innerText = item.q;
 
                 options.push(correctResult);
-                // Uzmi krive odgovore iz baze
                 while (options.length < 3) {
                     let randomItem = db[Math.floor(Math.random() * db.length)];
                     if (!options.includes(randomItem.a)) options.push(randomItem.a);
                 }
             }
 
-            // Shuffle opcija
+            // Shuffle option positions
             options.sort(() => Math.random() - 0.5);
 
-            // Kreiraj gumbe vodoravno
+            // Populate options buttons horizontally
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'opt-btn';
@@ -464,9 +834,12 @@
                 container.appendChild(btn);
             });
 
-            let sec = 10; clearInterval(mathTimer);
+            // Animated countdown timer bar (10 seconds)
+            let sec = 10;
+            clearInterval(mathTimer);
             mathTimer = setInterval(() => {
-                sec -= 0.1; document.getElementById('timer-bar').style.width = (sec / 10) * 100 + "%";
+                sec -= 0.1;
+                document.getElementById('timer-bar').style.width = (sec / 10) * 100 + "%";
                 if (sec <= 0) finalize(false);
             }, 100);
         }
@@ -474,14 +847,18 @@
         function finalize(correct) {
             clearInterval(mathTimer);
             document.getElementById('challenge-modal').classList.remove('active');
-            if (correct) interval *= speedFactor;
-            else {
+            if (correct) {
+                interval *= speedFactor; // Increase speed slightly
+            } else {
+                // Shrink snake body on wrong answer
                 let cut = Math.max(1, Math.floor(snake.length * 0.4));
                 for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
                 score = Math.max(0, score - cut);
                 if (score < minLimit) return showGameOver();
             }
-            updateUI(); isPaused = false; gameLoop();
+            updateUI();
+            isPaused = false;
+            gameLoop();
         }
 
         function showGameOver() {
@@ -490,9 +867,13 @@
             document.getElementById('game-over-modal').classList.add('active');
         }
 
-        document.getElementById('pause-btn').onclick = () => { if (!isPaused) { isPaused = true; document.getElementById('pause-modal').classList.add('active'); } };
-
+        // KEYBOARD EVENT LISTENERS
         window.addEventListener('keydown', e => {
+            if (e.key === 'Escape' || e.key === ' ') {
+                togglePause();
+                e.preventDefault();
+                return;
+            }
             if (isPaused) return;
             if (e.key === 'ArrowUp' && dir.y !== 1) nextDir = { x: 0, y: -1 };
             if (e.key === 'ArrowDown' && dir.y !== -1) nextDir = { x: 0, y: 1 };
@@ -500,20 +881,29 @@
             if (e.key === 'ArrowRight' && dir.x !== -1) nextDir = { x: 1, y: 0 };
         });
 
+        // TOUCH CONTROLS FOR MOBILE
         let tsX, tsY;
-        window.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; tsY = e.touches[0].clientY; }, { passive: false });
+        window.addEventListener('touchstart', e => {
+            tsX = e.touches[0].clientX;
+            tsY = e.touches[0].clientY;
+        }, { passive: false });
+
         window.addEventListener('touchend', e => {
             if (isPaused) return;
-            let dx = e.changedTouches[0].clientX - tsX, dy = e.changedTouches[0].clientY - tsY;
+            let dx = e.changedTouches[0].clientX - tsX;
+            let dy = e.changedTouches[0].clientY - tsY;
             if (Math.abs(dx) > 20 || Math.abs(dy) > 20) {
                 if (Math.abs(dx) > Math.abs(dy)) {
-                    if (dx > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 }; else if (dx < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
+                    if (dx > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 };
+                    else if (dx < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
                 } else {
-                    if (dy > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 }; else if (dy < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
+                    if (dy > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 };
+                    else if (dy < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
                 }
             }
         }, { passive: false });
 
+        // SERVICE WORKER REGISTRATION
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').catch(() => { });
@@ -522,6 +912,7 @@
 
         window.onresize = setupCanvas;
         setupCanvas();
+        updateNavigationHighlights();
     </script>
 </body>
 
