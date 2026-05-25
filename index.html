@@ -8,7 +8,6 @@
     <meta name="theme-color" content="#020617">
     <title>Snake Edu Pro</title>
 
-    <!-- PWA Link -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://via.placeholder.com/192x192.png?text=Snake">
 
@@ -166,7 +165,6 @@
 </head>
 
 <body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-neon-lime/30 overflow-x-hidden">
-    <!-- TopAppBar -->
     <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface-container/70 backdrop-blur-xl shadow-[0_0_15px_rgba(34,197,94,0.15)]">
         <div class="flex items-center gap-4">
             <h1 onclick="goBackToMenu()" class="font-display-xl-mobile text-display-xl-mobile font-extrabold text-neon-lime md:text-display-xl md:font-display-xl cursor-pointer">Snake Edu</h1>
@@ -174,7 +172,7 @@
         <div class="flex items-center gap-6">
             <div class="hidden md:flex gap-8">
                 <span onclick="goBackToMenu()" class="text-on-surface-variant hover:text-neon-lime transition-colors cursor-pointer font-label-caps text-label-caps">Izbornik</span>
-                <span onclick="goBackToSubMenu()" class="text-on-surface-variant hover:text-neon-cyan transition-colors cursor-pointer font-label-caps text-label-caps">Gradivo</span>
+                <span onclick="goBackTo('dashboard')" class="text-on-surface-variant hover:text-neon-cyan transition-colors cursor-pointer font-label-caps text-label-caps">Statistika</span>
                 <span onclick="goBackTo('difficulty')" class="text-on-surface-variant hover:text-neon-orange transition-colors cursor-pointer font-label-caps text-label-caps">Brzina</span>
                 <span onclick="goBackTo('settings')" class="text-on-surface-variant hover:text-neon-purple transition-colors cursor-pointer font-label-caps text-label-caps">Postavke</span>
             </div>
@@ -184,7 +182,6 @@
         </div>
     </header>
 
-    <!-- SideNavBar -->
     <aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-64 backdrop-blur-xl bg-surface-container-low/90 border-r border-white/10 shadow-2xl pt-24 px-4">
         <div class="mb-8 px-4">
             <h2 class="font-headline-lg text-headline-lg text-neon-cyan">Snake Edu</h2>
@@ -195,9 +192,9 @@
                 <span class="material-symbols-outlined">category</span>
                 <span class="font-body-md text-body-md">Kategorije</span>
             </button>
-            <button id="nav-lessons" onclick="goBackToSubMenu()" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
-                <span class="material-symbols-outlined">menu_book</span>
-                <span class="font-body-md text-body-md">Gradivo</span>
+            <button id="nav-dashboard" onclick="goBackTo('dashboard')" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
+                <span class="material-symbols-outlined">bar_chart</span>
+                <span class="font-body-md text-body-md">Statistika</span>
             </button>
             <button id="nav-speed" onclick="goBackTo('difficulty')" class="flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left">
                 <span class="material-symbols-outlined">speed</span>
@@ -213,9 +210,7 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="pt-24 pb-24 md:pb-8 px-container-margin md:ml-64 flex flex-col items-center min-h-screen">
-        <!-- Stats HUD -->
         <div class="w-full max-w-4xl flex justify-between items-center mb-8 glass-card rounded-xl p-4 border border-white/5 shadow-lg">
             <div class="flex flex-col">
                 <span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">PRAG</span>
@@ -228,7 +223,6 @@
             </div>
         </div>
 
-        <!-- CATEGORIES VIEW -->
         <section id="view-categories" class="w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-10">
@@ -258,7 +252,6 @@
             </div>
         </section>
 
-        <!-- MATH SUB-CATEGORIES VIEW -->
         <section id="view-math-sub" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-10">
@@ -266,27 +259,22 @@
                 <p class="text-on-surface-variant font-body-lg text-body-lg">Odaberi lekciju</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Zbrajanje -->
                 <button onclick="selectMathSub('basic')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-lime/30 bg-neon-lime/5 hover:bg-neon-lime/10 transition-all group">
                     <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➕</span>
                     <span class="font-headline-md text-base text-neon-lime">Zbrajanje</span>
                 </button>
-                <!-- Oduzimanje -->
                 <button onclick="selectMathSub('subtraction')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
                     <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➖</span>
                     <span class="font-headline-md text-base text-error-red">Oduzimanje</span>
                 </button>
-                <!-- Množenje -->
                 <button onclick="selectMathSub('advanced')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
                     <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">✖️</span>
                     <span class="font-headline-md text-base text-neon-orange">Množenje</span>
                 </button>
-                <!-- Dijeljenje -->
                 <button onclick="selectMathSub('division')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-purple/30 bg-neon-purple/5 hover:bg-neon-purple/10 transition-all group">
                     <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➗</span>
                     <span class="font-headline-md text-base text-neon-purple">Dijeljenje</span>
                 </button>
-                <!-- Kombinacija -->
                 <button onclick="selectMathSub('mix')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all group col-span-1 sm:col-span-2 lg:col-span-1">
                     <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎛️</span>
                     <span class="font-headline-md text-base text-neon-cyan">Kombinacija</span>
@@ -299,7 +287,6 @@
             </div>
         </section>
 
-        <!-- DIFFICULTY VIEW -->
         <section id="view-difficulty" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-10">
@@ -327,13 +314,11 @@
             </div>
         </section>
 
-        <!-- GAME VIEW -->
         <section id="view-game" class="hidden w-full max-w-4xl flex flex-col items-center">
             <div id="game-wrapper" style="touch-action: none; overscroll-behavior: none;" class="relative bg-black border-2 border-surface-elevated rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
                 <canvas id="snakeCanvas"></canvas>
                 <div id="countdown" style="display: none;" class="absolute inset-0 flex items-center justify-center text-8xl font-black text-neon-lime select-none pointer-events-none drop-shadow-[0_0_30px_rgba(34,197,94,0.5)]">3</div>
 
-                <!-- PAUZA MODAL -->
                 <div id="pause-modal" class="modal">
                     <h2 class="text-4xl font-extrabold mb-10 text-neon-cyan tracking-wider italic uppercase">Pauza</h2>
                     <div class="flex flex-col gap-4 w-full max-w-[220px]">
@@ -342,7 +327,6 @@
                     </div>
                 </div>
 
-                <!-- IZAZOV MODAL -->
                 <div id="challenge-modal" class="modal">
                     <div class="w-full max-w-md px-4 text-center">
                         <h2 id="cat-label" class="text-neon-cyan font-bold text-xs mb-1 uppercase tracking-[0.3em]">IZAZOV</h2>
@@ -354,7 +338,6 @@
                     </div>
                 </div>
 
-                <!-- KRAJ IGRE MODAL -->
                 <div id="game-over-modal" class="modal">
                     <h2 class="text-5xl font-black text-error-red mb-4 italic uppercase tracking-wider">Kraj Igre</h2>
                     <p class="text-on-surface-variant mb-2 uppercase text-[10px] font-bold tracking-widest">Pali ste ispod praga opstanka</p>
@@ -364,7 +347,61 @@
             </div>
         </section>
 
-        <!-- SETTINGS VIEW -->
+        <section id="view-dashboard" class="hidden w-full max-w-4xl glass-card rounded-2xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
+            <div class="text-center mb-8">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Nadzorna Ploča</h2>
+                <p class="text-on-surface-variant font-body-lg text-xs uppercase tracking-widest">Analitika tvog znanja</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <p class="text-[10px] font-bold text-on-surface-variant uppercase">Igre</p>
+                    <span id="dash-games" class="font-stats-number text-xl text-white">0</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <p class="text-[10px] font-bold text-on-surface-variant uppercase">Rekord</p>
+                    <span id="dash-high" class="font-stats-number text-xl text-neon-orange">0</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5 border border-white/10">
+                    <p class="text-[10px] font-bold text-on-surface-variant uppercase">Točnost</p>
+                    <span id="dash-accuracy" class="font-stats-number text-xl text-neon-lime">0%</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4 max-w-xl mx-auto text-left mb-6">
+                <h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">Uspješnost po temama:</h3>
+                
+                <div class="flex flex-col gap-1">
+                    <div class="flex justify-between text-xs font-bold"><span class="text-neon-cyan">🔢 Matematika</span><span id="bar-math-txt">0%</span></div>
+                    <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-math-fill" class="h-full bg-neon-cyan w-0 transition-all duration-500"></div></div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="flex justify-between text-xs font-bold"><span class="text-error-red">📜 Povijest</span><span id="bar-history-txt">0%</span></div>
+                    <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-history-fill" class="h-full bg-error-red w-0 transition-all duration-500"></div></div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="flex justify-between text-xs font-bold"><span class="text-neon-orange">🌍 Geografija</span><span id="bar-geo-txt">0%</span></div>
+                    <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-geo-fill" class="h-full bg-neon-orange w-0 transition-all duration-500"></div></div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <div class="flex justify-between text-xs font-bold"><span class="text-neon-purple">🎨 Umjetnost</span><span id="bar-art-txt">0%</span></div>
+                    <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-art-fill" class="h-full bg-neon-purple w-0 transition-all duration-500"></div></div>
+                </div>
+            </div>
+
+            <div class="max-w-xl mx-auto mt-6 bg-neon-cyan/5 border border-neon-cyan/20 p-4 rounded-xl text-center shadow-lg">
+                <p class="text-neon-cyan font-bold text-xs uppercase tracking-wider mb-1 flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">lightbulb</span> Pametni savjetnik</p>
+                <p id="dash-advice" class="text-xs text-on-surface-variant leading-relaxed">Odigraj par kvizova kako bi savjetnik analizirao tvoje znanje.</p>
+            </div>
+
+            <div class="mt-8 flex justify-center">
+                <button onclick="goBackTo('categories')" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
+                    <span class="material-symbols-outlined">arrow_back</span> Natrag
+                </button>
+            </div>
+        </section>
+
         <section id="view-settings" class="hidden w-full max-w-4xl glass-card rounded-2xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-8">
@@ -373,7 +410,6 @@
             </div>
             
             <div class="flex flex-col gap-5 max-w-lg mx-auto">
-                <!-- 1. Glavni način rada (Retro / Slobodno) -->
                 <div class="flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10">
                     <div class="flex items-center justify-between">
                         <div class="text-left">
@@ -387,7 +423,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Pod-opcije upravljanja za Slobodno kretanje na mobitelu -->
                 <div id="setting-modern-controls" class="hidden flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10 border-l-4 border-l-neon-purple">
                     <div class="text-left mb-2">
                         <span class="font-body-md text-on-surface font-semibold text-sm text-neon-purple">Upravljanje na mobitelu (360°)</span>
@@ -399,7 +434,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Pomoćne linije mreže -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Pomoćne linije mreže</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -408,7 +442,6 @@
                     </label>
                 </div>
 
-                <!-- 4. Efekt sjaja -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Efekat sjaja (Glow)</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -425,26 +458,24 @@
             </div>
         </section>
 
-        <!-- Dynamic Background Canvas -->
         <div class="fixed inset-0 -z-10 pointer-events-none">
             <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-lime/5 blur-[120px] rounded-full"></div>
             <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-cyan/5 blur-[120px] rounded-full"></div>
         </div>
     </main>
 
-    <!-- BottomNavBar -->
     <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container/85 backdrop-blur-xl rounded-t-xl border-t border-t-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
         <button onclick="goBackToMenu()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-lime transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">home</span>
             <span class="font-label-caps text-[9px] uppercase tracking-wider">Meni</span>
         </button>
+        <button onclick="goBackTo('dashboard')" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-cyan transition-all active:scale-90 duration-150 py-1">
+            <span class="material-symbols-outlined">bar_chart</span>
+            <span class="font-label-caps text-[9px] uppercase tracking-wider">Statistika</span>
+        </button>
         <button onclick="goBackTo('settings')" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-purple transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">settings</span>
             <span class="font-label-caps text-[9px] uppercase tracking-wider">Postavke</span>
-        </button>
-        <button onclick="handleMobileBack()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-cyan transition-all active:scale-90 duration-150 py-1">
-            <span class="material-symbols-outlined">arrow_back</span>
-            <span class="font-label-caps text-[9px] uppercase tracking-wider">Natrag</span>
         </button>
         <button onclick="location.reload()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-orange transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">replay</span>
@@ -452,8 +483,7 @@
         </button>
     </nav>
 
-    <!-- Version Indicator -->
-    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.1.4</div>
+    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.2.0</div>
 
     <script>
         const canvas = document.getElementById('snakeCanvas');
@@ -481,6 +511,16 @@
         let joystickStick = { x: 0, y: 0, radius: 20 };
         let isJoystickActive = false;
 
+        // NOVO: JSON struktura za pohranu lokalne statistike
+        let playerStats = {
+            gamesPlayed: 0,
+            highScore: 0,
+            math: { correct: 0, total: 0 },
+            history: { correct: 0, total: 0 },
+            geo: { correct: 0, total: 0 },
+            art: { correct: 0, total: 0 }
+        };
+
         const catColors = {
             math: '#06B6D4',    // Neon Cyan
             history: '#EF4444', // Red
@@ -505,7 +545,90 @@
             { q: "Tko je naslikao Posljednju večeru?", a: "Leonardo da Vinci" }, { q: "Koji je grad dom muzeja Prado?", a: "Madrid" }
         ];
 
-        // POJAČANA SIGURNA INICIJALIZACIJA DIMENZIJA (v1.1.4)
+        // NOVO: Učitavanje i inicijalizacija LocalStorage podataka
+        function loadStatsFromStorage() {
+            const savedData = localStorage.getItem('snake_edu_pro_stats');
+            if (savedData) {
+                try {
+                    playerStats = JSON.parse(savedData);
+                } catch (e) {
+                    console.error("Greška pri učitavanju statistike.");
+                }
+            }
+        }
+
+        // NOVO: Trajno spremanje statistike u LocalStorage
+        function saveStatsToStorage() {
+            localStorage.setItem('snake_edu_pro_stats', JSON.stringify(playerStats));
+        }
+
+        // NOVO: Računanje i dinamičko osvježavanje Dashboard sučelja
+        function renderDashboard() {
+            document.getElementById('dash-games').innerText = playerStats.gamesPlayed;
+            document.getElementById('dash-high').innerText = playerStats.highScore;
+
+            // Izračun ukupne točnosti iz svih kategorija zajedno
+            let totalCorrect = playerStats.math.correct + playerStats.history.correct + playerStats.geo.correct + playerStats.art.correct;
+            let totalQuestions = playerStats.math.total + playerStats.history.total + playerStats.geo.total + playerStats.art.total;
+            let globalAccuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+            document.getElementById('dash-accuracy').innerText = globalAccuracy + "%";
+
+            // Niz kategorija za lakše petljanje i pronalaženje najlošije ocjene
+            const categories = ['math', 'history', 'geo', 'art'];
+            let lowestAccuracy = 101;
+            let weakestCategory = '';
+
+            categories.forEach(cat => {
+                let data = playerStats[cat];
+                let accuracy = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
+                
+                // Osvježavanje teksta i trake (Progress Bar)
+                document.getElementById(`bar-${cat}-txt`).innerText = accuracy + "%";
+                const fill = document.getElementById(`bar-${cat}-fill`);
+                fill.style.width = accuracy + "%";
+
+                // Promjena boje trake ovisno o postotku točnosti
+                if (accuracy >= 75) {
+                    fill.className = "h-full bg-neon-lime";
+                } else if (accuracy >= 45) {
+                    fill.className = "h-full bg-neon-orange";
+                } else {
+                    fill.className = "h-full bg-error-red";
+                }
+
+                // Filtriramo samo teme koje je igrač stvarno igrao za detekciju najslabije karike
+                if (data.total > 0 && accuracy < lowestAccuracy) {
+                    lowestAccuracy = accuracy;
+                    weakestCategory = cat;
+                }
+            });
+
+            // Logika pametnog savjetnika
+            const adviceEl = document.getElementById('dash-advice');
+            if (totalQuestions === 0) {
+                adviceEl.innerText = "Zmija je gladna znanja! Odigraj par krugova kako bi pokrenuo analitiku i savjetnika.";
+            } else if (weakestCategory === '') {
+                adviceEl.innerText = "Sjajan početak! Sve riješene zadatke držiš na 100%. Samo nastavi tako.";
+            } else {
+                switch(weakestCategory) {
+                    case 'math':
+                        adviceEl.innerText = "Zmija ti najbrže raste u Geografiji i Umjetnosti. Danas baci fokus na Matematiku i ponovi računske operacije!";
+                        break;
+                    case 'history':
+                        adviceEl.innerText = "Datumi i godine ti trenutno stvaraju mali otpor. Odigraj nekoliko rundi Povijesti kako bi učvrstio prag opstanka.";
+                        break;
+                    case 'geo':
+                        adviceEl.innerText = "Glavni gradovi svijeta te znaju zbuniti pod pritiskom. Pokreni lekciju Geografije i osiguraj mirnu vožnju!";
+                        break;
+                    case 'art':
+                        adviceEl.innerText = "Povijest umjetnosti i poznati autori su tvoja najslabija točka. Pojedi nekoliko umjetničkih paleta za napredak!";
+                        break;
+                    default:
+                        adviceEl.innerText = "Izvrsno balansiraš između tema. Izaberi najbrži tempo i testiraj svoje reflekse!";
+                }
+            }
+        }
+
         function setupCanvas() {
             const width = window.innerWidth || document.documentElement.clientWidth || 360;
             const height = window.innerHeight || document.documentElement.clientHeight || 640;
@@ -516,16 +639,11 @@
             const availWidth = isDesktop ? width - 256 - 48 : width - 32;
             const availHeight = height - headerHeight - padding;
             
-            // Osiguravamo da size nikada ne vrati NaN ili neispravnu vrijednost
             let size = Math.min(availWidth, availHeight, 420);
-            if (isNaN(size) || size < 280) {
-                size = 280;
-            }
+            if (isNaN(size) || size < 280) size = 280;
             
             let finalSize = Math.floor(size / GRID) * GRID;
-            if (isNaN(finalSize) || finalSize < 280) {
-                finalSize = 280;
-            }
+            if (isNaN(finalSize) || finalSize < 280) finalSize = 280;
 
             canvas.width = finalSize;
             canvas.height = finalSize;
@@ -533,7 +651,6 @@
             wrapper.style.height = finalSize + 'px';
             TILES = finalSize / GRID;
 
-            // Pozicioniranje joysticka na desnu stranu
             joystickBase.x = finalSize - 65;
             joystickBase.y = finalSize - 65;
             joystickStick.x = joystickBase.x;
@@ -587,6 +704,7 @@
         }
 
         function goBackTo(view) {
+            // Ako se prebacujemo s aktivne igre na bilo koji drugi meni, sigurno zaustavljamo petlju
             if (view !== 'game') {
                 isPaused = true;
                 clearInterval(mathTimer);
@@ -599,6 +717,11 @@
                     pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
                     pauseBtn.disabled = true;
                 }
+            }
+
+            // Ako otvaramo nadzornu ploču, prvo ponovno preračunaj LocalStorage statistiku
+            if (view === 'dashboard') {
+                renderDashboard();
             }
 
             document.querySelectorAll('main > section').forEach(d => d.classList.add('hidden'));
@@ -641,18 +764,18 @@
 
         function updateNavigationHighlights() {
             const navCat = document.getElementById('nav-categories');
-            const navLessons = document.getElementById('nav-lessons');
+            const navDashboard = document.getElementById('nav-dashboard');
             const navSpeed = document.getElementById('nav-speed');
             const navSettings = document.getElementById('nav-settings');
 
-            [navCat, navLessons, navSpeed, navSettings].forEach(btn => {
-                btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left";
+            [navCat, navDashboard, navSpeed, navSettings].forEach(btn => {
+                if(btn) btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left";
             });
 
             if (!document.getElementById('view-categories').classList.contains('hidden')) {
                 navCat.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
-            } else if (!document.getElementById('view-math-sub').classList.contains('hidden')) {
-                navLessons.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            } else if (!document.getElementById('view-dashboard').classList.contains('hidden')) {
+                if(navDashboard) navDashboard.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
             } else if (!document.getElementById('view-difficulty').classList.contains('hidden')) {
                 navSpeed.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
             } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
@@ -669,9 +792,12 @@
                 goBackTo('categories');
             } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
                 goBackTo('categories');
+            } else if (!document.getElementById('view-dashboard').classList.contains('hidden')) {
+                goBackTo('categories');
             }
         }
 
+        // POSTAVKE
         function toggleSetting(name) {
             if (name === 'grid') {
                 showGridLines = document.getElementById('setting-grid').checked;
@@ -794,15 +920,13 @@
             setTimeout(gameLoop, interval);
         }
 
-        // SLOBODNA PETLJA (360°)
+        // SLOBODNA PETLJA
         function modernGameLoop() {
             if (isPaused || gameMode !== 'modern') return;
 
-            // Tipkovnica
             if (keysPressed['ArrowLeft']) modernAngle -= turnSpeed;
             if (keysPressed['ArrowRight']) modernAngle += turnSpeed;
 
-            // Touch joystick skretanje
             if (touchMode === 'joystick' && isJoystickActive) {
                 const dx = joystickStick.x - joystickBase.x;
                 const dy = joystickStick.y - joystickBase.y;
@@ -811,19 +935,16 @@
                 }
             }
 
-            // Kretanje glave
             let head = {
                 x: snake[0].x + Math.cos(modernAngle) * modernSpeed,
                 y: snake[0].y + Math.sin(modernAngle) * modernSpeed
             };
 
-            // Prolaz kroz rubove ekrana
             if (head.x < 0) head.x = canvas.width;
             if (head.x >= canvas.width) head.x = 0;
             if (head.y < 0) head.y = canvas.height;
             if (head.y >= canvas.height) head.y = 0;
 
-            // Sudar sa sobom
             const selfCollisionMinSegment = 14;
             for (let i = selfCollisionMinSegment; i < snake.length; i++) {
                 let dx = head.x - snake[i].x;
@@ -847,7 +968,6 @@
 
             snake.unshift(head);
 
-            // Sudar s hranom
             const foodPixelX = food.x * GRID + GRID / 2;
             const foodPixelY = food.y * GRID + GRID / 2;
             if (Math.hypot(head.x - foodPixelX, head.y - foodPixelY) < 15) {
@@ -867,7 +987,6 @@
                 snake.pop();
             }
 
-            // Lančana fizika tijela
             const targetDist = 8;
             for (let i = 1; i < snake.length; i++) {
                 const prev = snake[i - 1];
@@ -905,7 +1024,6 @@
                 }
             }
 
-            // Hrana
             const foodColor = catColors[selectedCat] || '#f43f5e';
             ctx.shadowBlur = showGlow ? 15 : 0;
             ctx.shadowColor = foodColor;
@@ -915,7 +1033,6 @@
             ctx.fill();
             ctx.shadowBlur = 0;
 
-            // Zmija
             if (gameMode === 'retro') {
                 snake.forEach((p, i) => {
                     ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
@@ -930,7 +1047,6 @@
                 });
             }
 
-            // Joystick
             if (gameMode === 'modern' && touchMode === 'joystick') {
                 ctx.save();
                 ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
@@ -976,7 +1092,7 @@
             }, 600);
         }
 
-        // GENERATOR ZADATAKA
+        // GENERATOR KVIZOVA
         function triggerChallenge() {
             isPaused = true;
             const container = document.getElementById('options-container');
@@ -1049,21 +1165,44 @@
             }, 100);
         }
 
+        // FINALIZACIJA ODGOVORA S UPISOM U LOCALSTORAGE STATISTIKU
         function finalize(correct) {
             clearInterval(mathTimer);
             document.getElementById('challenge-modal').classList.remove('active');
+            
+            // NOVO: Ažuriranje točnosti u JSON objektu
+            playerStats[selectedCat].total += 1;
             if (correct) {
+                playerStats[selectedCat].correct += 1;
+                
                 if (gameMode === 'retro') interval *= speedFactor; 
                 else modernSpeed *= (2 - speedFactor); 
             } else {
                 let cut = Math.max(1, Math.floor(snake.length * 0.4));
                 for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
                 score = Math.max(0, score - (gameMode === 'retro' ? cut : Math.floor(cut / 3)));
-                if (score < minLimit) return showGameOver();
+                
+                if (score < minLimit) {
+                    recordGamePlayed(); // Upisuje kraj igre i high score
+                    return showGameOver();
+                }
             }
-            updateUI(); isPaused = false;
+            
+            saveStatsToStorage(); // Trajno zapiši u LocalStorage
+            updateUI(); 
+            isPaused = false;
+            
             if (gameMode === 'retro') gameLoop();
             else requestAnimationFrame(modernGameLoop);
+        }
+
+        // NOVO: Upisivanje kraja igre i provjera High Scorea
+        function recordGamePlayed() {
+            playerStats.gamesPlayed += 1;
+            if (score > playerStats.highScore) {
+                playerStats.highScore = score;
+            }
+            saveStatsToStorage();
         }
 
         function showGameOver() {
@@ -1169,7 +1308,6 @@
             }
         }, { passive: true });
 
-        // INTELEGENTNI AUTO-UPDATE KOD OTKRIVANJA NOVE VERZIJE GITHUB CACHE-A
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js').then(reg => {
@@ -1177,7 +1315,6 @@
                         const newWorker = reg.installing;
                         newWorker.addEventListener('statechange', () => {
                             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                // Otkrivena je i spremljena nova verzija, osvježi automatski!
                                 location.reload();
                             }
                         });
@@ -1187,6 +1324,7 @@
         }
 
         window.onresize = setupCanvas;
+        loadStatsFromStorage(); // Učitaj podatke na samom pokretanju aplikacije
         setupCanvas();
         setGameMode('retro'); 
         setTouchMode('trackpad'); 
@@ -1195,5 +1333,6 @@
 </body>
 
 </html>
+
 
 ```
