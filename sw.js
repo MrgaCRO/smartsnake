@@ -1,4 +1,4 @@
-const cacheName = 'snake-edu-v1.2.1'; // Verzija 1.2.1 s implementiranim Dnevnim izazovom
+const cacheName = 'snake-edu-v1.2.2'; // Nadograđeno na v1.2.2 radi ispravka rezanja i novih zadanih postavki
 const assets = [
   './',
   'index.html',
