@@ -45,6 +45,7 @@
             transition: all 0.3s ease;
         }
 
+        /* Pametno prilagođeni i kompaktni modali (Riješen problem rezanja na mobitelu) */
         .modal {
             display: none;
             position: absolute;
@@ -55,8 +56,9 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
+            overflow-y: auto; /* Omogućuje skrolanje ako je ekran ekstremno malen */
         }
 
         .modal.active {
@@ -67,16 +69,16 @@
             flex: 1;
             background: rgba(30, 41, 59, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 0.5rem;
+            padding: 0.75rem 0.5rem;
             border-radius: 0.75rem;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #dce1fb;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 4rem;
+            min-height: 3.5rem;
             word-break: break-word;
             line-height: 1.2;
             cursor: pointer;
@@ -230,7 +232,7 @@
 
         <!-- CATEGORIES VIEW -->
         <section id="view-categories" class="w-full max-w-4xl flex flex-col gap-6">
-            <!-- NOVO: Atraktivan widget za Dnevni Izazov na samom vrhu -->
+            <!-- Widget za Dnevni Izazov na vrhu -->
             <div onclick="startDailyChallenge()" class="cursor-pointer group relative overflow-hidden rounded-2xl border-2 border-amber-500/50 bg-amber-500/10 p-6 transition-all duration-300 hover:scale-[1.01] hover:bg-amber-500/15">
                 <div class="absolute -right-6 -top-6 text-7xl opacity-10 group-hover:scale-110 transition-transform">🏆</div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -246,7 +248,7 @@
                 </div>
             </div>
 
-            <!-- Preostale standardne kategorije u staklenoj kartici -->
+            <!-- Standardne kategorije -->
             <div class="glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
                 <div class="text-center mb-10">
@@ -347,45 +349,45 @@
                 <canvas id="snakeCanvas"></canvas>
                 <div id="countdown" style="display: none;" class="absolute inset-0 flex items-center justify-center text-8xl font-black text-neon-lime select-none pointer-events-none drop-shadow-[0_0_30px_rgba(34,197,94,0.5)]">3</div>
 
-                <!-- PAUZA MODAL -->
+                <!-- PAUZA MODAL (Kompaktan) -->
                 <div id="pause-modal" class="modal">
-                    <h2 class="text-4xl font-extrabold mb-10 text-neon-cyan tracking-wider italic uppercase">Pauza</h2>
-                    <div class="flex flex-col gap-4 w-full max-w-[220px]">
-                        <button onclick="resumeGame()" class="py-4 bg-neon-lime text-surface-deep font-extrabold text-xl rounded-xl shadow-lg hover:shadow-neon-lime/20 hover:scale-105 active:scale-95 duration-200 uppercase">Nastavi</button>
-                        <button onclick="goBackToMenu()" class="py-4 bg-surface-elevated text-on-surface border border-white/10 font-bold text-xl rounded-xl hover:bg-surface-bright/20 hover:scale-105 active:scale-95 duration-200 uppercase">Izbornik</button>
+                    <h2 class="text-2xl font-extrabold mb-4 text-neon-cyan tracking-wider italic uppercase">Pauza</h2>
+                    <div class="flex flex-col gap-3 w-full max-w-[180px]">
+                        <button onclick="resumeGame()" class="py-2.5 bg-neon-lime text-surface-deep font-extrabold text-sm rounded-lg shadow-lg hover:shadow-neon-lime/20 hover:scale-105 active:scale-95 duration-200 uppercase">Nastavi</button>
+                        <button onclick="goBackToMenu()" class="py-2.5 bg-surface-elevated text-on-surface border border-white/10 font-bold text-sm rounded-lg hover:bg-surface-bright/20 hover:scale-105 active:scale-95 duration-200 uppercase">Izbornik</button>
                     </div>
                 </div>
 
-                <!-- IZAZOV MODAL -->
+                <!-- IZAZOV MODAL (Kompaktan) -->
                 <div id="challenge-modal" class="modal">
-                    <div class="w-full max-w-md px-4 text-center">
-                        <h2 id="cat-label" class="text-neon-cyan font-bold text-xs mb-1 uppercase tracking-[0.3em]">IZAZOV</h2>
-                        <div id="q-text" class="text-2xl font-black my-6 tracking-tight text-white italic leading-tight px-2">?</div>
-                        <div class="w-full bg-surface-elevated h-2 rounded-full overflow-hidden mb-8 border border-white/5">
+                    <div class="w-full max-w-sm px-2 text-center">
+                        <h2 id="cat-label" class="text-neon-cyan font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">IZAZOV</h2>
+                        <div id="q-text" class="text-lg font-black my-2 tracking-tight text-white italic leading-tight px-1 min-h-[3rem] flex items-center justify-center">?</div>
+                        <div class="w-full bg-surface-elevated h-1 rounded-full overflow-hidden mb-3 border border-white/5">
                             <div id="timer-bar" class="h-full bg-neon-orange w-full transition-all duration-100 linear"></div>
                         </div>
-                        <div id="options-container" class="flex flex-row gap-3 w-full justify-between"></div>
+                        <div id="options-container" class="flex flex-row gap-2 w-full justify-between"></div>
                     </div>
                 </div>
 
-                <!-- KRAJ IGRE MODAL -->
+                <!-- KRAJ IGRE MODAL (Kompaktan) -->
                 <div id="game-over-modal" class="modal">
-                    <h2 class="text-5xl font-black text-error-red mb-4 italic uppercase tracking-wider">Kraj Igre</h2>
-                    <p id="game-over-reason" class="text-on-surface-variant mb-2 uppercase text-[10px] font-bold tracking-widest">Pali ste ispod praga opstanka</p>
-                    <p class="text-3xl font-black mb-10 text-on-surface">Bodovi: <span id="final-score" class="text-neon-orange font-mono">0</span></p>
-                    <button onclick="goBackToMenu()" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
+                    <h2 class="text-3xl font-black text-error-red mb-2 italic uppercase tracking-wider">Kraj Igre</h2>
+                    <p id="game-over-reason" class="text-on-surface-variant mb-1 uppercase text-[8px] font-bold tracking-widest">Pali ste ispod praga opstanka</p>
+                    <p class="text-xl font-black mb-4 text-on-surface">Bodovi: <span id="final-score" class="text-neon-orange font-mono">0</span></p>
+                    <button onclick="goBackToMenu()" class="bg-white text-black px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
                 </div>
 
-                <!-- NOVO: DNEVNI IZAZOV KRAJ MODAL -->
+                <!-- DNEVNI IZAZOV KRAJ MODAL (Kompaktan, popravljeno rezanje sučelja na mobitelu) -->
                 <div id="daily-complete-modal" class="modal">
-                    <span class="text-6xl mb-4">🏆</span>
-                    <h2 class="text-4xl font-black text-amber-400 mb-2 italic uppercase tracking-wider">Izazov završen!</h2>
-                    <p class="text-on-surface-variant mb-6 uppercase text-[10px] font-bold tracking-widest">Odgovorio si na svih 10 pitanja</p>
-                    <div class="glass-card rounded-xl p-6 mb-8 w-full max-w-xs border border-amber-500/20">
-                        <p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest mb-1">Točni odgovori</p>
-                        <span id="daily-final-score" class="text-5xl font-black text-amber-300 font-mono">0/10</span>
+                    <span class="text-3xl mb-1">🏆</span>
+                    <h2 class="text-xl font-black text-amber-400 mb-1 italic uppercase tracking-wider">Izazov završen!</h2>
+                    <p class="text-on-surface-variant mb-2 uppercase text-[8px] font-bold tracking-widest">Odgovorio si na svih 10 pitanja</p>
+                    <div class="glass-card rounded-xl p-2.5 mb-3 w-full max-w-[200px] border border-amber-500/20">
+                        <p class="text-[9px] text-on-surface-variant uppercase font-bold tracking-widest mb-0.5">Točni odgovori</p>
+                        <span id="daily-final-score" class="text-3xl font-black text-amber-300 font-mono">0/10</span>
                     </div>
-                    <button onclick="goBackToMenu()" class="bg-amber-500 text-surface-deep px-12 py-5 rounded-full font-black text-xl hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
+                    <button onclick="goBackToMenu()" class="bg-amber-500 text-surface-deep px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
                 </div>
             </div>
         </section>
@@ -462,6 +464,7 @@
             </div>
             
             <div class="flex flex-col gap-5 max-w-lg mx-auto">
+                <!-- 1. Glavni način rada (Retro / Slobodno) -->
                 <div class="flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10">
                     <div class="flex items-center justify-between">
                         <div class="text-left">
@@ -475,6 +478,7 @@
                     </div>
                 </div>
 
+                <!-- 2. Pod-opcije upravljanja za Slobodno kretanje na mobitelu -->
                 <div id="setting-modern-controls" class="hidden flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10 border-l-4 border-l-neon-purple">
                     <div class="text-left mb-2">
                         <span class="font-body-md text-on-surface font-semibold text-sm text-neon-purple">Upravljanje na mobitelu (360°)</span>
@@ -486,6 +490,7 @@
                     </div>
                 </div>
 
+                <!-- 3. Pomoćne linije mreže -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Pomoćne linije mreže</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -494,6 +499,7 @@
                     </label>
                 </div>
 
+                <!-- 4. Efekt sjaja -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Efekat sjaja (Glow)</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -538,7 +544,7 @@
     </nav>
 
     <!-- Version Indicator -->
-    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.2.1</div>
+    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.2.2</div>
 
     <script>
         const canvas = document.getElementById('snakeCanvas');
@@ -554,19 +560,19 @@
         let challengeTimeLimit = 10;
 
         // Načini rada i kretanja
-        let gameMode = 'retro'; 
+        let gameMode = 'modern'; // Promijenjeno po defaultu na 'modern' (slobodno kretanje)
         let modernAngle = -Math.PI / 2; 
         let modernSpeed = 3.5; 
         let turnSpeed = 0.08; 
         let keysPressed = {}; 
         
         // Pod-opcije kretanja za mobitel
-        let touchMode = 'trackpad'; 
+        let touchMode = 'trackpad'; // Promijenjeno po defaultu na 'trackpad'
         let joystickBase = { x: 0, y: 0, radius: 45 }; 
         let joystickStick = { x: 0, y: 0, radius: 20 };
         let isJoystickActive = false;
 
-        // NOVO: Dnevni izazov stanja
+        // Dnevni izazov stanja
         let isDailyChallenge = false;
         let dailyQuestionsAnswered = 0;
         let dailyCorrect = 0;
@@ -625,7 +631,7 @@
             localStorage.setItem('snake_edu_pro_stats', JSON.stringify(playerStats));
         }
 
-        // NOVO: Ažuriranje statusa Dnevnog izazova na početnom zaslonu
+        // Ažuriranje statusa Dnevnog izazova na početnom zaslonu
         function updateDailyStatusUI() {
             const todayStr = new Date().toDateString();
             const statusTxt = document.getElementById('daily-status-txt');
@@ -776,14 +782,13 @@
         function goBackTo(view) {
             if (view !== 'game') {
                 isPaused = true;
-                isDailyChallenge = false; // Isključi Dnevni izazov pri izlasku
+                isDailyChallenge = false; 
                 clearInterval(mathTimer);
                 document.getElementById('pause-modal').classList.remove('active');
                 document.getElementById('challenge-modal').classList.remove('active');
                 document.getElementById('game-over-modal').classList.remove('active');
                 document.getElementById('daily-complete-modal').classList.remove('active');
 
-                // Vrati normalne nazive HUD-a
                 document.getElementById('hud-score-label').innerText = "BODOVI";
                 document.getElementById('score-val').className = "font-stats-number text-stats-number text-neon-cyan";
 
@@ -876,9 +881,21 @@
             }
         }
 
-        // NOVO: Pokretanje i konfiguracija Dnevnog Izazova
+        function toggleSetting(name) {
+            if (name === 'grid') {
+                showGridLines = document.getElementById('setting-grid').checked;
+            } else if (name === 'glow') {
+                showGlow = document.getElementById('setting-glow').checked;
+                if (showGlow) {
+                    wrapper.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.15)';
+                } else {
+                    wrapper.style.boxShadow = 'none';
+                }
+            }
+        }
+
+        // Pokretanje Dnevnog Izazova (U potpunosti poštuje trenutne kretanje/postavke)
         function startDailyChallenge() {
-            // 1. Odaberi nasumičnu kategoriju
             const categories = ['math', 'history', 'geo', 'art'];
             selectedCat = categories[Math.floor(Math.random() * categories.length)];
             if (selectedCat === 'math') {
@@ -886,7 +903,6 @@
                 selectedSub = subcategories[Math.floor(Math.random() * subcategories.length)];
             }
 
-            // 2. Odaberi nasumičnu težinu
             const difficulties = [
                 { speed: 180, growth: 0.98, time: 15 }, // Lagano
                 { speed: 130, growth: 0.96, time: 10 }, // Srednje
@@ -894,17 +910,15 @@
             ];
             const chosenDiff = difficulties[Math.floor(Math.random() * difficulties.length)];
 
-            // 3. Postavi stanja Dnevnog izazova
             isDailyChallenge = true;
             dailyQuestionsAnswered = 0;
             dailyCorrect = 0;
 
-            // 4. Prilagodi HUD sučelje za zlatni Dnevni izazov
             document.getElementById('hud-score-label').innerText = "DNEVNI IZAZOV";
             const scoreVal = document.getElementById('score-val');
             scoreVal.className = "font-stats-number text-stats-number text-amber-400";
 
-            // 5. Pokreni igru izravno preskačući izbornike
+            // Pokreće u obliku/kretanju koje je trenutno spremljeno u postavkama
             startGame(chosenDiff.speed, chosenDiff.growth, chosenDiff.time);
         }
 
@@ -957,7 +971,6 @@
 
         function updateUI() {
             if (isDailyChallenge) {
-                // Tijekom Dnevnog izazova, HUD prikazuje Pitanje X/10
                 document.getElementById('min-limit').innerText = "-";
                 document.getElementById('score-val').innerText = `${dailyQuestionsAnswered}/10`;
             } else {
@@ -998,7 +1011,6 @@
                     score = Math.max(0, score - lost);
                     
                     if (isDailyChallenge) {
-                        // Ako udari u sebe tijekom Dnevnog izazova, završavamo igru
                         recordDailyChallenge(dailyCorrect);
                         document.getElementById('game-over-reason').innerText = "Zmija je udarila u prepreku";
                         return showGameOver();
@@ -1019,7 +1031,6 @@
                 updateUI();
                 spawnFood();
                 
-                // NOVO: U Dnevnom izazovu, svako pojedeno voće odmah otvara pitanje
                 if (isDailyChallenge) {
                     triggerChallenge();
                     return;
@@ -1298,7 +1309,7 @@
             }, 100);
         }
 
-        // KONAČNA ODLUKA ODGOVORA (Ažurirano za Dnevni Izazov)
+        // KONAČNA ODLUKA ODGOVORA (Ažurirano s popravkom brojanja u HUD-u)
         function finalize(correct) {
             clearInterval(mathTimer);
             document.getElementById('challenge-modal').classList.remove('active');
@@ -1308,21 +1319,20 @@
                 playerStats[selectedCat].correct += 1;
             }
 
-            // NOVO: Specifična logika praćenja točnosti u Dnevnom izazovu
             if (isDailyChallenge) {
                 dailyQuestionsAnswered++;
                 if (correct) {
                     dailyCorrect++;
                 }
 
-                // Provjera je li igrač uspješno odgovorio na 10 pitanja
+                // Provjera pobjede (Ažuriranje HUD-a na 10/10 prije prikazivanja ekrana pobjede)
                 if (dailyQuestionsAnswered >= 10) {
+                    updateUI(); // HUD se odmah osvježava na točnih 10/10
                     recordDailyChallenge(dailyCorrect);
                     showDailyComplete(dailyCorrect);
                     return;
                 }
 
-                // Ako nije završio, zmija i dalje ubrzava/smanjuje se ovisno o odgovoru
                 if (!correct) {
                     let cut = Math.max(1, Math.floor(snake.length * 0.4));
                     for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
@@ -1339,7 +1349,7 @@
                 return;
             }
 
-            // Standardna (non-daily) logika igre
+            // Normalna igra
             if (correct) {
                 if (gameMode === 'retro') interval *= speedFactor; 
                 else modernSpeed *= (2 - speedFactor); 
@@ -1362,7 +1372,6 @@
             else requestAnimationFrame(modernGameLoop);
         }
 
-        // NOVO: Spremanje uspješnosti Dnevnog izazova
         function recordDailyChallenge(correctCount) {
             const todayStr = new Date().toDateString();
             playerStats.lastDailyDate = todayStr;
@@ -1370,14 +1379,13 @@
             playerStats.gamesPlayed += 1;
             
             if (correctCount > playerStats.highScore) {
-                playerStats.highScore = correctCount; // Dnevni izazov ulazi i u opći HighScore
+                playerStats.highScore = correctCount; 
             }
             
             saveStatsToStorage();
             updateDailyStatusUI();
         }
 
-        // NOVO: Otvaranje svečanog ekrana pobjede u Dnevnom izazovu
         function showDailyComplete(correctCount) {
             isPaused = true;
             document.getElementById('daily-final-score').innerText = `${correctCount}/10`;
@@ -1513,8 +1521,8 @@
         window.onresize = setupCanvas;
         loadStatsFromStorage(); 
         setupCanvas();
-        setGameMode('retro'); 
-        setTouchMode('trackpad'); 
+        setGameMode('modern'); // Promijenjeno: Slobodno kretanje po defaultu
+        setTouchMode('trackpad'); // Promijenjeno: Trackpad po defaultu
         updateNavigationHighlights();
     </script>
 </body>
