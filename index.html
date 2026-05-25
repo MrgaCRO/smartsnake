@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html class="dark" lang="hr">
 
 <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta name="theme-color" content="#020617">
     <title>Snake Edu Pro</title>
 
@@ -15,107 +16,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&amp;family=JetBrains+Mono:wght@600;700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 
-    <!-- Shared Component Logic & Tailwind Config -->
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-secondary": "#003640",
-                        "outline": "#869585",
-                        "on-background": "#dce1fb",
-                        "neon-orange": "#F97316",
-                        "surface-base": "#0F172A",
-                        "surface-container-low": "#151b2d",
-                        "secondary-container": "#03b5d3",
-                        "surface-bright": "#33394c",
-                        "error-container": "#93000a",
-                        "on-tertiary-container": "#6d2d00",
-                        "neon-cyan": "#06B6D4",
-                        "primary-fixed": "#6bff8f",
-                        "on-error": "#690005",
-                        "primary-container": "#22c55e",
-                        "on-error-container": "#ffdad6",
-                        "surface-container-lowest": "#070d1f",
-                        "secondary-fixed": "#acedff",
-                        "on-primary-fixed-variant": "#005321",
-                        "surface-container": "#191f31",
-                        "surface-variant": "#2e3447",
-                        "on-tertiary": "#552100",
-                        "on-secondary-container": "#00424e",
-                        "outline-variant": "#3d4a3d",
-                        "neon-lime": "#22C55E",
-                        "surface-tint": "#4ae176",
-                        "success-green": "#22C55E",
-                        "background": "#0c1324",
-                        "surface-container-highest": "#2e3447",
-                        "surface-container-high": "#23293c",
-                        "on-secondary-fixed-variant": "#004e5c",
-                        "on-surface-variant": "#bccbb9",
-                        "tertiary": "#ffb792",
-                        "inverse-primary": "#006e2f",
-                        "tertiary-fixed": "#ffdbca",
-                        "on-primary": "#003915",
-                        "neon-purple": "#A855F7",
-                        "on-tertiary-fixed-variant": "#783200",
-                        "surface-elevated": "#1E293B",
-                        "on-tertiary-fixed": "#341100",
-                        "secondary": "#4cd7f6",
-                        "on-primary-fixed": "#002109",
-                        "surface": "#0c1324",
-                        "primary": "#4be277",
-                        "error": "#ffb4ab",
-                        "tertiary-fixed-dim": "#ffb690",
-                        "on-primary-container": "#004b1e",
-                        "secondary-fixed-dim": "#4cd7f6",
-                        "inverse-on-surface": "#2a3043",
-                        "error-red": "#EF4444",
-                        "on-surface": "#dce1fb",
-                        "surface-dim": "#0c1324",
-                        "inverse-surface": "#dce1fb",
-                        "tertiary-container": "#ff8e4d",
-                        "primary-fixed-dim": "#4ae176",
-                        "on-secondary-fixed": "#001f26",
-                        "surface-deep": "#020617"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "16px",
-                        "base": "8px",
-                        "container-margin": "24px",
-                        "section-gap": "48px"
-                    },
-                    "fontFamily": {
-                        "label-caps": ["JetBrains Mono"],
-                        "stats-number": ["JetBrains Mono"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-md": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Plus Jakarta Sans"],
-                        "display-xl-mobile": ["Plus Jakarta Sans"],
-                        "display-xl": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "label-caps": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "stats-number": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
-                        "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
-                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
-                    }
-                },
-            },
-        }
-    </script>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+            background-color: #020617 !important;
+        }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -135,7 +45,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Modals & Overlays */
         .modal {
             display: none;
             position: absolute;
@@ -154,7 +63,6 @@
             display: flex;
         }
 
-        /* Challenge option buttons */
         .opt-btn {
             flex: 1;
             background: rgba(30, 41, 59, 0.7);
@@ -188,7 +96,13 @@
             border-color: #06B6D4;
         }
 
-        /* Hide scrollbar but keep functionality */
+        .setting-tab-active {
+            background-color: #22C55E !important;
+            color: #020617 !important;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+        }
+
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -202,6 +116,53 @@
             border-radius: 2px;
         }
     </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#003640", "outline": "#869585", "on-background": "#dce1fb",
+                        "neon-orange": "#F97316", "surface-base": "#0F172A", "surface-container-low": "#151b2d",
+                        "secondary-container": "#03b5d3", "surface-bright": "#33394c", "error-container": "#93000a",
+                        "on-tertiary-container": "#6d2d00", "neon-cyan": "#06B6D4", "primary-fixed": "#6bff8f",
+                        "on-error": "#690005", "primary-container": "#22c55e", "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#070d1f", "secondary-fixed": "#acedff", "on-primary-fixed-variant": "#005321",
+                        "surface-container": "#191f31", "surface-variant": "#2e3447", "on-tertiary": "#552100",
+                        "on-secondary-container": "#00424e", "outline-variant": "#3d4a3d", "neon-lime": "#22C55E",
+                        "surface-tint": "#4ae176", "success-green": "#22C55E", "background": "#0c1324",
+                        "surface-container-highest": "#2e3447", "surface-container-high": "#23293c", "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface-variant": "#bccbb9", "tertiary": "#ffb792", "inverse-primary": "#006e2f",
+                        "tertiary-fixed": "#ffdbca", "on-primary": "#003915", "neon-purple": "#A855F7",
+                        "on-tertiary-fixed-variant": "#783200", "surface-elevated": "#1E293B", "on-tertiary-fixed": "#341100",
+                        "secondary": "#4cd7f6", "on-primary-fixed": "#002109", "surface": "#0c1324",
+                        "primary": "#4be277", "error": "#ffb4ab", "tertiary-fixed-dim": "#ffb690",
+                        "on-primary-container": "#004b1e", "secondary-fixed-dim": "#4cd7f6", "inverse-on-surface": "#2a3043",
+                        "error-red": "#EF4444", "on-surface": "#dce1fb", "surface-dim": "#0c1324",
+                        "inverse-surface": "#dce1fb", "tertiary-container": "#ff8e4d", "primary-fixed-dim": "#4ae176",
+                        "on-secondary-fixed": "#001f26", "surface-deep": "#020617"
+                    },
+                    "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    "spacing": { "gutter": "16px", "base": "8px", "container-margin": "24px", "section-gap": "48px" },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"], "stats-number": ["JetBrains Mono"], "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"],
+                        "display-xl-mobile": ["Plus Jakarta Sans"], "display-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "stats-number": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "display-xl-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
 </head>
 
 <body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-neon-lime/30 overflow-x-hidden">
@@ -217,14 +178,13 @@
                 <span onclick="goBackTo('difficulty')" class="text-on-surface-variant hover:text-neon-orange transition-colors cursor-pointer font-label-caps text-label-caps">Brzina</span>
                 <span onclick="goBackTo('settings')" class="text-on-surface-variant hover:text-neon-purple transition-colors cursor-pointer font-label-caps text-label-caps">Postavke</span>
             </div>
-            <!-- Toggle Pause Button (dimmed by default until game starts) -->
             <button id="header-pause-btn" disabled onclick="togglePause()" class="active:scale-95 duration-200 p-2 rounded-full hover:bg-surface-bright/20 opacity-30 cursor-not-allowed">
                 <span class="material-symbols-outlined text-on-surface flex items-center justify-center">pause</span>
             </button>
         </div>
     </header>
 
-    <!-- SideNavBar (Desktop Only) -->
+    <!-- SideNavBar -->
     <aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-64 backdrop-blur-xl bg-surface-container-low/90 border-r border-white/10 shadow-2xl pt-24 px-4">
         <div class="mb-8 px-4">
             <h2 class="font-headline-lg text-headline-lg text-neon-cyan">Snake Edu</h2>
@@ -276,22 +236,18 @@
                 <p class="text-on-surface-variant font-body-lg text-body-lg">Odaberi područje znanja</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- Matematika -->
                 <button onclick="selectMainCategory('math')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all group">
                     <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🔢</span>
                     <span class="font-headline-md text-headline-md text-neon-cyan">Matematika</span>
                 </button>
-                <!-- Povijest -->
                 <button onclick="selectMainCategory('history')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
                     <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">📜</span>
                     <span class="font-headline-md text-headline-md text-error-red">Povijest</span>
                 </button>
-                <!-- Geografija -->
                 <button onclick="selectMainCategory('geo')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
                     <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🌍</span>
                     <span class="font-headline-md text-headline-md text-neon-orange">Geografija</span>
                 </button>
-                <!-- Umjetnost -->
                 <button onclick="selectMainCategory('art')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-purple/30 bg-neon-purple/5 hover:bg-neon-purple/10 transition-all group">
                     <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎨</span>
                     <span class="font-headline-md text-headline-md text-neon-purple">Umjetnost</span>
@@ -309,20 +265,36 @@
                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Gradivo</h2>
                 <p class="text-on-surface-variant font-body-lg text-body-lg">Odaberi lekciju</p>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <button onclick="selectMathSub('basic')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-lime/30 bg-neon-lime/5 hover:bg-neon-lime/10 transition-all group">
-                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">➕</span>
-                    <span class="font-headline-md text-headline-md text-neon-lime">Zbrajanje</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Zbrajanje -->
+                <button onclick="selectMathSub('basic')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-lime/30 bg-neon-lime/5 hover:bg-neon-lime/10 transition-all group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➕</span>
+                    <span class="font-headline-md text-base text-neon-lime">Zbrajanje</span>
                 </button>
-                <button onclick="selectMathSub('advanced')" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
-                    <span class="text-4xl mb-4 group-hover:scale-110 transition-transform">✖️</span>
-                    <span class="font-headline-md text-headline-md text-neon-orange">Množenje</span>
+                <!-- Oduzimanje -->
+                <button onclick="selectMathSub('subtraction')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➖</span>
+                    <span class="font-headline-md text-base text-error-red">Oduzimanje</span>
+                </button>
+                <!-- Množenje -->
+                <button onclick="selectMathSub('advanced')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">✖️</span>
+                    <span class="font-headline-md text-base text-neon-orange">Množenje</span>
+                </button>
+                <!-- Dijeljenje -->
+                <button onclick="selectMathSub('division')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-purple/30 bg-neon-purple/5 hover:bg-neon-purple/10 transition-all group">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">➗</span>
+                    <span class="font-headline-md text-base text-neon-purple">Dijeljenje</span>
+                </button>
+                <!-- Kombinacija -->
+                <button onclick="selectMathSub('mix')" class="category-card flex flex-col items-center justify-center p-6 rounded-xl border-2 border-neon-cyan/30 bg-neon-cyan/5 hover:bg-neon-cyan/10 transition-all group col-span-1 sm:col-span-2 lg:col-span-1">
+                    <span class="text-3xl mb-3 group-hover:scale-110 transition-transform">🎛️</span>
+                    <span class="font-headline-md text-base text-neon-cyan">Kombinacija</span>
                 </button>
             </div>
             <div class="mt-12 flex justify-center">
                 <button onclick="goBackTo('categories')" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Natrag
+                    <span class="material-symbols-outlined">arrow_back</span> Natrag
                 </button>
             </div>
         </section>
@@ -335,33 +307,29 @@
                 <p class="text-on-surface-variant font-body-lg text-body-lg">Izaberi tempo igre</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <!-- Lagano -->
-                <button onclick="startGame(180, 0.98)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-success-green/30 bg-success-green/5 hover:bg-success-green/10 transition-all group">
+                <button onclick="startGame(180, 0.98, 15)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-success-green/30 bg-success-green/5 hover:bg-success-green/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐢</span>
                     <span class="font-headline-md text-headline-md text-success-green">Lagano</span>
                 </button>
-                <!-- Srednje -->
-                <button onclick="startGame(130, 0.96)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                <button onclick="startGame(130, 0.96, 10)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐍</span>
                     <span class="font-headline-md text-headline-md text-neon-orange">Srednje</span>
                 </button>
-                <!-- Teško -->
-                <button onclick="startGame(90, 0.94)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
+                <button onclick="startGame(90, 0.94, 5)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">⚡</span>
                     <span class="font-headline-md text-headline-md text-error-red">Teško</span>
                 </button>
             </div>
             <div class="mt-12 flex justify-center">
                 <button onclick="goBackToCategoryOrSub()" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Natrag
+                    <span class="material-symbols-outlined">arrow_back</span> Natrag
                 </button>
             </div>
         </section>
 
         <!-- GAME VIEW -->
         <section id="view-game" class="hidden w-full max-w-4xl flex flex-col items-center">
-            <div id="game-wrapper" class="relative bg-black border-2 border-surface-elevated rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+            <div id="game-wrapper" style="touch-action: none; overscroll-behavior: none;" class="relative bg-black border-2 border-surface-elevated rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
                 <canvas id="snakeCanvas"></canvas>
                 <div id="countdown" style="display: none;" class="absolute inset-0 flex items-center justify-center text-8xl font-black text-neon-lime select-none pointer-events-none drop-shadow-[0_0_30px_rgba(34,197,94,0.5)]">3</div>
 
@@ -374,7 +342,7 @@
                     </div>
                 </div>
 
-                <!-- IZAZOV MODAL (HORIZONTALAN ODABIR) -->
+                <!-- IZAZOV MODAL -->
                 <div id="challenge-modal" class="modal">
                     <div class="w-full max-w-md px-4 text-center">
                         <h2 id="cat-label" class="text-neon-cyan font-bold text-xs mb-1 uppercase tracking-[0.3em]">IZAZOV</h2>
@@ -382,7 +350,6 @@
                         <div class="w-full bg-surface-elevated h-2 rounded-full overflow-hidden mb-8 border border-white/5">
                             <div id="timer-bar" class="h-full bg-neon-orange w-full transition-all duration-100 linear"></div>
                         </div>
-                        <!-- Odgovori poslagani vodoravno -->
                         <div id="options-container" class="flex flex-row gap-3 w-full justify-between"></div>
                     </div>
                 </div>
@@ -390,7 +357,7 @@
                 <!-- KRAJ IGRE MODAL -->
                 <div id="game-over-modal" class="modal">
                     <h2 class="text-5xl font-black text-error-red mb-4 italic uppercase tracking-wider">Kraj Igre</h2>
-                    <p class="text-on-surface-variant mb-2 uppercase text-[10px] font-bold tracking-widest">Pali ste ispod praga (5)</p>
+                    <p class="text-on-surface-variant mb-2 uppercase text-[10px] font-bold tracking-widest">Pali ste ispod praga opstanka</p>
                     <p class="text-3xl font-black mb-10 text-on-surface">Bodovi: <span id="final-score" class="text-neon-orange font-mono">0</span></p>
                     <button onclick="goBackToMenu()" class="bg-white text-black px-12 py-5 rounded-full font-black text-xl hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
                 </div>
@@ -398,49 +365,82 @@
         </section>
 
         <!-- SETTINGS VIEW -->
-        <section id="view-settings" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <section id="view-settings" class="hidden w-full max-w-4xl glass-card rounded-2xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
-            <div class="text-center mb-10">
+            <div class="text-center mb-8">
                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Postavke</h2>
-                <p class="text-on-surface-variant font-body-lg text-body-lg">Prilagodi svoje iskustvo igranja</p>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Prilagodi stil kretanja i vizuale</p>
             </div>
-            <div class="flex flex-col gap-6 max-w-md mx-auto">
-                <!-- Toggle Grid Lines -->
+            
+            <div class="flex flex-col gap-5 max-w-lg mx-auto">
+                <!-- 1. Glavni način rada (Retro / Slobodno) -->
+                <div class="flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="text-left">
+                            <span class="font-body-md text-on-surface font-semibold text-sm">Način kretanja</span>
+                            <p class="text-[10px] text-on-surface-variant">Retro (mreža pod 90°) ili Slobodno (360°)</p>
+                        </div>
+                        <div class="flex gap-1 bg-surface-elevated p-1 rounded-lg border border-white/5">
+                            <button id="mode-retro-btn" onclick="setGameMode('retro')" class="px-3 py-1 text-xs font-bold rounded-md">Retro</button>
+                            <button id="mode-modern-btn" onclick="setGameMode('modern')" class="px-3 py-1 text-xs font-bold rounded-md">Slobodno</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Pod-opcije upravljanja za Slobodno kretanje na mobitelu -->
+                <div id="setting-modern-controls" class="hidden flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10 border-l-4 border-l-neon-purple">
+                    <div class="text-left mb-2">
+                        <span class="font-body-md text-on-surface font-semibold text-sm text-neon-purple">Upravljanje na mobitelu (360°)</span>
+                        <p class="text-[10px] text-on-surface-variant">Odaberi metodu dodira za slobodno kretanje</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1 bg-surface-elevated p-1 rounded-lg border border-white/5 text-center">
+                        <button id="touch-trackpad-btn" onclick="setTouchMode('trackpad')" class="py-2 text-[10px] font-bold rounded-md transition-all">Trackpad</button>
+                        <button id="touch-joystick-btn" onclick="setTouchMode('joystick')" class="py-2 text-[10px] font-bold rounded-md transition-all">Joystick (Desni)</button>
+                    </div>
+                </div>
+
+                <!-- 3. Pomoćne linije mreže -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                    <span class="font-body-md text-on-surface font-semibold">Pomoćne linije mreže</span>
+                    <span class="font-body-md text-on-surface font-semibold text-sm">Pomoćne linije mreže</span>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="setting-grid" class="sr-only peer" onchange="toggleSetting('grid')">
                         <div class="w-11 h-6 bg-surface-elevated rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-lime"></div>
                     </label>
                 </div>
-                <!-- Toggle Glow -->
+
+                <!-- 4. Efekt sjaja -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
-                    <span class="font-body-md text-on-surface font-semibold">Efekat sjaja (Glow)</span>
+                    <span class="font-body-md text-on-surface font-semibold text-sm">Efekat sjaja (Glow)</span>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" id="setting-glow" class="sr-only peer" checked onchange="toggleSetting('glow')">
                         <div class="w-11 h-6 bg-surface-elevated rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-on-surface after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neon-lime"></div>
                     </label>
                 </div>
             </div>
-            <div class="mt-12 flex justify-center">
+
+            <div class="mt-8 flex justify-center">
                 <button onclick="goBackTo('categories')" class="flex items-center gap-2 px-8 py-3 rounded-full border border-white/20 text-on-surface hover:bg-white/10 transition-all font-label-caps text-label-caps active:scale-95">
                     <span class="material-symbols-outlined">arrow_back</span> Natrag
                 </button>
             </div>
         </section>
 
-        <!-- Dynamic Background Canvas (Atmospheric) -->
+        <!-- Dynamic Background Canvas -->
         <div class="fixed inset-0 -z-10 pointer-events-none">
             <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-lime/5 blur-[120px] rounded-full"></div>
             <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-cyan/5 blur-[120px] rounded-full"></div>
         </div>
     </main>
 
-    <!-- BottomNavBar (Mobile Only) -->
-    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container/85 backdrop-blur-xl rounded-t-xl border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
+    <!-- BottomNavBar -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container/85 backdrop-blur-xl rounded-t-xl border-t border-t-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
         <button onclick="goBackToMenu()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-lime transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">home</span>
             <span class="font-label-caps text-[9px] uppercase tracking-wider">Meni</span>
+        </button>
+        <button onclick="goBackTo('settings')" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-purple transition-all active:scale-90 duration-150 py-1">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-label-caps text-[9px] uppercase tracking-wider">Postavke</span>
         </button>
         <button onclick="handleMobileBack()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-cyan transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">arrow_back</span>
@@ -453,7 +453,7 @@
     </nav>
 
     <!-- Version Indicator -->
-    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.0.4</div>
+    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.1.4</div>
 
     <script>
         const canvas = document.getElementById('snakeCanvas');
@@ -466,6 +466,20 @@
         let selectedCat = '', selectedSub = '';
         let showGridLines = false;
         let showGlow = true;
+        let challengeTimeLimit = 10;
+
+        // Načini rada i kretanja
+        let gameMode = 'retro'; 
+        let modernAngle = -Math.PI / 2; 
+        let modernSpeed = 3.5; 
+        let turnSpeed = 0.08; 
+        let keysPressed = {}; 
+        
+        // Pod-opcije kretanja za mobitel
+        let touchMode = 'trackpad'; 
+        let joystickBase = { x: 0, y: 0, radius: 45 }; 
+        let joystickStick = { x: 0, y: 0, radius: 20 };
+        let isJoystickActive = false;
 
         const catColors = {
             math: '#06B6D4',    // Neon Cyan
@@ -491,23 +505,70 @@
             { q: "Tko je naslikao Posljednju večeru?", a: "Leonardo da Vinci" }, { q: "Koji je grad dom muzeja Prado?", a: "Madrid" }
         ];
 
+        // POJAČANA SIGURNA INICIJALIZACIJA DIMENZIJA (v1.1.4)
         function setupCanvas() {
+            const width = window.innerWidth || document.documentElement.clientWidth || 360;
+            const height = window.innerHeight || document.documentElement.clientHeight || 640;
+
             const headerHeight = 64;
-            const padding = window.innerWidth >= 768 ? 160 : 180;
-            const isDesktop = window.innerWidth >= 768;
-            const availWidth = isDesktop ? window.innerWidth - 256 - 48 : window.innerWidth - 32;
-            const availHeight = window.innerHeight - headerHeight - padding;
-            const size = Math.min(availWidth, availHeight, 420);
-            const finalSize = Math.max(280, Math.floor(size / GRID) * GRID);
+            const isDesktop = width >= 768;
+            const padding = isDesktop ? 160 : 180;
+            const availWidth = isDesktop ? width - 256 - 48 : width - 32;
+            const availHeight = height - headerHeight - padding;
             
+            // Osiguravamo da size nikada ne vrati NaN ili neispravnu vrijednost
+            let size = Math.min(availWidth, availHeight, 420);
+            if (isNaN(size) || size < 280) {
+                size = 280;
+            }
+            
+            let finalSize = Math.floor(size / GRID) * GRID;
+            if (isNaN(finalSize) || finalSize < 280) {
+                finalSize = 280;
+            }
+
             canvas.width = finalSize;
             canvas.height = finalSize;
             wrapper.style.width = finalSize + 'px';
             wrapper.style.height = finalSize + 'px';
             TILES = finalSize / GRID;
-            
+
+            // Pozicioniranje joysticka na desnu stranu
+            joystickBase.x = finalSize - 65;
+            joystickBase.y = finalSize - 65;
+            joystickStick.x = joystickBase.x;
+            joystickStick.y = joystickBase.y;
+
             ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function setGameMode(mode) {
+            gameMode = mode;
+            const retroBtn = document.getElementById('mode-retro-btn');
+            const modernBtn = document.getElementById('mode-modern-btn');
+            const modernSection = document.getElementById('setting-modern-controls');
+
+            if (mode === 'retro') {
+                retroBtn.className = "px-3 py-1 text-xs font-bold rounded-md bg-neon-lime text-surface-deep shadow-lg";
+                modernBtn.className = "px-3 py-1 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface";
+                modernSection.classList.add('hidden'); 
+            } else {
+                retroBtn.className = "px-3 py-1 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface";
+                modernBtn.className = "px-3 py-1 text-xs font-bold rounded-md bg-neon-lime text-surface-deep shadow-lg";
+                modernSection.classList.remove('hidden'); 
+            }
+        }
+
+        function setTouchMode(mode) {
+            touchMode = mode;
+            const trackpadBtn = document.getElementById('touch-trackpad-btn');
+            const joystickBtn = document.getElementById('touch-joystick-btn');
+
+            [trackpadBtn, joystickBtn].forEach(b => b.className = "py-2 text-[10px] font-bold rounded-md text-on-surface-variant hover:text-on-surface");
+
+            if (mode === 'trackpad') trackpadBtn.classList.add('setting-tab-active');
+            else if (mode === 'joystick') joystickBtn.classList.add('setting-tab-active');
         }
 
         function selectMainCategory(cat) {
@@ -526,6 +587,20 @@
         }
 
         function goBackTo(view) {
+            if (view !== 'game') {
+                isPaused = true;
+                clearInterval(mathTimer);
+                document.getElementById('pause-modal').classList.remove('active');
+                document.getElementById('challenge-modal').classList.remove('active');
+                document.getElementById('game-over-modal').classList.remove('active');
+
+                const pauseBtn = document.getElementById('header-pause-btn');
+                if (pauseBtn) {
+                    pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
+                    pauseBtn.disabled = true;
+                }
+            }
+
             document.querySelectorAll('main > section').forEach(d => d.classList.add('hidden'));
             const target = document.getElementById('view-' + view);
             if (target) target.classList.remove('hidden');
@@ -553,32 +628,27 @@
         function goBackToMenu() {
             isPaused = true;
             clearInterval(mathTimer);
-            
-            // Remove active modal states
             document.getElementById('pause-modal').classList.remove('active');
             document.getElementById('challenge-modal').classList.remove('active');
             document.getElementById('game-over-modal').classList.remove('active');
-            
-            // Dim and disable pause button in header
+
             const pauseBtn = document.getElementById('header-pause-btn');
             pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
             pauseBtn.disabled = true;
-            
+
             goBackTo('categories');
         }
 
         function updateNavigationHighlights() {
-            // Reset all nav background styles
             const navCat = document.getElementById('nav-categories');
             const navLessons = document.getElementById('nav-lessons');
             const navSpeed = document.getElementById('nav-speed');
             const navSettings = document.getElementById('nav-settings');
-            
+
             [navCat, navLessons, navSpeed, navSettings].forEach(btn => {
                 btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left";
             });
 
-            // Highlight the active menu button
             if (!document.getElementById('view-categories').classList.contains('hidden')) {
                 navCat.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
             } else if (!document.getElementById('view-math-sub').classList.contains('hidden')) {
@@ -615,26 +685,45 @@
             }
         }
 
-        function startGame(startSpeed, growth) {
+        function startGame(startSpeed, growth, challengeTime = 10) {
             document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
             document.getElementById('view-game').classList.remove('hidden');
-            
-            // Enable header pause button
+
             const pauseBtn = document.getElementById('header-pause-btn');
             pauseBtn.classList.remove('opacity-30', 'cursor-not-allowed');
             pauseBtn.disabled = false;
-            
+
             interval = startSpeed;
             speedFactor = growth;
+            challengeTimeLimit = challengeTime; 
             init();
-            gameLoop();
+
+            if (gameMode === 'retro') {
+                gameLoop(); 
+            } else {
+                modernAngle = -Math.PI / 2;
+                modernSpeed = (270 - startSpeed) / 45; 
+                requestAnimationFrame(modernGameLoop); 
+            }
         }
 
         function init() {
-            const mid = Math.floor(TILES / 2);
-            snake = [{ x: mid, y: mid }, { x: mid, y: mid + 1 }, { x: mid, y: mid + 2 }];
-            dir = { x: 0, y: -1 };
-            nextDir = { x: 0, y: -1 };
+            if (gameMode === 'retro') {
+                const mid = Math.floor(TILES / 2);
+                snake = [{ x: mid, y: mid }, { x: mid, y: mid + 1 }, { x: mid, y: mid + 2 }];
+                dir = { x: 0, y: -1 };
+                nextDir = { x: 0, y: -1 };
+            } else {
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2;
+                snake = [];
+                for (let i = 0; i < 12; i++) {
+                    snake.push({ x: centerX, y: centerY + i * 8 });
+                }
+                isJoystickActive = false;
+                joystickStick.x = joystickBase.x;
+                joystickStick.y = joystickBase.y;
+            }
             score = 0;
             minLimit = 0;
             lastChallengeScore = -1;
@@ -645,27 +734,34 @@
 
         function updateUI() {
             document.getElementById('score-val').innerText = score;
-            minLimit = (score >= 5) ? 5 : 0;
+            if (score >= 10) minLimit = 5;
+            else if (score >= 5) minLimit = 2;
+            else minLimit = 0;
             document.getElementById('min-limit').innerText = minLimit;
         }
 
         function spawnFood() {
             food = { x: Math.floor(Math.random() * TILES), y: Math.floor(Math.random() * TILES) };
-            if (snake.some(s => s.x === food.x && s.y === food.y)) spawnFood();
+            if (gameMode === 'retro') {
+                if (snake.some(s => s.x === food.x && s.y === food.y)) spawnFood();
+            } else {
+                const foodPixelX = food.x * GRID + GRID / 2;
+                const foodPixelY = food.y * GRID + GRID / 2;
+                if (snake.some(s => Math.hypot(s.x - foodPixelX, s.y - foodPixelY) < 15)) spawnFood();
+            }
         }
 
+        // RETRO PETLJA
         function gameLoop() {
-            if (isPaused) return;
+            if (isPaused || gameMode !== 'retro') return;
             dir = nextDir;
             let head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
-            
-            // Wrap snake coordinates
+
             if (head.x < 0) head.x = TILES - 1;
             if (head.x >= TILES) head.x = 0;
             if (head.y < 0) head.y = TILES - 1;
             if (head.y >= TILES) head.y = 0;
 
-            // Check self-collision
             for (let i = 1; i < snake.length; i++) {
                 if (head.x === snake[i].x && head.y === snake[i].y) {
                     let lost = snake.length - i;
@@ -680,13 +776,11 @@
             }
 
             snake.unshift(head);
-            
-            // Check food collision
+
             if (head.x === food.x && head.y === food.y) {
                 score++;
                 updateUI();
                 spawnFood();
-                // Trigger educational challenge every 5 points
                 if (score > 0 && score % 5 === 0 && score !== lastChallengeScore) {
                     lastChallengeScore = score;
                     triggerChallenge();
@@ -700,27 +794,118 @@
             setTimeout(gameLoop, interval);
         }
 
+        // SLOBODNA PETLJA (360°)
+        function modernGameLoop() {
+            if (isPaused || gameMode !== 'modern') return;
+
+            // Tipkovnica
+            if (keysPressed['ArrowLeft']) modernAngle -= turnSpeed;
+            if (keysPressed['ArrowRight']) modernAngle += turnSpeed;
+
+            // Touch joystick skretanje
+            if (touchMode === 'joystick' && isJoystickActive) {
+                const dx = joystickStick.x - joystickBase.x;
+                const dy = joystickStick.y - joystickBase.y;
+                if (Math.hypot(dx, dy) > 5) {
+                    modernAngle = Math.atan2(dy, dx);
+                }
+            }
+
+            // Kretanje glave
+            let head = {
+                x: snake[0].x + Math.cos(modernAngle) * modernSpeed,
+                y: snake[0].y + Math.sin(modernAngle) * modernSpeed
+            };
+
+            // Prolaz kroz rubove ekrana
+            if (head.x < 0) head.x = canvas.width;
+            if (head.x >= canvas.width) head.x = 0;
+            if (head.y < 0) head.y = canvas.height;
+            if (head.y >= canvas.height) head.y = 0;
+
+            // Sudar sa sobom
+            const selfCollisionMinSegment = 14;
+            for (let i = selfCollisionMinSegment; i < snake.length; i++) {
+                let dx = head.x - snake[i].x;
+                let dy = head.y - snake[i].y;
+                if (dx > canvas.width / 2) dx -= canvas.width;
+                if (dx < -canvas.width / 2) dx += canvas.width;
+                if (dy > canvas.height / 2) dy -= canvas.height;
+                if (dy < -canvas.height / 2) dy += canvas.height;
+
+                if (Math.hypot(dx, dy) < 10) {
+                    let lostSegments = Math.floor((snake.length - i) / 2);
+                    snake = snake.slice(0, i);
+                    score = Math.max(0, score - lostSegments);
+                    if (score < minLimit) return showGameOver();
+                    lastChallengeScore = Math.floor(score / 5) * 5;
+                    if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
+                    updateUI();
+                    break;
+                }
+            }
+
+            snake.unshift(head);
+
+            // Sudar s hranom
+            const foodPixelX = food.x * GRID + GRID / 2;
+            const foodPixelY = food.y * GRID + GRID / 2;
+            if (Math.hypot(head.x - foodPixelX, head.y - foodPixelY) < 15) {
+                score++;
+                updateUI();
+                spawnFood();
+                const last = snake[snake.length - 1];
+                snake.push({ x: last.x, y: last.y });
+                snake.push({ x: last.x, y: last.y });
+
+                if (score > 0 && score % 5 === 0 && score !== lastChallengeScore) {
+                    lastChallengeScore = score;
+                    triggerChallenge();
+                    return;
+                }
+            } else {
+                snake.pop();
+            }
+
+            // Lančana fizika tijela
+            const targetDist = 8;
+            for (let i = 1; i < snake.length; i++) {
+                const prev = snake[i - 1];
+                const curr = snake[i];
+                let dx = prev.x - curr.x;
+                let dy = prev.y - curr.y;
+
+                if (dx > canvas.width / 2) dx -= canvas.width;
+                if (dx < -canvas.width / 2) dx += canvas.width;
+                if (dy > canvas.height / 2) dy -= canvas.height;
+                if (dy < -canvas.height / 2) dy += canvas.height;
+
+                const dist = Math.hypot(dx, dy);
+                if (dist > targetDist) {
+                    const angle = Math.atan2(dy, dx);
+                    curr.x = (prev.x - Math.cos(angle) * targetDist + canvas.width) % canvas.width;
+                    curr.y = (prev.y - Math.sin(angle) * targetDist + canvas.height) % canvas.height;
+                }
+            }
+
+            draw();
+            requestAnimationFrame(modernGameLoop);
+        }
+
         function draw() {
             ctx.fillStyle = "#000";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Draw grid helper lines
             if (showGridLines) {
                 ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
                 ctx.lineWidth = 1;
                 for (let i = 0; i <= TILES; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(i * GRID, 0);
-                    ctx.lineTo(i * GRID, canvas.height);
-                    ctx.stroke();
-                    ctx.beginPath();
-                    ctx.moveTo(0, i * GRID);
-                    ctx.lineTo(canvas.width, i * GRID);
-                    ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(i * GRID, 0); ctx.lineTo(i * GRID, canvas.height); ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(0, i * GRID); ctx.lineTo(canvas.width, i * GRID); ctx.stroke();
                 }
             }
 
-            // Food rendering with neon glow matching current category
+            // Hrana
             const foodColor = catColors[selectedCat] || '#f43f5e';
             ctx.shadowBlur = showGlow ? 15 : 0;
             ctx.shadowColor = foodColor;
@@ -728,27 +913,42 @@
             ctx.beginPath();
             ctx.arc(food.x * GRID + GRID / 2, food.y * GRID + GRID / 2, GRID / 2.5, 0, Math.PI * 2);
             ctx.fill();
-            
-            ctx.shadowBlur = 0; // Reset glow for snake
+            ctx.shadowBlur = 0;
 
-            // Snake segments rendering (rounded corners for organic digital tech style)
-            snake.forEach((p, i) => {
-                ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
-                const x = p.x * GRID + 1;
-                const y = p.y * GRID + 1;
-                const w = GRID - 2;
-                const h = GRID - 2;
-                const r = 5; // rounded radius
-                
+            // Zmija
+            if (gameMode === 'retro') {
+                snake.forEach((p, i) => {
+                    ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
+                    const x = p.x * GRID + 1; const y = p.y * GRID + 1;
+                    const w = GRID - 2; const h = GRID - 2; const r = 5;
+                    ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); ctx.fill();
+                });
+            } else {
+                snake.forEach((p, i) => {
+                    ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
+                    ctx.beginPath(); ctx.arc(p.x, p.y, GRID / 2 - 1, 0, Math.PI * 2); ctx.fill();
+                });
+            }
+
+            // Joystick
+            if (gameMode === 'modern' && touchMode === 'joystick') {
+                ctx.save();
+                ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+                ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(x + r, y);
-                ctx.arcTo(x + w, y, x + w, y + h, r);
-                ctx.arcTo(x + w, y + h, x, y + h, r);
-                ctx.arcTo(x, y + h, x, y, r);
-                ctx.arcTo(x, y, x + w, y, r);
-                ctx.closePath();
+                ctx.arc(joystickBase.x, joystickBase.y, joystickBase.radius, 0, Math.PI * 2);
                 ctx.fill();
-            });
+                ctx.stroke();
+
+                ctx.fillStyle = "rgba(6, 182, 212, 0.4)"; 
+                ctx.strokeStyle = "#06B6D4";
+                ctx.beginPath();
+                ctx.arc(joystickStick.x, joystickStick.y, joystickStick.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+            }
         }
 
         function togglePause() {
@@ -764,44 +964,56 @@
         function resumeGame() {
             document.getElementById('pause-modal').classList.remove('active');
             countdownEl.style.display = 'flex';
-            let c = 3;
-            countdownEl.innerText = c;
+            let c = 3; countdownEl.innerText = c;
             let t = setInterval(() => {
                 c--;
-                if (c > 0) {
-                    countdownEl.innerText = c;
-                } else {
-                    clearInterval(t);
-                    countdownEl.style.display = 'none';
-                    isPaused = false;
-                    gameLoop();
+                if (c > 0) countdownEl.innerText = c;
+                else {
+                    clearInterval(t); countdownEl.style.display = 'none'; isPaused = false;
+                    if (gameMode === 'retro') gameLoop();
+                    else requestAnimationFrame(modernGameLoop);
                 }
             }, 600);
         }
 
+        // GENERATOR ZADATAKA
         function triggerChallenge() {
             isPaused = true;
             const container = document.getElementById('options-container');
-            container.innerHTML = ''; // Clear old buttons
+            container.innerHTML = ''; 
             document.getElementById('challenge-modal').classList.add('active');
-
             let options = [];
 
             if (selectedCat === 'math') {
                 document.getElementById('cat-label').innerText = "MATEMATIKA";
                 let a, b;
-                if (selectedSub === 'advanced') {
-                    a = Math.floor(Math.random() * 11) + 2;
-                    b = Math.floor(Math.random() * 11) + 2;
-                    correctResult = a * b;
-                    document.getElementById('q-text').innerText = `${a} × ${b} = ?`;
-                } else {
-                    a = Math.floor(Math.random() * 30) + 5;
-                    b = Math.floor(Math.random() * 30) + 5;
-                    correctResult = a + b;
-                    document.getElementById('q-text').innerText = `${a} + ${b} = ?`;
+                let currentSub = selectedSub;
+
+                if (selectedSub === 'mix') {
+                    const subModes = ['basic', 'subtraction', 'advanced', 'division'];
+                    currentSub = subModes[Math.floor(Math.random() * subModes.length)];
                 }
-                
+
+                if (currentSub === 'advanced') { 
+                    a = Math.floor(Math.random() * 11) + 2; b = Math.floor(Math.random() * 11) + 2;
+                    correctResult = a * b; document.getElementById('q-text').innerText = `${a} × ${b} = ?`;
+                } 
+                else if (currentSub === 'subtraction') { 
+                    a = Math.floor(Math.random() * 41) + 10; 
+                    b = Math.floor(Math.random() * (a - 4)) + 2; 
+                    correctResult = a - b; document.getElementById('q-text').innerText = `${a} − ${b} = ?`;
+                } 
+                else if (currentSub === 'division') { 
+                    b = Math.floor(Math.random() * 9) + 2; 
+                    correctResult = Math.floor(Math.random() * 9) + 2; 
+                    a = b * correctResult; 
+                    document.getElementById('q-text').innerText = `${a} ÷ ${b} = ?`;
+                } 
+                else { 
+                    a = Math.floor(Math.random() * 30) + 5; b = Math.floor(Math.random() * 30) + 5;
+                    correctResult = a + b; document.getElementById('q-text').innerText = `${a} + ${b} = ?`;
+                }
+
                 options.push(correctResult);
                 while (options.length < 3) {
                     let off = Math.floor(Math.random() * 5) + 1;
@@ -812,8 +1024,7 @@
                 let db = selectedCat === 'geo' ? geoDB : (selectedCat === 'history' ? historyDB : artDB);
                 document.getElementById('cat-label').innerText = selectedCat.toUpperCase();
                 let item = db[Math.floor(Math.random() * db.length)];
-                correctResult = item.a;
-                document.getElementById('q-text').innerText = item.q;
+                correctResult = item.a; document.getElementById('q-text').innerText = item.q;
 
                 options.push(correctResult);
                 while (options.length < 3) {
@@ -822,24 +1033,18 @@
                 }
             }
 
-            // Shuffle option positions
             options.sort(() => Math.random() - 0.5);
-
-            // Populate options buttons horizontally
             options.forEach(opt => {
                 const btn = document.createElement('button');
-                btn.className = 'opt-btn';
-                btn.innerText = opt;
+                btn.className = 'opt-btn'; btn.innerText = opt;
                 btn.onclick = () => finalize(String(opt).toLowerCase() === String(correctResult).toLowerCase());
                 container.appendChild(btn);
             });
 
-            // Animated countdown timer bar (10 seconds)
-            let sec = 10;
-            clearInterval(mathTimer);
+            let sec = challengeTimeLimit; clearInterval(mathTimer);
             mathTimer = setInterval(() => {
                 sec -= 0.1;
-                document.getElementById('timer-bar').style.width = (sec / 10) * 100 + "%";
+                document.getElementById('timer-bar').style.width = (sec / challengeTimeLimit) * 100 + "%";
                 if (sec <= 0) finalize(false);
             }, 100);
         }
@@ -848,17 +1053,17 @@
             clearInterval(mathTimer);
             document.getElementById('challenge-modal').classList.remove('active');
             if (correct) {
-                interval *= speedFactor; // Increase speed slightly
+                if (gameMode === 'retro') interval *= speedFactor; 
+                else modernSpeed *= (2 - speedFactor); 
             } else {
-                // Shrink snake body on wrong answer
                 let cut = Math.max(1, Math.floor(snake.length * 0.4));
                 for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
-                score = Math.max(0, score - cut);
+                score = Math.max(0, score - (gameMode === 'retro' ? cut : Math.floor(cut / 3)));
                 if (score < minLimit) return showGameOver();
             }
-            updateUI();
-            isPaused = false;
-            gameLoop();
+            updateUI(); isPaused = false;
+            if (gameMode === 'retro') gameLoop();
+            else requestAnimationFrame(modernGameLoop);
         }
 
         function showGameOver() {
@@ -867,53 +1072,128 @@
             document.getElementById('game-over-modal').classList.add('active');
         }
 
-        // KEYBOARD EVENT LISTENERS
+        function getTouchCanvasPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const touch = e.touches[0];
+            const x = (touch.clientX - rect.left) * (canvas.width / (rect.width || 1));
+            const y = (touch.clientY - rect.top) * (canvas.height / (rect.height || 1));
+            return { x, y };
+        }
+
         window.addEventListener('keydown', e => {
-            if (e.key === 'Escape' || e.key === ' ') {
-                togglePause();
-                e.preventDefault();
-                return;
-            }
+            keysPressed[e.key] = true; 
+            if (e.key === 'Escape' || e.key === ' ') { togglePause(); e.preventDefault(); return; }
             if (isPaused) return;
-            if (e.key === 'ArrowUp' && dir.y !== 1) nextDir = { x: 0, y: -1 };
-            if (e.key === 'ArrowDown' && dir.y !== -1) nextDir = { x: 0, y: 1 };
-            if (e.key === 'ArrowLeft' && dir.x !== 1) nextDir = { x: -1, y: 0 };
-            if (e.key === 'ArrowRight' && dir.x !== -1) nextDir = { x: 1, y: 0 };
+            if (gameMode === 'retro') {
+                if (e.key === 'ArrowUp' && dir.y !== 1) nextDir = { x: 0, y: -1 };
+                if (e.key === 'ArrowDown' && dir.y !== -1) nextDir = { x: 0, y: 1 };
+                if (e.key === 'ArrowLeft' && dir.x !== 1) nextDir = { x: -1, y: 0 };
+                if (e.key === 'ArrowRight' && dir.x !== -1) nextDir = { x: 1, y: 0 };
+            }
         });
 
-        // TOUCH CONTROLS FOR MOBILE
-        let tsX, tsY;
+        window.addEventListener('keyup', e => { keysPressed[e.key] = false; });
+
+        // TOUCH DOGAĐAJI
         window.addEventListener('touchstart', e => {
             tsX = e.touches[0].clientX;
             tsY = e.touches[0].clientY;
-        }, { passive: false });
+            
+            const isGameActive = !document.getElementById('view-game').classList.contains('hidden');
+            if (isGameActive && gameMode === 'modern' && e.target.closest('#game-wrapper')) {
+                const pos = getTouchCanvasPos(e);
+                
+                if (touchMode === 'joystick') {
+                    const distToBase = Math.hypot(pos.x - joystickBase.x, pos.y - joystickBase.y);
+                    if (distToBase <= joystickBase.radius + 15) {
+                        isJoystickActive = true;
+                        joystickStick.x = pos.x;
+                        joystickStick.y = pos.y;
+                    }
+                }
+            }
+        }, { passive: true });
 
-        window.addEventListener('touchend', e => {
-            if (isPaused) return;
-            let dx = e.changedTouches[0].clientX - tsX;
-            let dy = e.changedTouches[0].clientY - tsY;
-            if (Math.abs(dx) > 20 || Math.abs(dy) > 20) {
-                if (Math.abs(dx) > Math.abs(dy)) {
-                    if (dx > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 };
-                    else if (dx < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
-                } else {
-                    if (dy > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 };
-                    else if (dy < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
+        window.addEventListener('touchmove', e => {
+            const isGameViewActive = !document.getElementById('view-game').classList.contains('hidden');
+            if (isGameViewActive && e.target.closest('#game-wrapper')) {
+                if (e.cancelable) e.preventDefault(); 
+
+                if (gameMode === 'modern' && !isPaused) {
+                    const pos = getTouchCanvasPos(e);
+                    
+                    if (touchMode === 'joystick' && isJoystickActive) {
+                        const dx = pos.x - joystickBase.x;
+                        const dy = pos.y - joystickBase.y;
+                        const dist = Math.hypot(dx, dy);
+                        
+                        if (dist <= joystickBase.radius) {
+                            joystickStick.x = pos.x;
+                            joystickStick.y = pos.y;
+                        } else {
+                            const angle = Math.atan2(dy, dx);
+                            joystickStick.x = joystickBase.x + Math.cos(angle) * joystickBase.radius;
+                            joystickStick.y = joystickBase.y + Math.sin(angle) * joystickBase.radius;
+                        }
+                    } 
+                    else if (touchMode === 'trackpad') {
+                        let dxSwipe = e.touches[0].clientX - tsX;
+                        let dySwipe = e.touches[0].clientY - tsY;
+                        if (Math.abs(dxSwipe) > 5 || Math.abs(dySwipe) > 5) {
+                            modernAngle = Math.atan2(dySwipe, dxSwipe);
+                        }
+                    }
                 }
             }
         }, { passive: false });
 
-        // SERVICE WORKER REGISTRATION
+        window.addEventListener('touchend', e => {
+            if (gameMode === 'modern') {
+                isJoystickActive = false;
+                joystickStick.x = joystickBase.x;
+                joystickStick.y = joystickBase.y;
+                return;
+            }
+
+            if (isPaused) return;
+            let dxSwipe = e.changedTouches[0].clientX - tsX;
+            let dySwipe = e.changedTouches[0].clientY - tsY;
+            if (Math.abs(dxSwipe) > 20 || Math.abs(dySwipe) > 20) {
+                if (Math.abs(dxSwipe) > Math.abs(dySwipe)) {
+                    if (dxSwipe > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 };
+                    else if (dxSwipe < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
+                } else {
+                    if (dySwipe > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 };
+                    else if (dySwipe < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
+                }
+            }
+        }, { passive: true });
+
+        // INTELEGENTNI AUTO-UPDATE KOD OTKRIVANJA NOVE VERZIJE GITHUB CACHE-A
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => { });
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    reg.addEventListener('updatefound', () => {
+                        const newWorker = reg.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // Otkrivena je i spremljena nova verzija, osvježi automatski!
+                                location.reload();
+                            }
+                        });
+                    });
+                }).catch(() => { });
             });
         }
 
         window.onresize = setupCanvas;
         setupCanvas();
+        setGameMode('retro'); 
+        setTouchMode('trackpad'); 
         updateNavigationHighlights();
     </script>
 </body>
 
 </html>
+
+```
