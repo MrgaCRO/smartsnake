@@ -8,7 +8,6 @@
     <meta name="theme-color" content="#020617">
     <title>Snake Edu Pro</title>
 
-    <!-- PWA Link -->
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://via.placeholder.com/192x192.png?text=Snake">
 
@@ -45,7 +44,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Pametno prilagođeni i kompaktni modali (Riješen problem rezanja na mobitelu) */
+        /* Responzivni i kompaktni modali bez opasnosti od rezanja donjih gumbiju */
         .modal {
             display: none;
             position: absolute;
@@ -58,7 +57,7 @@
             flex-direction: column;
             padding: 1rem;
             text-align: center;
-            overflow-y: auto; /* Omogućuje skrolanje ako je ekran ekstremno malen */
+            overflow-y: auto;
         }
 
         .modal.active {
@@ -168,7 +167,6 @@
 </head>
 
 <body class="bg-surface-deep text-on-surface font-body-md min-h-screen selection:bg-neon-lime/30 overflow-x-hidden">
-    <!-- TopAppBar -->
     <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-surface-container/70 backdrop-blur-xl shadow-[0_0_15px_rgba(34,197,94,0.15)]">
         <div class="flex items-center gap-4">
             <h1 onclick="goBackToMenu()" class="font-display-xl-mobile text-display-xl-mobile font-extrabold text-neon-lime md:text-display-xl md:font-display-xl cursor-pointer">Snake Edu</h1>
@@ -186,7 +184,6 @@
         </div>
     </header>
 
-    <!-- SideNavBar -->
     <aside class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 w-64 backdrop-blur-xl bg-surface-container-low/90 border-r border-white/10 shadow-2xl pt-24 px-4">
         <div class="mb-8 px-4">
             <h2 class="font-headline-lg text-headline-lg text-neon-cyan">Snake Edu</h2>
@@ -215,9 +212,7 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="pt-24 pb-24 md:pb-8 px-container-margin md:ml-64 flex flex-col items-center min-h-screen">
-        <!-- Stats HUD -->
         <div class="w-full max-w-4xl flex justify-between items-center mb-8 glass-card rounded-xl p-4 border border-white/5 shadow-lg">
             <div class="flex flex-col">
                 <span class="font-label-caps text-label-caps text-on-surface-variant text-[10px]">PRAG</span>
@@ -230,9 +225,7 @@
             </div>
         </div>
 
-        <!-- CATEGORIES VIEW -->
         <section id="view-categories" class="w-full max-w-4xl flex flex-col gap-6">
-            <!-- Widget za Dnevni Izazov na vrhu -->
             <div onclick="startDailyChallenge()" class="cursor-pointer group relative overflow-hidden rounded-2xl border-2 border-amber-500/50 bg-amber-500/10 p-6 transition-all duration-300 hover:scale-[1.01] hover:bg-amber-500/15">
                 <div class="absolute -right-6 -top-6 text-7xl opacity-10 group-hover:scale-110 transition-transform">🏆</div>
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -248,7 +241,6 @@
                 </div>
             </div>
 
-            <!-- Standardne kategorije -->
             <div class="glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
                 <div class="text-center mb-10">
@@ -279,7 +271,6 @@
             </div>
         </section>
 
-        <!-- MATH SUB-CATEGORIES VIEW -->
         <section id="view-math-sub" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-10">
@@ -315,7 +306,6 @@
             </div>
         </section>
 
-        <!-- DIFFICULTY VIEW -->
         <section id="view-difficulty" class="hidden w-full max-w-4xl glass-card rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-10">
@@ -323,15 +313,15 @@
                 <p class="text-on-surface-variant font-body-lg text-body-lg">Izaberi tempo igre</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <button onclick="startGame(180, 0.98, 15)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-success-green/30 bg-success-green/5 hover:bg-success-green/10 transition-all group">
+                <button onclick="startGame(200, 0.98, 15)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-success-green/30 bg-success-green/5 hover:bg-success-green/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐢</span>
                     <span class="font-headline-md text-headline-md text-success-green">Lagano</span>
                 </button>
-                <button onclick="startGame(130, 0.96, 10)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
+                <button onclick="startGame(155, 0.96, 10)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-neon-orange/30 bg-neon-orange/5 hover:bg-neon-orange/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">🐍</span>
                     <span class="font-headline-md text-headline-md text-neon-orange">Srednje</span>
                 </button>
-                <button onclick="startGame(90, 0.94, 5)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
+                <button onclick="startGame(115, 0.94, 5)" class="category-card flex flex-col items-center justify-center p-8 rounded-xl border-2 border-error-red/30 bg-error-red/5 hover:bg-error-red/10 transition-all group">
                     <span class="text-3xl mb-4 group-hover:scale-110 transition-transform">⚡</span>
                     <span class="font-headline-md text-headline-md text-error-red">Teško</span>
                 </button>
@@ -343,13 +333,11 @@
             </div>
         </section>
 
-        <!-- GAME VIEW -->
         <section id="view-game" class="hidden w-full max-w-4xl flex flex-col items-center">
             <div id="game-wrapper" style="touch-action: none; overscroll-behavior: none;" class="relative bg-black border-2 border-surface-elevated rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
                 <canvas id="snakeCanvas"></canvas>
                 <div id="countdown" style="display: none;" class="absolute inset-0 flex items-center justify-center text-8xl font-black text-neon-lime select-none pointer-events-none drop-shadow-[0_0_30px_rgba(34,197,94,0.5)]">3</div>
 
-                <!-- PAUZA MODAL (Kompaktan) -->
                 <div id="pause-modal" class="modal">
                     <h2 class="text-2xl font-extrabold mb-4 text-neon-cyan tracking-wider italic uppercase">Pauza</h2>
                     <div class="flex flex-col gap-3 w-full max-w-[180px]">
@@ -358,10 +346,9 @@
                     </div>
                 </div>
 
-                <!-- IZAZOV MODAL (Kompaktan) -->
                 <div id="challenge-modal" class="modal">
                     <div class="w-full max-w-sm px-2 text-center">
-                        <h2 id="cat-label" class="text-neon-cyan font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">IZAZOV</h2>
+                        <h2 id="challenge-badge-title" class="text-neon-cyan font-bold text-[10px] mb-1 uppercase tracking-[0.2em]">IZAZOV</h2>
                         <div id="q-text" class="text-lg font-black my-2 tracking-tight text-white italic leading-tight px-1 min-h-[3rem] flex items-center justify-center">?</div>
                         <div class="w-full bg-surface-elevated h-1 rounded-full overflow-hidden mb-3 border border-white/5">
                             <div id="timer-bar" class="h-full bg-neon-orange w-full transition-all duration-100 linear"></div>
@@ -370,7 +357,6 @@
                     </div>
                 </div>
 
-                <!-- KRAJ IGRE MODAL (Kompaktan) -->
                 <div id="game-over-modal" class="modal">
                     <h2 class="text-3xl font-black text-error-red mb-2 italic uppercase tracking-wider">Kraj Igre</h2>
                     <p id="game-over-reason" class="text-on-surface-variant mb-1 uppercase text-[8px] font-bold tracking-widest">Pali ste ispod praga opstanka</p>
@@ -378,7 +364,6 @@
                     <button onclick="goBackToMenu()" class="bg-white text-black px-6 py-2.5 rounded-full font-black text-sm hover:scale-105 active:scale-95 duration-200 shadow-xl uppercase">Izbornik</button>
                 </div>
 
-                <!-- DNEVNI IZAZOV KRAJ MODAL (Kompaktan, popravljeno rezanje sučelja na mobitelu) -->
                 <div id="daily-complete-modal" class="modal">
                     <span class="text-3xl mb-1">🏆</span>
                     <h2 class="text-xl font-black text-amber-400 mb-1 italic uppercase tracking-wider">Izazov završen!</h2>
@@ -392,7 +377,6 @@
             </div>
         </section>
 
-        <!-- DASHBOARD VIEW (STATISTIKA) -->
         <section id="view-dashboard" class="hidden w-full max-w-4xl glass-card rounded-2xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-8">
@@ -400,7 +384,6 @@
                 <p class="text-on-surface-variant font-body-lg text-xs uppercase tracking-widest">Analitika tvog znanja</p>
             </div>
 
-            <!-- HUD s glavnim statistikama -->
             <div class="grid grid-cols-3 gap-4 mb-8 text-center">
                 <div class="p-3 rounded-xl bg-white/5 border border-white/10">
                     <p class="text-[10px] font-bold text-on-surface-variant uppercase">Igre</p>
@@ -416,33 +399,26 @@
                 </div>
             </div>
 
-            <!-- Trake napretka po kategorijama -->
             <div class="flex flex-col gap-4 max-w-xl mx-auto text-left mb-6">
                 <h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-2">Uspješnost po temama:</h3>
-                
-                <!-- Matematika -->
                 <div class="flex flex-col gap-1">
                     <div class="flex justify-between text-xs font-bold"><span class="text-neon-cyan">🔢 Matematika</span><span id="bar-math-txt">0%</span></div>
                     <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-math-fill" class="h-full bg-neon-cyan w-0 transition-all duration-500"></div></div>
                 </div>
-                <!-- Povijest -->
                 <div class="flex flex-col gap-1">
                     <div class="flex justify-between text-xs font-bold"><span class="text-error-red">📜 Povijest</span><span id="bar-history-txt">0%</span></div>
                     <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-history-fill" class="h-full bg-error-red w-0 transition-all duration-500"></div></div>
                 </div>
-                <!-- Geografija -->
                 <div class="flex flex-col gap-1">
                     <div class="flex justify-between text-xs font-bold"><span class="text-neon-orange">🌍 Geografija</span><span id="bar-geo-txt">0%</span></div>
                     <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-geo-fill" class="h-full bg-neon-orange w-0 transition-all duration-500"></div></div>
                 </div>
-                <!-- Umjetnost -->
                 <div class="flex flex-col gap-1">
                     <div class="flex justify-between text-xs font-bold"><span class="text-neon-purple">🎨 Umjetnost</span><span id="bar-art-txt">0%</span></div>
                     <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden border border-white/5"><div id="bar-art-fill" class="h-full bg-neon-purple w-0 transition-all duration-500"></div></div>
                 </div>
             </div>
 
-            <!-- Pametna AI preporuka -->
             <div class="max-w-xl mx-auto mt-6 bg-neon-cyan/5 border border-neon-cyan/20 p-4 rounded-xl text-center shadow-lg">
                 <p class="text-neon-cyan font-bold text-xs uppercase tracking-wider mb-1 flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">lightbulb</span> Pametni savjetnik</p>
                 <p id="dash-advice" class="text-xs text-on-surface-variant leading-relaxed">Odigraj par kvizova kako bi savjetnik analizirao tvoje znanje.</p>
@@ -455,21 +431,19 @@
             </div>
         </section>
 
-        <!-- SETTINGS VIEW -->
         <section id="view-settings" class="hidden w-full max-w-4xl glass-card rounded-2xl p-6 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-lime via-neon-cyan to-neon-purple opacity-50"></div>
             <div class="text-center mb-8">
                 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Postavke</h2>
-                <p class="text-on-surface-variant font-body-lg text-body-lg">Prilagodi stil kretanja i vizuale</p>
+                <p class="text-on-surface-variant font-body-lg text-body-lg">Prilagodi stil kretanja, granice i vizuale</p>
             </div>
             
             <div class="flex flex-col gap-5 max-w-lg mx-auto">
-                <!-- 1. Glavni način rada (Retro / Slobodno) -->
                 <div class="flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10">
                     <div class="flex items-center justify-between">
                         <div class="text-left">
                             <span class="font-body-md text-on-surface font-semibold text-sm">Način kretanja</span>
-                            <p class="text-[10px] text-on-surface-variant">Retro (mreža pod 90°) ili Slobodno (360°)</p>
+                            <p class="text-[10px] text-on-surface-variant">Slobodno (360°) ili Retro (mreža pod 90°)</p>
                         </div>
                         <div class="flex gap-1 bg-surface-elevated p-1 rounded-lg border border-white/5">
                             <button id="mode-retro-btn" onclick="setGameMode('retro')" class="px-3 py-1 text-xs font-bold rounded-md">Retro</button>
@@ -478,7 +452,19 @@
                     </div>
                 </div>
 
-                <!-- 2. Pod-opcije upravljanja za Slobodno kretanje na mobitelu -->
+                <div class="flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10">
+                    <div class="flex items-center justify-between">
+                        <div class="text-left">
+                            <span class="font-body-md text-on-surface font-semibold text-sm">Granice ekrana</span>
+                            <p class="text-[10px] text-on-surface-variant">Prolaz kroz rubove (Wrap) ili Čvrsti zidovi (Classic)</p>
+                        </div>
+                        <div class="flex gap-1 bg-surface-elevated p-1 rounded-lg border border-white/5">
+                            <button id="bounds-wrap-btn" onclick="setBoundsMode('wrap')" class="px-3 py-1 text-xs font-bold rounded-md">Prolaz</button>
+                            <button id="bounds-classic-btn" onclick="setBoundsMode('classic')" class="px-3 py-1 text-xs font-bold rounded-md">Zidovi</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="setting-modern-controls" class="hidden flex flex-col gap-2 p-4 rounded-xl bg-white/5 border border-white/10 border-l-4 border-l-neon-purple">
                     <div class="text-left mb-2">
                         <span class="font-body-md text-on-surface font-semibold text-sm text-neon-purple">Upravljanje na mobitelu (360°)</span>
@@ -490,7 +476,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Pomoćne linije mreže -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Pomoćne linije mreže</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -499,7 +484,6 @@
                     </label>
                 </div>
 
-                <!-- 4. Efekt sjaja -->
                 <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/10">
                     <span class="font-body-md text-on-surface font-semibold text-sm">Efekat sjaja (Glow)</span>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -516,14 +500,12 @@
             </div>
         </section>
 
-        <!-- Dynamic Background Canvas -->
         <div class="fixed inset-0 -z-10 pointer-events-none">
             <div class="absolute top-1/4 -left-20 w-96 h-96 bg-neon-lime/5 blur-[120px] rounded-full"></div>
             <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-neon-cyan/5 blur-[120px] rounded-full"></div>
         </div>
     </main>
 
-    <!-- BottomNavBar -->
     <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container/85 backdrop-blur-xl rounded-t-xl border-t border-t-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
         <button onclick="goBackToMenu()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-neon-lime transition-all active:scale-90 duration-150 py-1">
             <span class="material-symbols-outlined">home</span>
@@ -543,8 +525,7 @@
         </button>
     </nav>
 
-    <!-- Version Indicator -->
-    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.2.2</div>
+    <div class="fixed bottom-2 right-2 text-[8px] text-gray-600 font-mono uppercase tracking-widest pointer-events-none hidden md:block">v1.3.0</div>
 
     <script>
         const canvas = document.getElementById('snakeCanvas');
@@ -559,15 +540,18 @@
         let showGlow = true;
         let challengeTimeLimit = 10;
 
-        // Načini rada i kretanja
-        let gameMode = 'modern'; // Promijenjeno po defaultu na 'modern' (slobodno kretanje)
+        // Načini rada i kretanja (Zadano Slobodno/Trackpad)
+        let gameMode = 'modern'; 
+        let boundsMode = 'wrap'; // 'wrap' (prolaz) ili 'classic' (zidovi)
         let modernAngle = -Math.PI / 2; 
-        let modernSpeed = 3.5; 
-        let turnSpeed = 0.08; 
+        let modernTargetAngle = null; 
+        let modernSpeed = 1.4; // Zadane ublažene bazične brzine (Lagano: 1.4, Srednje: 1.9, Teško: 2.4)
+        let baseStartSpeedModern = 1.4; // Čuva čistu početnu brzinu za funkciju usporavanja/reseta
+        let turnSpeed = 0.065; // Ograničenje zakretanja po frejmu (Fizika polukružnog luka)
         let keysPressed = {}; 
         
         // Pod-opcije kretanja za mobitel
-        let touchMode = 'trackpad'; // Promijenjeno po defaultu na 'trackpad'
+        let touchMode = 'trackpad'; 
         let joystickBase = { x: 0, y: 0, radius: 45 }; 
         let joystickStick = { x: 0, y: 0, radius: 20 };
         let isJoystickActive = false;
@@ -576,6 +560,14 @@
         let isDailyChallenge = false;
         let dailyQuestionsAnswered = 0;
         let dailyCorrect = 0;
+
+        // NOVO: Mehanika Zlatne jabuke i Laserskih privremenih zidova
+        let isGoldFood = false;
+        let goldFoodTimer = 0; // Odbrojavanje od 5 sekundi
+        let laserWallSide = null; // 'top', 'bottom', 'left', 'right' ili null
+        let laserWallState = 'none'; // 'none', 'warning', 'active'
+        let laserTimer = null; 
+        let isLaserActiveOnDifficulty = false; // Pali se isključivo na Teškoj razini
 
         // JSON struktura za pohranu lokalne statistike
         let playerStats = {
@@ -609,29 +601,22 @@
         ];
         const artDB = [
             { q: "Autor Mona Lise?", a: "Leonardo da Vinci" }, { q: "Autor Zvjezdane noći?", a: "Vincent van Gogh" }, { q: "U kojem je gradu Louvre?", a: "Pariz" },
-            { q: "Autor skulpture David?", a: "Michelangelo" }, { q: "Tko je naslikao Guernicu?", a: "Pablo Picasso" }, { q: "Tko je naslikao Stvaranje Adama?", a: "Michelangelo" },
+            { q: "Autor skulpture David?", a: "Michelangelo" }, { q: "Tko je naslikao Guernicu?", a: "Pablo Picasso" }, { q: "Tko je naslikao Stvaranje Adam?", a: "Michelangelo" },
             { q: "Tko je naslikao Posljednju večeru?", a: "Leonardo da Vinci" }, { q: "Koji je grad dom muzeja Prado?", a: "Madrid" }
         ];
 
-        // Učitavanje i inicijalizacija LocalStorage podataka
         function loadStatsFromStorage() {
             const savedData = localStorage.getItem('snake_edu_pro_stats');
             if (savedData) {
-                try {
-                    playerStats = JSON.parse(savedData);
-                } catch (e) {
-                    console.error("Greška pri učitavanju statistike.");
-                }
+                try { playerStats = JSON.parse(savedData); } catch (e) { }
             }
             updateDailyStatusUI();
         }
 
-        // Trajno spremanje statistike u LocalStorage
         function saveStatsToStorage() {
             localStorage.setItem('snake_edu_pro_stats', JSON.stringify(playerStats));
         }
 
-        // Ažuriranje statusa Dnevnog izazova na početnom zaslonu
         function updateDailyStatusUI() {
             const todayStr = new Date().toDateString();
             const statusTxt = document.getElementById('daily-status-txt');
@@ -644,7 +629,6 @@
             }
         }
 
-        // Računanje i dinamičko osvježavanje Dashboard sučelja
         function renderDashboard() {
             document.getElementById('dash-games').innerText = playerStats.gamesPlayed;
             document.getElementById('dash-high').innerText = playerStats.highScore;
@@ -655,52 +639,34 @@
             document.getElementById('dash-accuracy').innerText = globalAccuracy + "%";
 
             const categories = ['math', 'history', 'geo', 'art'];
-            let lowestAccuracy = 101;
-            let weakestCategory = '';
+            let lowestAccuracy = 101; let weakestCategory = '';
 
             categories.forEach(cat => {
                 let data = playerStats[cat];
                 let accuracy = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
-                
                 document.getElementById(`bar-${cat}-txt`).innerText = accuracy + "%";
                 const fill = document.getElementById(`bar-${cat}-fill`);
                 fill.style.width = accuracy + "%";
-
-                if (accuracy >= 75) {
-                    fill.className = "h-full bg-neon-lime";
-                } else if (accuracy >= 45) {
-                    fill.className = "h-full bg-neon-orange";
-                } else {
-                    fill.className = "h-full bg-error-red";
-                }
+                if (accuracy >= 75) fill.className = "h-full bg-neon-lime";
+                else if (accuracy >= 45) fill.className = "h-full bg-neon-orange";
+                else fill.className = "h-full bg-error-red";
 
                 if (data.total > 0 && accuracy < lowestAccuracy) {
-                    lowestAccuracy = accuracy;
-                    weakestCategory = cat;
+                    lowestAccuracy = accuracy; weakestCategory = cat;
                 }
             });
 
             const adviceEl = document.getElementById('dash-advice');
             if (totalQuestions === 0) {
-                adviceEl.innerText = "Zmija je gladna znanja! Odigraj par krugova kako bi pokrenuo analitiku i savjetnika.";
+                adviceEl.innerText = "Odigraj par krugova kako bi pokrenuo analitiku i savjetnika.";
             } else if (weakestCategory === '') {
-                adviceEl.innerText = "Sjajan početak! Sve riješene zadatke držiš na 100%. Samo nastavi tako.";
+                adviceEl.innerText = "Sve držiš na 100%! Izvrsno znanje.";
             } else {
                 switch(weakestCategory) {
-                    case 'math':
-                        adviceEl.innerText = "Zmija ti najbrže raste u Geografiji i Umjetnosti. Danas baci fokus na Matematiku i ponovi računske operacije!";
-                        break;
-                    case 'history':
-                        adviceEl.innerText = "Datumi i godine ti trenutno stvaraju mali otpor. Odigraj nekoliko rundi Povijesti kako bi učvrstio prag opstanka.";
-                        break;
-                    case 'geo':
-                        adviceEl.innerText = "Glavni gradovi svijeta te znaju zbuniti pod pritiskom. Pokreni lekciju Geografije i osiguraj mirnu vožnju!";
-                        break;
-                    case 'art':
-                        adviceEl.innerText = "Povijest umjetnosti i poznati autori su tvoja najslabija točka. Pojedi nekoliko umjetničkih paleta za napredak!";
-                        break;
-                    default:
-                        adviceEl.innerText = "Izvrsno balansiraš između tema. Izaberi najbrži tempo i testiraj svoje reflekse!";
+                    case 'math': adviceEl.innerText = "Zmija najbrže raste u drugim temama. Fokusiraj se na Matematiku!"; break;
+                    case 'history': adviceEl.innerText = "Datumi ti stvaraju mali otpor. Odigraj nekoliko rundi Povijesti!"; break;
+                    case 'geo': adviceEl.innerText = "Glavni gradovi te zbunjuju pod pritiskom. Pokreni Geografiju!"; break;
+                    case 'art': adviceEl.innerText = "Umjetnost i poznati autori su najslabija karika. Ponovi gradivo Umjetnosti!"; break;
                 }
             }
         }
@@ -708,7 +674,6 @@
         function setupCanvas() {
             const width = window.innerWidth || document.documentElement.clientWidth || 360;
             const height = window.innerHeight || document.documentElement.clientHeight || 640;
-
             const headerHeight = 64;
             const isDesktop = width >= 768;
             const padding = isDesktop ? 160 : 180;
@@ -717,23 +682,17 @@
             
             let size = Math.min(availWidth, availHeight, 420);
             if (isNaN(size) || size < 280) size = 280;
-            
             let finalSize = Math.floor(size / GRID) * GRID;
             if (isNaN(finalSize) || finalSize < 280) finalSize = 280;
 
-            canvas.width = finalSize;
-            canvas.height = finalSize;
-            wrapper.style.width = finalSize + 'px';
-            wrapper.style.height = finalSize + 'px';
+            canvas.width = finalSize; canvas.height = finalSize;
+            wrapper.style.width = finalSize + 'px'; wrapper.style.height = finalSize + 'px';
             TILES = finalSize / GRID;
 
-            joystickBase.x = finalSize - 65;
-            joystickBase.y = finalSize - 65;
-            joystickStick.x = joystickBase.x;
-            joystickStick.y = joystickBase.y;
+            joystickBase.x = finalSize - 65; joystickBase.y = finalSize - 65;
+            joystickStick.x = joystickBase.x; joystickStick.y = joystickBase.y;
 
-            ctx.fillStyle = "#000";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
         }
 
         function setGameMode(mode) {
@@ -753,148 +712,104 @@
             }
         }
 
+        function setBoundsMode(mode) {
+            boundsMode = mode;
+            const wrapBtn = document.getElementById('bounds-wrap-btn');
+            const classicBtn = document.getElementById('bounds-classic-btn');
+            if (mode === 'wrap') {
+                wrapBtn.className = "px-3 py-1 text-xs font-bold rounded-md bg-neon-lime text-surface-deep shadow-lg";
+                classicBtn.className = "px-3 py-1 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface";
+            } else {
+                wrapBtn.className = "px-3 py-1 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface";
+                classicBtn.className = "px-3 py-1 text-xs font-bold rounded-md bg-neon-lime text-surface-deep shadow-lg";
+            }
+        }
+
         function setTouchMode(mode) {
             touchMode = mode;
             const trackpadBtn = document.getElementById('touch-trackpad-btn');
             const joystickBtn = document.getElementById('touch-joystick-btn');
-
             [trackpadBtn, joystickBtn].forEach(b => b.className = "py-2 text-[10px] font-bold rounded-md text-on-surface-variant hover:text-on-surface");
-
             if (mode === 'trackpad') trackpadBtn.classList.add('setting-tab-active');
             else if (mode === 'joystick') joystickBtn.classList.add('setting-tab-active');
         }
 
-        function selectMainCategory(cat) {
-            selectedCat = cat;
-            updateNavigationHighlights();
-            if (cat === 'math') {
-                goBackTo('math-sub');
-            } else {
-                goBackTo('difficulty');
-            }
-        }
-
-        function selectMathSub(sub) {
-            selectedSub = sub;
-            goBackTo('difficulty');
-        }
-
         function goBackTo(view) {
             if (view !== 'game') {
-                isPaused = true;
-                isDailyChallenge = false; 
-                clearInterval(mathTimer);
+                isPaused = true; isDailyChallenge = false;
+                clearInterval(mathTimer); stopLaserSystem();
                 document.getElementById('pause-modal').classList.remove('active');
                 document.getElementById('challenge-modal').classList.remove('active');
                 document.getElementById('game-over-modal').classList.remove('active');
                 document.getElementById('daily-complete-modal').classList.remove('active');
-
                 document.getElementById('hud-score-label').innerText = "BODOVI";
                 document.getElementById('score-val').className = "font-stats-number text-stats-number text-neon-cyan";
-
                 const pauseBtn = document.getElementById('header-pause-btn');
-                if (pauseBtn) {
-                    pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
-                    pauseBtn.disabled = true;
-                }
+                if (pauseBtn) { pauseBtn.classList.add('opacity-30', 'cursor-not-allowed'); pauseBtn.disabled = true; }
             }
-
-            if (view === 'dashboard') {
-                renderDashboard();
-            }
-
+            if (view === 'dashboard') renderDashboard();
             document.querySelectorAll('main > section').forEach(d => d.classList.add('hidden'));
             const target = document.getElementById('view-' + view);
             if (target) target.classList.remove('hidden');
-            updateNavigationHighlights();
-            setupCanvas();
+            updateNavigationHighlights(); setupCanvas();
         }
 
-        function goBackToCategoryOrSub() {
-            if (selectedCat === 'math') {
-                goBackTo('math-sub');
-            } else {
-                goBackTo('categories');
-            }
-        }
-
-        function goBackToSubMenu() {
-            goBackToMenu();
-            if (selectedCat === 'math') {
-                goBackTo('math-sub');
-            } else {
-                goBackTo('categories');
-            }
-        }
-
-        function goBackToMenu() {
-            isPaused = true;
-            isDailyChallenge = false;
-            clearInterval(mathTimer);
-            document.getElementById('pause-modal').classList.remove('active');
-            document.getElementById('challenge-modal').classList.remove('active');
-            document.getElementById('game-over-modal').classList.remove('active');
-            document.getElementById('daily-complete-modal').classList.remove('active');
-
-            document.getElementById('hud-score-label').innerText = "BODOVI";
-            document.getElementById('score-val').className = "font-stats-number text-stats-number text-neon-cyan";
-
-            const pauseBtn = document.getElementById('header-pause-btn');
-            pauseBtn.classList.add('opacity-30', 'cursor-not-allowed');
-            pauseBtn.disabled = true;
-
-            goBackTo('categories');
-        }
+        function goBackToCategoryOrSub() { if (selectedCat === 'math') goBackTo('math-sub'); else goBackTo('categories'); }
+        function goBackToSubMenu() { goBackToMenu(); if (selectedCat === 'math') goBackTo('math-sub'); else goBackTo('categories'); }
+        function goBackToMenu() { isPaused = true; isDailyChallenge = false; clearInterval(mathTimer); stopLaserSystem(); goBackTo('categories'); }
 
         function updateNavigationHighlights() {
             const navCat = document.getElementById('nav-categories');
             const navDashboard = document.getElementById('nav-dashboard');
             const navSpeed = document.getElementById('nav-speed');
             const navSettings = document.getElementById('nav-settings');
-
-            [navCat, navDashboard, navSpeed, navSettings].forEach(btn => {
-                if(btn) btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left";
-            });
-
-            if (!document.getElementById('view-categories').classList.contains('hidden')) {
-                navCat.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
-            } else if (!document.getElementById('view-dashboard').classList.contains('hidden')) {
-                if(navDashboard) navDashboard.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
-            } else if (!document.getElementById('view-difficulty').classList.contains('hidden')) {
-                navSpeed.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
-            } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
-                navSettings.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
-            }
+            [navCat, navDashboard, navSpeed, navSettings].forEach(btn => { if(btn) btn.className = "flex items-center gap-4 p-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 rounded-lg transition-all duration-300 ease-in-out w-full text-left"; });
+            if (!document.getElementById('view-categories').classList.contains('hidden')) navCat.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            else if (!document.getElementById('view-dashboard').classList.contains('hidden')) { if(navDashboard) navDashboard.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left"; }
+            else if (!document.getElementById('view-difficulty').classList.contains('hidden')) navSpeed.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
+            else if (!document.getElementById('view-settings').classList.contains('hidden')) navSettings.className = "flex items-center gap-4 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-bold transition-all duration-300 ease-in-out w-full text-left";
         }
 
-        function handleMobileBack() {
-            if (!document.getElementById('view-game').classList.contains('hidden')) {
-                goBackToMenu();
-            } else if (!document.getElementById('view-difficulty').classList.contains('hidden')) {
-                goBackToCategoryOrSub();
-            } else if (!document.getElementById('view-math-sub').classList.contains('hidden')) {
-                goBackTo('categories');
-            } else if (!document.getElementById('view-settings').classList.contains('hidden')) {
-                goBackTo('categories');
-            } else if (!document.getElementById('view-dashboard').classList.contains('hidden')) {
-                goBackTo('categories');
-            }
+        // NOVO: Upravljanje sustavom nasumičnih laserskih zidova na Teškoj razini
+        function startLaserSystem() {
+            stopLaserSystem();
+            if (!isLaserActiveOnDifficulty) return;
+            
+            laserTimer = setInterval(() => {
+                if (isPaused || laserWallState !== 'none') return;
+                
+                // Odabir nasumičnog ruba ekrana
+                const sides = ['top', 'bottom', 'left', 'right'];
+                laserWallSide = sides[Math.floor(Math.random() * sides.length)];
+                laserWallState = 'warning'; // Faza 1: Pulsirajuće crveno upozorenje
+                
+                // Nakon 1.5 sekundu upozorenja, pretvara se u smrtonosni aktivni laser
+                setTimeout(() => {
+                    if (!isPaused && laserWallState === 'warning') {
+                        laserWallState = 'active'; // Faza 2: Laser je aktivan i smrtonosan
+                        
+                        // Laser ostaje čvrst točno 3 sekunde, a zatim nestaje
+                        setTimeout(() => {
+                            if (laserWallState === 'active') {
+                                laserWallState = 'none';
+                                laserWallSide = null;
+                            }
+                        }, 3000);
+                    } else {
+                        laserWallState = 'none';
+                        laserWallSide = null;
+                    }
+                }, 1500);
+
+            }, Math.floor(Math.random() * 6000) + 12000); // Aktivira se random svakih 12-18 sekundi
         }
 
-        function toggleSetting(name) {
-            if (name === 'grid') {
-                showGridLines = document.getElementById('setting-grid').checked;
-            } else if (name === 'glow') {
-                showGlow = document.getElementById('setting-glow').checked;
-                if (showGlow) {
-                    wrapper.style.boxShadow = '0 0 60px rgba(34, 197, 94, 0.15)';
-                } else {
-                    wrapper.style.boxShadow = 'none';
-                }
-            }
+        function stopLaserSystem() {
+            clearInterval(laserTimer);
+            laserWallSide = null;
+            laserWallState = 'none';
         }
 
-        // Pokretanje Dnevnog Izazova (U potpunosti poštuje trenutne kretanje/postavke)
         function startDailyChallenge() {
             const categories = ['math', 'history', 'geo', 'art'];
             selectedCat = categories[Math.floor(Math.random() * categories.length)];
@@ -902,71 +817,51 @@
                 const subcategories = ['basic', 'subtraction', 'advanced', 'division', 'mix'];
                 selectedSub = subcategories[Math.floor(Math.random() * subcategories.length)];
             }
-
-            const difficulties = [
-                { speed: 180, growth: 0.98, time: 15 }, // Lagano
-                { speed: 130, growth: 0.96, time: 10 }, // Srednje
-                { speed: 90, growth: 0.94, time: 5 }   // Teško
-            ];
+            const difficulties = [{ speed: 200 }, { speed: 155 }, { speed: 115 }];
             const chosenDiff = difficulties[Math.floor(Math.random() * difficulties.length)];
 
-            isDailyChallenge = true;
-            dailyQuestionsAnswered = 0;
-            dailyCorrect = 0;
-
+            isDailyChallenge = true; dailyQuestionsAnswered = 0; dailyCorrect = 0;
             document.getElementById('hud-score-label').innerText = "DNEVNI IZAZOV";
-            const scoreVal = document.getElementById('score-val');
-            scoreVal.className = "font-stats-number text-stats-number text-amber-400";
+            document.getElementById('score-val').className = "font-stats-number text-stats-number text-amber-400";
 
-            // Pokreće u obliku/kretanju koje je trenutno spremljeno u postavkama
-            startGame(chosenDiff.speed, chosenDiff.growth, chosenDiff.time);
+            startGame(chosenDiff.speed, 0.96, 10);
         }
 
         function startGame(startSpeed, growth, challengeTime = 10) {
             document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
             document.getElementById('view-game').classList.remove('hidden');
-
             const pauseBtn = document.getElementById('header-pause-btn');
-            pauseBtn.classList.remove('opacity-30', 'cursor-not-allowed');
+            pauseBtn.className = "active:scale-95 duration-200 p-2 rounded-full hover:bg-surface-bright/20 text-white cursor-pointer";
             pauseBtn.disabled = false;
 
-            interval = startSpeed;
-            speedFactor = growth;
-            challengeTimeLimit = challengeTime; 
-            init();
+            interval = startSpeed; speedFactor = growth; challengeTimeLimit = challengeTime;
+            isLaserActiveOnDifficulty = (startSpeed === 115); // Laser se pali samo na Teško (115ms)
+            
+            // Konfiguracija bazičnih kalibriranih brzina za Slobodan način rada
+            if (startSpeed === 200) baseStartSpeedModern = 1.4;
+            else if (startSpeed === 155) baseStartSpeedModern = 1.9;
+            else baseStartSpeedModern = 2.4;
+            modernSpeed = baseStartSpeedModern;
 
-            if (gameMode === 'retro') {
-                gameLoop(); 
-            } else {
-                modernAngle = -Math.PI / 2;
-                modernSpeed = (270 - startSpeed) / 45; 
-                requestAnimationFrame(modernGameLoop); 
-            }
+            init();
+            startLaserSystem();
+
+            if (gameMode === 'retro') gameLoop();
+            else requestAnimationFrame(modernGameLoop);
         }
 
         function init() {
             if (gameMode === 'retro') {
                 const mid = Math.floor(TILES / 2);
                 snake = [{ x: mid, y: mid }, { x: mid, y: mid + 1 }, { x: mid, y: mid + 2 }];
-                dir = { x: 0, y: -1 };
-                nextDir = { x: 0, y: -1 };
+                dir = { x: 0, y: -1 }; nextDir = { x: 0, y: -1 };
             } else {
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
+                const centerX = canvas.width / 2; const centerY = canvas.height / 2;
                 snake = [];
-                for (let i = 0; i < 12; i++) {
-                    snake.push({ x: centerX, y: centerY + i * 8 });
-                }
-                isJoystickActive = false;
-                joystickStick.x = joystickBase.x;
-                joystickStick.y = joystickBase.y;
+                for (let i = 0; i < 15; i++) snake.push({ x: centerX, y: centerY + i * 8 });
             }
-            score = 0;
-            minLimit = 0;
-            lastChallengeScore = -1;
-            isPaused = false;
-            updateUI();
-            spawnFood();
+            score = 0; minLimit = 0; lastChallengeScore = -1; isPaused = false;
+            updateUI(); spawnFood();
         }
 
         function updateUI() {
@@ -975,15 +870,20 @@
                 document.getElementById('score-val').innerText = `${dailyQuestionsAnswered}/10`;
             } else {
                 document.getElementById('score-val').innerText = score;
-                if (score >= 10) minLimit = 5;
-                else if (score >= 5) minLimit = 2;
-                else minLimit = 0;
+                if (score >= 10) minLimit = 5; else if (score >= 5) minLimit = 2; else minLimit = 0;
                 document.getElementById('min-limit').innerText = minLimit;
             }
         }
 
         function spawnFood() {
             food = { x: Math.floor(Math.random() * TILES), y: Math.floor(Math.random() * TILES) };
+            
+            // NOVO: Mehanika Zlatne jabuke (10% šanse)
+            isGoldFood = (Math.random() < 0.10);
+            if (isGoldFood) {
+                goldFoodTimer = 5.0; // Traje točno 5 sekundi
+            }
+
             if (gameMode === 'retro') {
                 if (snake.some(s => s.x === food.x && s.y === food.y)) spawnFood();
             } else {
@@ -993,52 +893,85 @@
             }
         }
 
+        function checkLaserWallCollision(x, y, isPixel = false) {
+            if (laserWallState !== 'active' || !laserWallSide) return false;
+            const threshold = isPixel ? 6 : 0.3;
+            const maxVal = isPixel ? canvas.width : TILES;
+            
+            if (laserWallSide === 'top' && y <= threshold) return true;
+            if (laserWallSide === 'bottom' && y >= maxVal - 1 - threshold) return true;
+            if (laserWallSide === 'left' && x <= threshold) return true;
+            if (laserWallSide === 'right' && x >= maxVal - 1 - threshold) return true;
+            return false;
+        }
+
         // RETRO PETLJA
         function gameLoop() {
             if (isPaused || gameMode !== 'retro') return;
+            
+            // Smanjivanje trajanja zlatne jabuke
+            if (isGoldFood) {
+                goldFoodTimer -= (interval / 1000);
+                if (goldFoodTimer <= 0) { isGoldFood = false; spawnFood(); }
+            }
+
             dir = nextDir;
             let head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
 
-            if (head.x < 0) head.x = TILES - 1;
-            if (head.x >= TILES) head.x = 0;
-            if (head.y < 0) head.y = TILES - 1;
-            if (head.y >= TILES) head.y = 0;
+            // Provjera udarca u privremeni laser zid
+            if (checkLaserWallCollision(head.x, head.y, false)) {
+                document.getElementById('game-over-reason').innerText = "Zmija je udarila u smrtonosni laserski zid!";
+                if (isDailyChallenge) recordDailyChallenge(dailyCorrect);
+                return showGameOver();
+            }
+
+            // Upravljanje granicama (Wrap vs Classic Zidovi)
+            if (boundsMode === 'classic') {
+                if (head.x < 0 || head.x >= TILES || head.y < 0 || head.y >= TILES) {
+                    document.getElementById('game-over-reason').innerText = "Zmija je udarila u čvrsti vanjski zid!";
+                    if (isDailyChallenge) recordDailyChallenge(dailyCorrect);
+                    return showGameOver();
+                }
+            } else {
+                if (head.x < 0) head.x = TILES - 1;
+                if (head.x >= TILES) head.x = 0;
+                if (head.y < 0) head.y = TILES - 1;
+                if (head.y >= TILES) head.y = 0;
+            }
 
             for (let i = 1; i < snake.length; i++) {
                 if (head.x === snake[i].x && head.y === snake[i].y) {
-                    let lost = snake.length - i;
-                    snake = snake.slice(0, i);
+                    let lost = snake.length - i; snake = snake.slice(0, i);
                     score = Math.max(0, score - lost);
-                    
-                    if (isDailyChallenge) {
-                        recordDailyChallenge(dailyCorrect);
-                        document.getElementById('game-over-reason').innerText = "Zmija je udarila u prepreku";
-                        return showGameOver();
-                    }
-
+                    if (isDailyChallenge) { recordDailyChallenge(dailyCorrect); document.getElementById('game-over-reason').innerText = "Zmija je ugrizla vlastiti rep"; return showGameOver(); }
                     if (score < minLimit) return showGameOver();
-                    lastChallengeScore = Math.floor(score / 5) * 5;
-                    if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
-                    updateUI();
-                    break;
+                    lastChallengeScore = Math.floor(score / 5) * 5; if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
+                    updateUI(); break;
                 }
             }
 
             snake.unshift(head);
 
             if (head.x === food.x && head.y === food.y) {
-                score++;
+                // Ako je pojedena zlatna jabuka, donosi +2 boda, inače +1
+                score += isGoldFood ? 2 : 1;
                 updateUI();
+                
+                // NOVO: Svaka obična bobica postupno ubrzava igru za 1.2%
+                if (!isGoldFood) {
+                    interval = Math.max(85, interval * 0.988); // Kočnica na maksimalno 85ms
+                }
+
+                let triggeredGoldBonus = isGoldFood; // Čuva informaciju o bonusu prije re-spawna
                 spawnFood();
                 
                 if (isDailyChallenge) {
-                    triggerChallenge();
+                    triggerChallenge(triggeredGoldBonus);
                     return;
                 }
-
-                if (score > 0 && score % 5 === 0 && score !== lastChallengeScore) {
+                if (triggeredGoldBonus || (score > 0 && score % 5 === 0 && score !== lastChallengeScore)) {
                     lastChallengeScore = score;
-                    triggerChallenge();
+                    triggerChallenge(triggeredGoldBonus);
                     return;
                 }
             } else {
@@ -1049,56 +982,73 @@
             setTimeout(gameLoop, interval);
         }
 
-        // SLOBODNA PETLJA (360°)
+        // SLOBODNA PETLJA (360° - Savršeno izbalansirane brzine i kutni luk)
         function modernGameLoop() {
             if (isPaused || gameMode !== 'modern') return;
 
-            if (keysPressed['ArrowLeft']) modernAngle -= turnSpeed;
-            if (keysPressed['ArrowRight']) modernAngle += turnSpeed;
-
-            if (touchMode === 'joystick' && isJoystickActive) {
-                const dx = joystickStick.x - joystickBase.x;
-                const dy = joystickStick.y - joystickBase.y;
-                if (Math.hypot(dx, dy) > 5) {
-                    modernAngle = Math.atan2(dy, dx);
-                }
+            // Smanjivanje tajmera zlatne hrane (60 frejmova u sekundi cca)
+            if (isGoldFood) {
+                goldFoodTimer -= 0.016;
+                if (goldFoodTimer <= 0) { isGoldFood = false; spawnFood(); }
             }
+
+            let target = modernAngle;
+            if (keysPressed['ArrowLeft']) target = modernAngle - 0.14;
+            else if (keysPressed['ArrowRight']) target = modernAngle + 0.14;
+            else if (touchMode === 'trackpad' && modernTargetAngle !== null) target = modernTargetAngle;
+            else if (touchMode === 'joystick' && isJoystickActive) {
+                const dx = joystickStick.x - joystickBase.x; const dy = joystickStick.y - joystickBase.y;
+                if (Math.hypot(dx, dy) > 5) target = Math.atan2(dy, dx);
+            }
+
+            // IMPLEMENTACIJA POLUKRUŽNOG LUKA (Ograničenje zakretanja pod 360°)
+            let angleDiff = target - modernAngle;
+            while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
+            while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
+            modernAngle += Math.max(-turnSpeed, Math.min(turnSpeed, angleDiff));
 
             let head = {
                 x: snake[0].x + Math.cos(modernAngle) * modernSpeed,
                 y: snake[0].y + Math.sin(modernAngle) * modernSpeed
             };
 
-            if (head.x < 0) head.x = canvas.width;
-            if (head.x >= canvas.width) head.x = 0;
-            if (head.y < 0) head.y = canvas.height;
-            if (head.y >= canvas.height) head.y = 0;
+            // Provjera udarca u laserski privremeni zid
+            if (checkLaserWallCollision(head.x, head.y, true)) {
+                document.getElementById('game-over-reason').innerText = "Zmija je udarila u smrtonosni laserski zid!";
+                if (isDailyChallenge) recordDailyChallenge(dailyCorrect);
+                return showGameOver();
+            }
 
-            const selfCollisionMinSegment = 14;
+            // Upravljanje granicama ekrana
+            if (boundsMode === 'classic') {
+                if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+                    document.getElementById('game-over-reason').innerText = "Zmija je udarila u čvrsti vanjski zid!";
+                    if (isDailyChallenge) recordDailyChallenge(dailyCorrect);
+                    return showGameOver();
+                }
+            } else {
+                if (head.x < 0) head.x = canvas.width;
+                if (head.x >= canvas.width) head.x = 0;
+                if (head.y < 0) head.y = canvas.height;
+                if (head.y >= canvas.height) head.y = 0;
+            }
+
+            // PROŠIRENI IMUNITET VRATA (18 segmenata sprečava lažni Game Over pri polukružnom okretu)
+            const selfCollisionMinSegment = 18;
             for (let i = selfCollisionMinSegment; i < snake.length; i++) {
-                let dx = head.x - snake[i].x;
-                let dy = head.y - snake[i].y;
+                let dx = head.x - snake[i].x; let dy = head.y - snake[i].y;
                 if (dx > canvas.width / 2) dx -= canvas.width;
                 if (dx < -canvas.width / 2) dx += canvas.width;
                 if (dy > canvas.height / 2) dy -= canvas.height;
                 if (dy < -canvas.height / 2) dy += canvas.height;
 
                 if (Math.hypot(dx, dy) < 10) {
-                    let lostSegments = Math.floor((snake.length - i) / 2);
-                    snake = snake.slice(0, i);
+                    let lostSegments = Math.floor((snake.length - i) / 2); snake = snake.slice(0, i);
                     score = Math.max(0, score - lostSegments);
-                    
-                    if (isDailyChallenge) {
-                        recordDailyChallenge(dailyCorrect);
-                        document.getElementById('game-over-reason').innerText = "Zmija je udarila u prepreku";
-                        return showGameOver();
-                    }
-
+                    if (isDailyChallenge) { recordDailyChallenge(dailyCorrect); document.getElementById('game-over-reason').innerText = "Zmija je udarila u vlastito tijelo"; return showGameOver(); }
                     if (score < minLimit) return showGameOver();
-                    lastChallengeScore = Math.floor(score / 5) * 5;
-                    if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
-                    updateUI();
-                    break;
+                    lastChallengeScore = Math.floor(score / 5) * 5; if (score % 5 === 0 && score > 0) lastChallengeScore -= 5;
+                    updateUI(); break;
                 }
             }
 
@@ -1107,22 +1057,23 @@
             const foodPixelX = food.x * GRID + GRID / 2;
             const foodPixelY = food.y * GRID + GRID / 2;
             if (Math.hypot(head.x - foodPixelX, head.y - foodPixelY) < 15) {
-                score++;
+                score += isGoldFood ? 2 : 1;
                 updateUI();
-                spawnFood();
-                const last = snake[snake.length - 1];
-                snake.push({ x: last.x, y: last.y });
-                snake.push({ x: last.x, y: last.y });
-
-                if (isDailyChallenge) {
-                    triggerChallenge();
-                    return;
+                
+                // NOVO: Postupno i glatko ubrzavanje sa svakom običnom bobicom za 1.2%
+                if (!isGoldFood) {
+                    modernSpeed = Math.min(3.4, modernSpeed * 1.012); // Gornja kočnica na 3.4px
                 }
 
-                if (score > 0 && score % 5 === 0 && score !== lastChallengeScore) {
-                    lastChallengeScore = score;
-                    triggerChallenge();
-                    return;
+                const last = snake[snake.length - 1];
+                snake.push({ x: last.x, y: last.y }); snake.push({ x: last.x, y: last.y });
+
+                let triggeredGoldBonus = isGoldFood;
+                spawnFood();
+
+                if (isDailyChallenge) { triggerChallenge(triggeredGoldBonus); return; }
+                if (triggeredGoldBonus || (score > 0 && score % 5 === 0 && score !== lastChallengeScore)) {
+                    lastChallengeScore = score; triggerChallenge(triggeredGoldBonus); return;
                 }
             } else {
                 snake.pop();
@@ -1130,16 +1081,12 @@
 
             const targetDist = 8;
             for (let i = 1; i < snake.length; i++) {
-                const prev = snake[i - 1];
-                const curr = snake[i];
-                let dx = prev.x - curr.x;
-                let dy = prev.y - curr.y;
-
+                const prev = snake[i - 1]; const curr = snake[i];
+                let dx = prev.x - curr.x; let dy = prev.y - curr.y;
                 if (dx > canvas.width / 2) dx -= canvas.width;
                 if (dx < -canvas.width / 2) dx += canvas.width;
                 if (dy > canvas.height / 2) dy -= canvas.height;
                 if (dy < -canvas.height / 2) dy += canvas.height;
-
                 const dist = Math.hypot(dx, dy);
                 if (dist > targetDist) {
                     const angle = Math.atan2(dy, dx);
@@ -1153,34 +1100,62 @@
         }
 
         function draw() {
-            ctx.fillStyle = "#000";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#000"; ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             if (showGridLines) {
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
-                ctx.lineWidth = 1;
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.05)"; ctx.lineWidth = 1;
                 for (let i = 0; i <= TILES; i++) {
                     ctx.beginPath(); ctx.moveTo(i * GRID, 0); ctx.lineTo(i * GRID, canvas.height); ctx.stroke();
                     ctx.beginPath(); ctx.moveTo(0, i * GRID); ctx.lineTo(canvas.width, i * GRID); ctx.stroke();
                 }
             }
 
-            // Hrana
-            const foodColor = catColors[selectedCat] || '#f43f5e';
-            ctx.shadowBlur = showGlow ? 15 : 0;
-            ctx.shadowColor = foodColor;
-            ctx.fillStyle = foodColor;
-            ctx.beginPath();
-            ctx.arc(food.x * GRID + GRID / 2, food.y * GRID + GRID / 2, GRID / 2.5, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.shadowBlur = 0;
+            // VIZUALIZACIJA LASERSKIH ZIDOVA (Pulsiranje i puni laser)
+            if (laserWallSide && laserWallState !== 'none') {
+                ctx.save();
+                if (laserWallState === 'warning') {
+                    // Crveno treperenje kao upozorenje
+                    ctx.strokeStyle = (Math.floor(Date.now() / 150) % 2 === 0) ? "rgba(239, 68, 68, 0.8)" : "rgba(239, 68, 68, 0.1)";
+                    ctx.lineWidth = 6;
+                } else {
+                    // Smrtonosni, čvrsti laserski zid (Svijetleći efekt)
+                    ctx.strokeStyle = "#EF4444"; ctx.lineWidth = 8;
+                    ctx.shadowBlur = 20; ctx.shadowColor = "#EF4444";
+                }
+                ctx.beginPath();
+                if (laserWallSide === 'top') { ctx.moveTo(0, 4); ctx.lineTo(canvas.width, 4); }
+                else if (laserWallSide === 'bottom') { ctx.moveTo(0, canvas.height - 4); ctx.lineTo(canvas.width, canvas.height - 4); }
+                else if (laserWallSide === 'left') { ctx.moveTo(4, 0); ctx.lineTo(4, canvas.height); }
+                else if (laserWallSide === 'right') { ctx.moveTo(canvas.width - 4, 0); ctx.lineTo(canvas.width - 4, canvas.height); }
+                ctx.stroke(); ctx.restore();
+            }
+
+            // CRTANJE HRANE (Zlatna jabuka vs Obična bobica)
+            const foodPixelX = food.x * GRID + GRID / 2;
+            const foodPixelY = food.y * GRID + GRID / 2;
+            ctx.save();
+            if (isGoldFood) {
+                // Zlatna jabuka jarko pulsira i ima sjaj
+                let goldGlow = 15 + Math.sin(Date.now() / 100) * 8;
+                ctx.shadowBlur = showGlow ? goldGlow : 0; ctx.shadowColor = "#F59E0B";
+                ctx.fillStyle = "#F59E0B";
+                ctx.beginPath(); ctx.arc(foodPixelX, foodPixelY, GRID / 2.1, 0, Math.PI * 2); ctx.fill();
+                
+                // Vizualni brojač preostalog vremena iznad jabuke
+                ctx.shadowBlur = 0; ctx.fillStyle = "#FFF"; ctx.font = "bold 9px monospace"; ctx.textAlign = "center";
+                ctx.fillText(goldFoodTimer.toFixed(1) + "s", foodPixelX, foodPixelY - 12);
+            } else {
+                const foodColor = catColors[selectedCat] || '#f43f5e';
+                ctx.shadowBlur = showGlow ? 15 : 0; ctx.shadowColor = foodColor; ctx.fillStyle = foodColor;
+                ctx.beginPath(); ctx.arc(foodPixelX, foodPixelY, GRID / 2.5, 0, Math.PI * 2); ctx.fill();
+            }
+            ctx.restore();
 
             // Zmija
             if (gameMode === 'retro') {
                 snake.forEach((p, i) => {
                     ctx.fillStyle = i === 0 ? "#4ade80" : "#16a34a";
-                    const x = p.x * GRID + 1; const y = p.y * GRID + 1;
-                    const w = GRID - 2; const h = GRID - 2; const r = 5;
+                    const x = p.x * GRID + 1; const y = p.y * GRID + 1; const w = GRID - 2; const h = GRID - 2; const r = 5;
                     ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); ctx.fill();
                 });
             } else {
@@ -1192,100 +1167,59 @@
 
             // Joystick
             if (gameMode === 'modern' && touchMode === 'joystick') {
-                ctx.save();
-                ctx.fillStyle = "rgba(255, 255, 255, 0.08)";
-                ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(joystickBase.x, joystickBase.y, joystickBase.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
-
-                ctx.fillStyle = "rgba(6, 182, 212, 0.4)"; 
-                ctx.strokeStyle = "#06B6D4";
-                ctx.beginPath();
-                ctx.arc(joystickStick.x, joystickStick.y, joystickStick.radius, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.stroke();
-                ctx.restore();
+                ctx.save(); ctx.fillStyle = "rgba(255, 255, 255, 0.08)"; ctx.strokeStyle = "rgba(255, 255, 255, 0.2)"; ctx.lineWidth = 2;
+                ctx.beginPath(); ctx.arc(joystickBase.x, joystickBase.y, joystickBase.radius, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+                ctx.fillStyle = "rgba(6, 182, 212, 0.4)"; ctx.strokeStyle = "#06B6D4";
+                ctx.beginPath(); ctx.arc(joystickStick.x, joystickStick.y, joystickStick.radius, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); ctx.restore();
             }
         }
 
-        function togglePause() {
-            if (document.getElementById('view-game').classList.contains('hidden')) return;
-            if (!isPaused) {
-                isPaused = true;
-                document.getElementById('pause-modal').classList.add('active');
-            } else {
-                resumeGame();
-            }
-        }
-
-        function resumeGame() {
-            document.getElementById('pause-modal').classList.remove('active');
-            countdownEl.style.display = 'flex';
-            let c = 3; countdownEl.innerText = c;
-            let t = setInterval(() => {
-                c--;
-                if (c > 0) countdownEl.innerText = c;
-                else {
-                    clearInterval(t); countdownEl.style.display = 'none'; isPaused = false;
-                    if (gameMode === 'retro') gameLoop();
-                    else requestAnimationFrame(modernGameLoop);
-                }
-            }, 600);
-        }
-
-        // GENERATOR KVIZOVA
-        function triggerChallenge() {
+        // GENERATOR KVIZOVA (Prilagođen za prepoznavanje Zlatnog izazova)
+        function triggerChallenge(isGoldBonus = false) {
             isPaused = true;
             const container = document.getElementById('options-container');
-            container.innerHTML = ''; 
+            container.innerHTML = '';
             document.getElementById('challenge-modal').classList.add('active');
             let options = [];
 
-            if (selectedCat === 'math') {
-                document.getElementById('cat-label').innerText = "MATEMATIKA";
-                let a, b;
-                let currentSub = selectedSub;
+            // Ako je zlatni izazov, stiliziraj prozor u zlatnu boju
+            const badge = document.getElementById('challenge-badge-title');
+            if (isGoldBonus) {
+                badge.innerText = "🏆 ZLATNI BONUS KVIZ (RESET BRZINE)";
+                badge.className = "text-amber-400 font-extrabold text-[10px] tracking-widest";
+            } else {
+                badge.innerText = selectedCat === 'math' ? "MATEMATIKA" : selectedCat.toUpperCase();
+                badge.className = "text-neon-cyan font-bold text-[10px] tracking-[0.2em]";
+            }
 
+            if (selectedCat === 'math') {
+                let a, b; let currentSub = selectedSub;
                 if (selectedSub === 'mix') {
                     const subModes = ['basic', 'subtraction', 'advanced', 'division'];
                     currentSub = subModes[Math.floor(Math.random() * subModes.length)];
                 }
-
-                if (currentSub === 'advanced') { 
+                if (currentSub === 'advanced') {
                     a = Math.floor(Math.random() * 11) + 2; b = Math.floor(Math.random() * 11) + 2;
                     correctResult = a * b; document.getElementById('q-text').innerText = `${a} × ${b} = ?`;
-                } 
-                else if (currentSub === 'subtraction') { 
-                    a = Math.floor(Math.random() * 41) + 10; 
-                    b = Math.floor(Math.random() * (a - 4)) + 2; 
+                } else if (currentSub === 'subtraction') {
+                    a = Math.floor(Math.random() * 41) + 10; b = Math.floor(Math.random() * (a - 4)) + 2;
                     correctResult = a - b; document.getElementById('q-text').innerText = `${a} − ${b} = ?`;
-                } 
-                else if (currentSub === 'division') { 
-                    b = Math.floor(Math.random() * 9) + 2; 
-                    correctResult = Math.floor(Math.random() * 9) + 2; 
-                    a = b * correctResult; 
+                } else if (currentSub === 'division') {
+                    b = Math.floor(Math.random() * 9) + 2; correctResult = Math.floor(Math.random() * 9) + 2; a = b * correctResult;
                     document.getElementById('q-text').innerText = `${a} ÷ ${b} = ?`;
-                } 
-                else { 
+                } else {
                     a = Math.floor(Math.random() * 30) + 5; b = Math.floor(Math.random() * 30) + 5;
                     correctResult = a + b; document.getElementById('q-text').innerText = `${a} + ${b} = ?`;
                 }
-
                 options.push(correctResult);
                 while (options.length < 3) {
-                    let off = Math.floor(Math.random() * 5) + 1;
-                    let wrong = Math.random() > 0.5 ? correctResult + off : correctResult - off;
+                    let off = Math.floor(Math.random() * 5) + 1; let wrong = Math.random() > 0.5 ? correctResult + off : correctResult - off;
                     if (wrong > 0 && !options.includes(wrong)) options.push(wrong);
                 }
             } else {
                 let db = selectedCat === 'geo' ? geoDB : (selectedCat === 'history' ? historyDB : artDB);
-                document.getElementById('cat-label').innerText = selectedCat.toUpperCase();
                 let item = db[Math.floor(Math.random() * db.length)];
                 correctResult = item.a; document.getElementById('q-text').innerText = item.q;
-
                 options.push(correctResult);
                 while (options.length < 3) {
                     let randomItem = db[Math.floor(Math.random() * db.length)];
@@ -1297,125 +1231,108 @@
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'opt-btn'; btn.innerText = opt;
-                btn.onclick = () => finalize(String(opt).toLowerCase() === String(correctResult).toLowerCase());
+                // Prosljeđujemo informaciju o zlatnoj vrsti nagrade u finalize funkciju
+                btn.onclick = () => finalize(String(opt).toLowerCase() === String(correctResult).toLowerCase(), isGoldBonus);
                 container.appendChild(btn);
             });
 
             let sec = challengeTimeLimit; clearInterval(mathTimer);
             mathTimer = setInterval(() => {
-                sec -= 0.1;
-                document.getElementById('timer-bar').style.width = (sec / challengeTimeLimit) * 100 + "%";
-                if (sec <= 0) finalize(false);
+                sec -= 0.1; document.getElementById('timer-bar').style.width = (sec / challengeTimeLimit) * 100 + "%";
+                if (sec <= 0) finalize(false, isGoldBonus);
             }, 100);
         }
 
-        // KONAČNA ODLUKA ODGOVORA (Ažurirano s popravkom brojanja u HUD-u)
-        function finalize(correct) {
+        // KONAČNA ODLUKA ODGOVORA (Ubrzaj / Uspori / Reset)
+        function finalize(correct, isGoldBonus = false) {
             clearInterval(mathTimer);
             document.getElementById('challenge-modal').classList.remove('active');
             
             playerStats[selectedCat].total += 1;
-            if (correct) {
-                playerStats[selectedCat].correct += 1;
-            }
+            if (correct) playerStats[selectedCat].correct += 1;
 
             if (isDailyChallenge) {
                 dailyQuestionsAnswered++;
-                if (correct) {
-                    dailyCorrect++;
-                }
+                if (correct) dailyCorrect++;
 
-                // Provjera pobjede (Ažuriranje HUD-a na 10/10 prije prikazivanja ekrana pobjede)
                 if (dailyQuestionsAnswered >= 10) {
-                    updateUI(); // HUD se odmah osvježava na točnih 10/10
-                    recordDailyChallenge(dailyCorrect);
-                    showDailyComplete(dailyCorrect);
-                    return;
+                    updateUI(); recordDailyChallenge(dailyCorrect); showDailyComplete(dailyCorrect); return;
                 }
 
+                // Kazna za krivi odgovor (Nema usporavanja!)
                 if (!correct) {
                     let cut = Math.max(1, Math.floor(snake.length * 0.4));
                     for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
                     score = Math.max(0, score - Math.floor(cut / 3));
                 } else {
-                    if (gameMode === 'retro') interval *= speedFactor; 
-                    else modernSpeed *= (2 - speedFactor);
+                    // NAGRADA: Točan odgovor usporava zmiju za 15% ili je Zlatna jabuka skroz resetira
+                    if (isGoldBonus) {
+                        interval = (interval === 115) ? 115 : (interval === 150 ? 150 : 200); // Reset retro intervala
+                        modernSpeed = baseStartSpeedModern; // Puni zlatni reset na minimum brzine
+                    } else {
+                        if (gameMode === 'retro') interval = Math.min(200, interval * 1.15); // Usporava retro
+                        else modernSpeed = Math.max(baseStartSpeedModern, modernSpeed * 0.85); // Usporava modern brzinu za 15%
+                    }
                 }
 
-                updateUI();
-                isPaused = false;
-                if (gameMode === 'retro') gameLoop();
-                else requestAnimationFrame(modernGameLoop);
+                updateUI(); isPaused = false;
+                if (gameMode === 'retro') gameLoop(); else requestAnimationFrame(modernGameLoop);
                 return;
             }
 
-            // Normalna igra
+            // Normalna igra van Dnevnog izazova
             if (correct) {
-                if (gameMode === 'retro') interval *= speedFactor; 
-                else modernSpeed *= (2 - speedFactor); 
+                if (isGoldBonus) {
+                    interval = (interval === 115) ? 115 : (interval === 150 ? 150 : 200);
+                    modernSpeed = baseStartSpeedModern; // Puni zlatni reset
+                } else {
+                    if (gameMode === 'retro') interval = Math.min(200, interval * 1.15); // Kognitivni predah (Usporavanje 15%)
+                    else modernSpeed = Math.max(baseStartSpeedModern, modernSpeed * 0.85); 
+                }
             } else {
                 let cut = Math.max(1, Math.floor(snake.length * 0.4));
                 for (let i = 0; i < cut; i++) if (snake.length > 2) snake.pop();
                 score = Math.max(0, score - (gameMode === 'retro' ? cut : Math.floor(cut / 3)));
-                
-                if (score < minLimit) {
-                    recordGamePlayed(); 
-                    return showGameOver();
-                }
+                if (score < minLimit) { recordGamePlayed(); document.getElementById('game-over-reason').innerText = "Pali ste ispod praga opstanka"; return showGameOver(); }
             }
             
-            saveStatsToStorage(); 
-            updateUI(); 
-            isPaused = false;
-            
-            if (gameMode === 'retro') gameLoop();
-            else requestAnimationFrame(modernGameLoop);
+            saveStatsToStorage(); updateUI(); isPaused = false;
+            if (gameMode === 'retro') gameLoop(); else requestAnimationFrame(modernGameLoop);
         }
 
         function recordDailyChallenge(correctCount) {
             const todayStr = new Date().toDateString();
-            playerStats.lastDailyDate = todayStr;
-            playerStats.lastDailyScore = correctCount;
+            playerStats.lastDailyDate = todayStr; playerStats.lastDailyScore = correctCount;
             playerStats.gamesPlayed += 1;
-            
-            if (correctCount > playerStats.highScore) {
-                playerStats.highScore = correctCount; 
-            }
-            
-            saveStatsToStorage();
-            updateDailyStatusUI();
+            if (correctCount > playerStats.highScore) playerStats.highScore = correctCount;
+            saveStatsToStorage(); updateDailyStatusUI();
         }
 
         function showDailyComplete(correctCount) {
-            isPaused = true;
+            isPaused = true; stopLaserSystem();
             document.getElementById('daily-final-score').innerText = `${correctCount}/10`;
             document.getElementById('daily-complete-modal').classList.add('active');
         }
 
         function recordGamePlayed() {
             playerStats.gamesPlayed += 1;
-            if (score > playerStats.highScore) {
-                playerStats.highScore = score;
-            }
+            if (score > playerStats.highScore) playerStats.highScore = score;
             saveStatsToStorage();
         }
 
         function showGameOver() {
-            isPaused = true;
+            isPaused = true; stopLaserSystem();
             document.getElementById('final-score').innerText = score;
             document.getElementById('game-over-modal').classList.add('active');
         }
 
         function getTouchCanvasPos(e) {
-            const rect = canvas.getBoundingClientRect();
-            const touch = e.touches[0];
-            const x = (touch.clientX - rect.left) * (canvas.width / (rect.width || 1));
-            const y = (touch.clientY - rect.top) * (canvas.height / (rect.height || 1));
-            return { x, y };
+            const rect = canvas.getBoundingClientRect(); const touch = e.touches[0];
+            return { x: (touch.clientX - rect.left) * (canvas.width / (rect.width || 1)), y: (touch.clientY - rect.top) * (canvas.height / (rect.height || 1)) };
         }
 
         window.addEventListener('keydown', e => {
-            keysPressed[e.key] = true; 
+            keysPressed[e.key] = true;
             if (e.key === 'Escape' || e.key === ' ') { togglePause(); e.preventDefault(); return; }
             if (isPaused) return;
             if (gameMode === 'retro') {
@@ -1428,21 +1345,14 @@
 
         window.addEventListener('keyup', e => { keysPressed[e.key] = false; });
 
-        // TOUCH DOGAĐAJI
         window.addEventListener('touchstart', e => {
-            tsX = e.touches[0].clientX;
-            tsY = e.touches[0].clientY;
-            
+            tsX = e.touches[0].clientX; tsY = e.touches[0].clientY;
             const isGameActive = !document.getElementById('view-game').classList.contains('hidden');
             if (isGameActive && gameMode === 'modern' && e.target.closest('#game-wrapper')) {
                 const pos = getTouchCanvasPos(e);
-                
                 if (touchMode === 'joystick') {
-                    const distToBase = Math.hypot(pos.x - joystickBase.x, pos.y - joystickBase.y);
-                    if (distToBase <= joystickBase.radius + 15) {
-                        isJoystickActive = true;
-                        joystickStick.x = pos.x;
-                        joystickStick.y = pos.y;
+                    if (Math.hypot(pos.x - joystickBase.x, pos.y - joystickBase.y) <= joystickBase.radius + 15) {
+                        isJoystickActive = true; joystickStick.x = pos.x; joystickStick.y = pos.y;
                     }
                 }
             }
@@ -1451,82 +1361,43 @@
         window.addEventListener('touchmove', e => {
             const isGameViewActive = !document.getElementById('view-game').classList.contains('hidden');
             if (isGameViewActive && e.target.closest('#game-wrapper')) {
-                if (e.cancelable) e.preventDefault(); 
-
+                if (e.cancelable) e.preventDefault();
                 if (gameMode === 'modern' && !isPaused) {
                     const pos = getTouchCanvasPos(e);
-                    
                     if (touchMode === 'joystick' && isJoystickActive) {
-                        const dx = pos.x - joystickBase.x;
-                        const dy = pos.y - joystickBase.y;
-                        const dist = Math.hypot(dx, dy);
-                        
-                        if (dist <= joystickBase.radius) {
-                            joystickStick.x = pos.x;
-                            joystickStick.y = pos.y;
-                        } else {
-                            const angle = Math.atan2(dy, dx);
-                            joystickStick.x = joystickBase.x + Math.cos(angle) * joystickBase.radius;
-                            joystickStick.y = joystickBase.y + Math.sin(angle) * joystickBase.radius;
-                        }
+                        const dx = pos.x - joystickBase.x; const dy = pos.y - joystickBase.y; const dist = Math.hypot(dx, dy);
+                        if (dist <= joystickBase.radius) { joystickStick.x = pos.x; joystickStick.y = pos.y; }
+                        else { const angle = Math.atan2(dy, dx); joystickStick.x = joystickBase.x + Math.cos(angle) * joystickBase.radius; joystickStick.y = joystickBase.y + Math.sin(angle) * joystickBase.radius; }
                     } 
                     else if (touchMode === 'trackpad') {
-                        let dxSwipe = e.touches[0].clientX - tsX;
-                        let dySwipe = e.touches[0].clientY - tsY;
-                        if (Math.abs(dxSwipe) > 5 || Math.abs(dySwipe) > 5) {
-                            modernAngle = Math.atan2(dySwipe, dxSwipe);
-                        }
+                        let dxSwipe = e.touches[0].clientX - tsX; let dySwipe = e.touches[0].clientY - tsY;
+                        if (Math.abs(dxSwipe) > 5 || Math.abs(dySwipe) > 5) modernTargetAngle = Math.atan2(dySwipe, dxSwipe);
                     }
                 }
             }
         }, { passive: false });
 
         window.addEventListener('touchend', e => {
-            if (gameMode === 'modern') {
-                isJoystickActive = false;
-                joystickStick.x = joystickBase.x;
-                joystickStick.y = joystickBase.y;
-                return;
-            }
-
+            if (gameMode === 'modern') { isJoystickActive = false; joystickStick.x = joystickBase.x; joystickStick.y = joystickBase.y; modernTargetAngle = null; return; }
             if (isPaused) return;
-            let dxSwipe = e.changedTouches[0].clientX - tsX;
-            let dySwipe = e.changedTouches[0].clientY - tsY;
+            let dxSwipe = e.changedTouches[0].clientX - tsX; let dySwipe = e.changedTouches[0].clientY - tsY;
             if (Math.abs(dxSwipe) > 20 || Math.abs(dySwipe) > 20) {
                 if (Math.abs(dxSwipe) > Math.abs(dySwipe)) {
-                    if (dxSwipe > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 };
-                    else if (dxSwipe < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
+                    if (dxSwipe > 0 && dir.x !== -1) nextDir = { x: 1, y: 0 }; else if (dxSwipe < 0 && dir.x !== 1) nextDir = { x: -1, y: 0 };
                 } else {
-                    if (dySwipe > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 };
-                    else if (dySwipe < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
+                    if (dySwipe > 0 && dir.y !== -1) nextDir = { x: 0, y: 1 }; else if (dySwipe < 0 && dir.y !== 1) nextDir = { x: 0, y: -1 };
                 }
             }
         }, { passive: true });
 
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then(reg => {
-                    reg.addEventListener('updatefound', () => {
-                        const newWorker = reg.installing;
-                        newWorker.addEventListener('statechange', () => {
-                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                location.reload();
-                            }
-                        });
-                    });
-                }).catch(() => { });
-            });
-        }
-
         window.onresize = setupCanvas;
-        loadStatsFromStorage(); 
-        setupCanvas();
-        setGameMode('modern'); // Promijenjeno: Slobodno kretanje po defaultu
-        setTouchMode('trackpad'); // Promijenjeno: Trackpad po defaultu
+        loadStatsFromStorage(); setupCanvas();
+        setGameMode('modern'); setBoundsMode('wrap'); setTouchMode('trackpad');
         updateNavigationHighlights();
     </script>
 </body>
 
 </html>
+
 
 ```
