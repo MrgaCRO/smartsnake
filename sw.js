@@ -1,4 +1,4 @@
-const cacheName = 'snake-edu-v1.2.2'; // Nadograđeno na v1.2.2 radi ispravka rezanja i novih zadanih postavki
+const cacheName = 'snake-edu-v1.3.0'; // Nadograđeno na v1.3.0 - Veliki fizikalni i gameplay update
 const assets = [
   './',
   'index.html',
