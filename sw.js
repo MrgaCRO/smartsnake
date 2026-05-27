@@ -1,4 +1,4 @@
-const cacheName = 'snake-edu-v1.3.2'; // Hitni ispravak navigacijskog bug-a za kategorije
+const cacheName = 'snake-edu-v1.4.0'; // Nadograđeno na v1.4.0 - Praćenje miša i WASD kontrole
 const assets = [
   './',
   'index.html',
